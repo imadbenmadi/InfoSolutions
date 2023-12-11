@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function NavBar() {
+
+export default function MenuBar() {
   return (
     <div>NavBar</div>
   )

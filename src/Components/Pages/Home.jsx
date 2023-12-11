@@ -1,7 +1,13 @@
 import React from 'react'
-
+import MenuBar from "../MenuBar";
+import Header from '../Header';
 export default function Home() {
-  return (
-    <div>Home</div>
-  )
+    return (
+        <>
+            <div className=" flex">
+                {/* <MenuBar /> */}
+                <Header />
+            </div>
+        </>
+    );
 }
