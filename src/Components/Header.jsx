@@ -5,7 +5,7 @@ export default function Header() {
     return (
         <div>
             <div>
-                <span className=" text-redd-500">Info</span>
+                <span className=" text-red-400">Info</span>
                 <br />
                 <span>Solutions</span>
             </div>
