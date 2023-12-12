@@ -6,59 +6,171 @@ export default function MenuBar() {
     const toggleMobileMenu = () => {
         setMobileMenuVisibility(!MobileMenuVisible);
     };
-  return (
-      <>
-          <div className="md:hidden  ">
-              {/* Mobile menu bar */}
-              <div
-                  className={`${
-                      MobileMenuVisible ? "hidden " : " block"
-                  } bg-Blue w-[100px] h-[100px] rounded-br-[80px] absolute top-[-25px] left-[-35px]  z-10`}
-                  onClick={toggleMobileMenu}
-              ></div>
+    return (
+        <>
+            <div className="md:hidden  ">
+                {/* Mobile menu bar */}
+                <div
+                    className={`${
+                        MobileMenuVisible
+                            ? "translate-y-[-100%] "
+                            : " translate-y-[0%] delay-200 "
+                    }transition-translate duration-300 ease-in-out bg-Blue w-[100px] h-[100px] rounded-br-[80px] flex  flex-col gap-1 justify-center items-center absolute top-[-25px] left-[-30px]  z-10`}
+                    onClick={toggleMobileMenu}
+                >
+                    <div className=" w-5 h-1 bg-white rounded"></div>
+                    <div className=" w-5 h-1 bg-white rounded"></div>
+                    <div className=" w-5 h-1 bg-white rounded"></div>
+                </div>
 
-              <div className=" flex w-full fixed ">
-                  <div
-                      className={`${
-                          MobileMenuVisible
-                              ? " translate-x-[0%]"
-                              : " translate-x-[-100%]"
-                      }  bg-Blue w-[65%] h-[100vh] z-30 relative transition-all duration-300 ease-in-out`}
-                  >
-                      <div
-                          className="w-[40px] h-[40px] text-xl bg-white text-Blue font-bold rounded-bl-xl  rounded-tr-xl rounded-tl-sm  rounded-br-sm flex justify-center items-center absolute right-2 top-2"
-                          onClick={toggleMobileMenu}
-                      >
-                          X
-                      </div>
-                      <div className="flex flex-col items-start justify-center gap-7 h-[100%] text-white font-semibold ">
-                          <div className=" ml-3 border-b-2"><Link to={"/"}> Home</Link></div>
-                          <div className=" w-full h-1 bg-white"></div>
-                          <div className=" ml-3">Programation Linéer</div>
-                          <div className=" ml-3">Propabilité Statistique</div>
-                          <div className=" ml-3">Systéme D'exploitation</div>
-                          <div className=" w-full h-1 bg-white"></div>
-                          <div className=" ml-3">Théory Des Graphs</div>
-                          <div className=" ml-3">Théory des Langage</div>
-                          <div className=" ml-3">Méthodes Numérique</div>
-                          <div className=" w-full h-1 bg-white"></div>
-                          <div className=" ml-3">Systéme Machine</div>
-                      </div>
-                  </div>
+                <div className=" flex w-full fixed ">
+                    <div
+                        className={`${
+                            MobileMenuVisible
+                                ? " translate-x-[0%] delay-200"
+                                : " translate-x-[-100%]"
+                        }  bg-Blue w-[65%] h-[100vh] z-30 relative transition-all duration-300  ease-in-out`}
+                    >
+                        <div
+                            className="w-[40px] h-[40px] text-xl bg-white text-Blue font-bold rounded-bl-xl  rounded-tr-xl rounded-tl-sm  rounded-br-sm flex justify-center items-center absolute right-2 top-2"
+                            onClick={toggleMobileMenu}
+                        >
+                            X
+                        </div>
+                        <div className="flex flex-col items-start justify-center gap-7 h-[100%] text-white font-semibold ">
+                            <Link
+                                className="ml-3"
+                                to={"/"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Home
+                            </Link>
+                            <div className=" w-full h-1 bg-white"></div>
+                            <Link
+                                className=" ml-3"
+                                to={"/PL"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Programation Linéer
+                            </Link>
+                            <Link
+                                className="ml-3"
+                                to={"/PS"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Propabilité Statistique
+                            </Link>
+                            <Link
+                                className="ml-3"
+                                to={"/SE"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Systéme D'exploitation
+                            </Link>
+                            <div className=" w-full h-1 bg-white"></div>
+                            <Link
+                                className="ml-3"
+                                to={"/PTGL"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Théory Des Graphs
+                            </Link>
+                            <Link
+                                className="ml-3"
+                                to={"/TL"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Théory des Langage
+                            </Link>
+                            <Link
+                                className="ml-3"
+                                to={"/MN"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Méthodes Numérique
+                            </Link>
+                            <div className=" w-full h-1 bg-white"></div>
+                            <Link
+                                className="ml-3"
+                                to={"/SM"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Systéme Machine
+                            </Link>
+                        </div>
+                    </div>
 
-                  <div
-                      className={`${
-                          MobileMenuVisible
-                              ? " translate-x-0 bg-gray-400 transition-colors delay-150 duration-300 ease-in-out"
-                              : " translate-x-full bg-transparent"
-                      } w-[35%] h-[100vh] opacity-[0.3] `}
-                      onClick={toggleMobileMenu}
-                  ></div>
-              </div>
+                    <div
+                        className={`${
+                            MobileMenuVisible
+                                ? " translate-x-0 bg-gray-400 transition-colors delay-300 duration-300 ease-in-out"
+                                : " translate-x-full bg-transparent"
+                        } w-[35%] h-[100vh] opacity-[0.3] `}
+                        onClick={toggleMobileMenu}
+                    ></div>
+                </div>
 
-              {/* Laptop Menu Bar */}
-          </div>
-          <div className=" hidden md:block absolute  h-[100vh] bg-Blue w-[255px]"></div>
-      </>
-  );
+                {/* Laptop Menu Bar */}
+            </div>
+            <div className=" hidden md:block absolute  h-[100vh] bg-Blue w-[255px]">
+                <div className="flex flex-col items-start justify-center gap-7 h-[100%] text-white font-semibold ">
+                    <Link className="ml-3" to={"/"} onClick={toggleMobileMenu}>
+                        Home
+                    </Link>
+                    <div className=" w-full h-1 bg-white"></div>
+                    <Link
+                        className=" ml-3"
+                        to={"/PL"}
+                        onClick={toggleMobileMenu}
+                    >
+                        Programation Linéer
+                    </Link>
+                    <Link
+                        className="ml-3"
+                        to={"/PS"}
+                        onClick={toggleMobileMenu}
+                    >
+                        Propabilité Statistique
+                    </Link>
+                    <Link
+                        className="ml-3"
+                        to={"/SE"}
+                        onClick={toggleMobileMenu}
+                    >
+                        Systéme D'exploitation
+                    </Link>
+                    <div className=" w-full h-1 bg-white"></div>
+                    <Link
+                        className="ml-3"
+                        to={"/PTGL"}
+                        onClick={toggleMobileMenu}
+                    >
+                        Théory Des Graphs
+                    </Link>
+                    <Link
+                        className="ml-3"
+                        to={"/TL"}
+                        onClick={toggleMobileMenu}
+                    >
+                        Théory des Langage
+                    </Link>
+                    <Link
+                        className="ml-3"
+                        to={"/MN"}
+                        onClick={toggleMobileMenu}
+                    >
+                        Méthodes Numérique
+                    </Link>
+                    <div className=" w-full h-1 bg-white"></div>
+                    <Link
+                        className="ml-3"
+                        to={"/SM"}
+                        onClick={toggleMobileMenu}
+                    >
+                        Systéme Machine
+                    </Link>
+                </div>
+            </div>
+        </>
+    );
 }
