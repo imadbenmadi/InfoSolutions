@@ -14,7 +14,7 @@ export default function Header() {
             <img
                 src={logo}
                 alt="Logo"
-                className=" w-[150px] md:order-1 m-auto	md:mr-5"
+                className=" w-[150px] md:order-1 m-auto	md:mr-5 md:m-0"
             />
         </div>
     );
