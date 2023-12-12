@@ -4,9 +4,9 @@ import Header from '../Header';
 export default function Home() {
     return (
         <>
-            <div className=" flex">
+            <div className="relative ">
                 <MenuBar />
-                {/* <Header /> */}
+                <Header />
             </div>
         </>
     );

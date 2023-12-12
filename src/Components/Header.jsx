@@ -3,7 +3,7 @@ import logo from "../assets/Cntic_Logo.png";
 
 export default function Header() {
     return (
-        <div className="text-center flex flex-col md:flex-row md:gap-4  ">
+        <div className="text-center flex justify-center w-full flex-col md:flex-row md:gap-4  ">
             <span className="  text-Blue text-4xl font-semibold md:order-2 md:mt-2">
                 INFO
             </span>
@@ -14,7 +14,7 @@ export default function Header() {
             <img
                 src={logo}
                 alt="Logo"
-                className=" w-[150px] md:order-1	md:mr-5"
+                className=" w-[150px] md:order-1 m-auto	md:mr-5"
             />
         </div>
     );
