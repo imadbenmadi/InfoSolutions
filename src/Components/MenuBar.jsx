@@ -112,7 +112,7 @@ export default function MenuBar() {
 
                 {/* Laptop Menu Bar */}
             </div>
-            <div className=" hidden md:block absolute  h-[100vh] bg-Blue w-[255px]">
+            <div className=" hidden md:block md:w-full  h-[100vh] bg-Blue w-[255px]">
                 <div className="flex flex-col items-start justify-center gap-7 h-[100%] text-white font-semibold ">
                     <Link className="ml-3" to={"/"} onClick={toggleMobileMenu}>
                         Home
