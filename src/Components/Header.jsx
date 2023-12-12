@@ -3,15 +3,19 @@ import logo from "../assets/Cntic_Logo.png";
 
 export default function Header() {
     return (
-        <div className="text-center ">
-            <div>
-                <span className="  text-Blue text-4xl font-semibold ">
-                    INFO
-                </span>
-                <br />
-                <span className=" text-3xl text-Black font-semibold ">Solutions</span>
-            </div>
-            <img src={logo} alt="Logo" className=" w-[150px]" />
+        <div className="text-center flex flex-col md:flex-row md:gap-4  ">
+            <span className="  text-Blue text-4xl font-semibold md:order-2 md:mt-2">
+                INFO
+            </span>
+            <span className=" text-4xl text-Black font-semibold md:order-3 md:mt-2">
+                Solutions
+            </span>
+
+            <img
+                src={logo}
+                alt="Logo"
+                className=" w-[150px] md:order-1	md:mr-5"
+            />
         </div>
     );
 }
