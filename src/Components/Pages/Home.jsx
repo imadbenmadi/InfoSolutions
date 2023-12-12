@@ -4,7 +4,7 @@ import Header from '../Header';
 export default function Home() {
     return (
         <>
-            <div className="relative ">
+            <div className="relative h-fit ">
                 <MenuBar />
                 <Header />
             </div>
