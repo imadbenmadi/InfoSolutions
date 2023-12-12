@@ -15,7 +15,7 @@ export default function MenuBar() {
               ></div>
 
               {/* {MobileMenuVisible && ( */}
-              <div className=" flex w-full absolute ">
+              <div className=" flex w-full fixed ">
                   <div
                       className={`${
                           MobileMenuVisible
