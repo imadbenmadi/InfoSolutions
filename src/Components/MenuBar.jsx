@@ -24,7 +24,7 @@ export default function MenuBar() {
                       }  bg-Blue w-[65%] h-[100vh] z-20 relative transition-all duration-300 ease-in-out`}
                   >
                       <div
-                          className="w-5 h-5 bg-white text-Blue font-bold rounded flex justify-center items-center absolute right-2 top-2"
+                          className="w-[40px] h-[40px] text-xl bg-white text-Blue font-bold rounded-bl-xl  rounded-tr-xl rounded-tl-sm  rounded-br-sm flex justify-center items-center absolute right-2 top-2"
                           onClick={toggleMobileMenu}
                       >
                           X
