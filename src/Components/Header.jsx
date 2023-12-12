@@ -3,11 +3,13 @@ import logo from "../assets/Cntic_Logo.png";
 
 export default function Header() {
     return (
-        <div>
+        <div className="text-center ">
             <div>
-                <span className=" text-red-400">Info</span>
+                <span className="  text-Blue text-4xl font-semibold ">
+                    INFO
+                </span>
                 <br />
-                <span>Solutions</span>
+                <span className=" text-3xl text-Black font-semibold ">Solutions</span>
             </div>
             <img src={logo} alt="Logo" className=" w-[150px]" />
         </div>

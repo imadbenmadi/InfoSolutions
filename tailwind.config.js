@@ -1,8 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: ["./src/**/*.{html,js}"],
+    content: ["./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
-        extend: {},
+        fontFamily: {
+            sans: ["Inria Sans", "sans-serif"],
+        },
+
+        extend: {
+            colors: {
+                Black: "var(--Black)",
+                Blue: "var(--Blue)",
+            },
+        },
     },
     plugins: [],
 };
