@@ -43,7 +43,7 @@ export default function MenuBar() {
                                 to={"/"}
                                 onClick={toggleMobileMenu}
                             >
-                                Home
+                                 Home
                             </Link>
                             <div className=" w-full h-1 bg-white"></div>
                             <Link
