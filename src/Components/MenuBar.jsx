@@ -27,7 +27,7 @@ export default function MenuBar() {
                 <div
                     className={`${
                         MobileMenuVisible ? " h-full delay-200" : " h-0 delay-200"
-                    } flex w-full fixed transition-all`}
+                    } flex w-full fixed transition-all z-[999] `}
                 >
                     <div
                         className={`${
