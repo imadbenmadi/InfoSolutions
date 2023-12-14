@@ -29,7 +29,13 @@ export default function MenuBar() {
                             MobileMenuVisible
                                 ? " translate-x-[0%] delay-200"
                                 : " translate-x-[-100%]"
-                        }  bg-Blue w-[65%] h-[100vh] z-30 relative transition-all duration-300  ease-in-out`}
+                        } 
+                            ${
+                                MobileMenuVisible
+                                    ? " block delay-200"
+                                    : " hiddden delay-200"
+                            }
+                         bg-Blue w-[65%] h-[100vh] z-30 relative transition-all duration-300  ease-in-out`}
                     >
                         <div
                             className="w-[40px] h-[40px] text-xl bg-white text-Blue font-bold rounded-bl-xl  rounded-tr-xl rounded-tl-sm  rounded-br-sm flex justify-center items-center absolute right-2 top-2"

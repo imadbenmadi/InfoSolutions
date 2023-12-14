@@ -9,9 +9,12 @@ export default function App() {
                 <div className=" md:flex-[20%]">
                     <MenuBar />
                 </div>
+
                 <div className="md:flex-[80%] ">
                     <Header />
-                    <Outlet />
+                    <div className=" w-[90%] m-auto">
+                        <Outlet />
+                    </div>
                 </div>
             </div>
         </div>
