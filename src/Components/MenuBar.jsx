@@ -8,8 +8,9 @@ export default function MenuBar() {
     };
     return (
         <>
+            {/* Mobile menu bar */}
+
             <div className="md:hidden  ">
-                {/* Mobile menu bar */}
                 <div
                     className={`${
                         MobileMenuVisible
@@ -23,7 +24,11 @@ export default function MenuBar() {
                     <div className=" w-5 h-1 mr-6 bg-white rounded"></div>
                 </div>
 
-                <div className=" flex w-full fixed ">
+                <div
+                    className={`${
+                        MobileMenuVisible ? " h-full delay-200" : " h-0 delay-200"
+                    } flex w-full fixed transition-all`}
+                >
                     <div
                         className={`${
                             MobileMenuVisible
@@ -35,7 +40,7 @@ export default function MenuBar() {
                                     ? " block delay-200"
                                     : " hiddden delay-200"
                             }
-                         bg-Blue w-[65%] h-[100vh] z-30 relative transition-all duration-300  ease-in-out`}
+                         bg-Blue w-[65%] h-[100vh] relative transition-all duration-300  ease-in-out`}
                     >
                         <div
                             className="w-[40px] h-[40px] text-xl bg-white text-Blue font-bold rounded-bl-xl  rounded-tr-xl rounded-tl-sm  rounded-br-sm flex justify-center items-center absolute right-2 top-2"
@@ -115,9 +120,9 @@ export default function MenuBar() {
                         onClick={toggleMobileMenu}
                     ></div>
                 </div>
-
-                {/* Laptop Menu Bar */}
             </div>
+
+            {/* Laptop Menu Bar */}
             <div className=" hidden md:block md:w-full  h-[100vh] bg-Blue w-[255px]">
                 <div className="flex flex-col items-start justify-center gap-7 h-[100%] text-white font-semibold ">
                     <Link className="ml-3" to={"/"} onClick={toggleMobileMenu}>

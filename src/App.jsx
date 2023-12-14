@@ -6,11 +6,11 @@ export default function App() {
     return (
         <div className="relative h-[100vh] max-h-[100vh] w-[100vw] overflow-hidden  ">
             <div className=" md:flex">
-                <div className=" md:flex-[20%]">
+                <div className=" md:flex-[20%] ">
                     <MenuBar />
                 </div>
 
-                <div className="md:flex-[80%] ">
+                <div className="md:flex-[80%]  ">
                     <Header />
                     <div className=" w-[90%] m-auto">
                         <Outlet />
