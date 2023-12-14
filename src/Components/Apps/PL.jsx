@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const PL = () => {
-    const [MinMax, SetMinMax] = useState("min");
+    const [MinMax, SetMinMax] = useState("Min");
     const [Operatore, SetOperatore] = useState("<=");
     const [PlusMinus, SetPlusMinus] = useState("+");
     const [X, SetX] = useState("");
@@ -79,21 +79,26 @@ const PL = () => {
     };
 
     return (
-        <div>
+        <div className=" text-Black">
             <div className="text-Blue font-bold text-2xl underline mb-4">
                 Programation Lineer
             </div>
 
-            <div className="text-xl">Function Objectif :</div>
-            <div className="flex items-center gap-3">
+            <div
+                className="text-xl font-semibold
+                  mb-3"
+            >
+                Function Objectif :
+            </div>
+            <div className="flex items-center gap-3 text">
                 <div className="flex items-center gap-1">
                     <div
                         onClick={() => toggleSelect("MinMax")}
-                        className="border border-gray-400 p-1 cursor-pointer relative"
+                        className="border border-gray-400 px-1 cursor-pointer relative"
                     >
                         {MinMax}
                         {selectOpen.MinMax && (
-                            <div className="absolute bg-white border border-gray-400 mt-1 p-1">
+                            <div className="absolute bg-white border border-gray-400 mt-1 left-0 p-1">
                                 <div
                                     onClick={() =>
                                         handleOptionClick("min", "MinMax")
@@ -129,11 +134,11 @@ const PL = () => {
                 <div className="flex gap-1">
                     <div
                         onClick={() => toggleSelect("PlusMinus")}
-                        className="border border-gray-400 p-1 cursor-pointer relative"
+                        className="border border-gray-400 px-1 cursor-pointer relative"
                     >
                         {PlusMinus}
                         {selectOpen.PlusMinus && (
-                            <div className="absolute bg-white border border-gray-400 mt-1 p-1">
+                            <div className="absolute bg-white border border-gray-400 mt-1 p-1 left-0">
                                 <div
                                     onClick={() =>
                                         handleOptionClick("+", "PlusMinus")
@@ -167,11 +172,11 @@ const PL = () => {
                 <div className="flex gap-1">
                     <div
                         onClick={() => toggleSelect("Operatore")}
-                        className="border border-gray-400 p-1 cursor-pointer relative"
+                        className="border border-gray-400 px-1 cursor-pointer relative "
                     >
                         {Operatore}
                         {selectOpen.Operatore && (
-                            <div className="absolute bg-white border border-gray-400 mt-1 p-1">
+                            <div className="absolute bg-white border border-gray-400 mt-1 px-1 left-0 ">
                                 <div
                                     onClick={() =>
                                         handleOptionClick(">=", "Operatore")
@@ -192,7 +197,7 @@ const PL = () => {
                 </div>
                 <div>
                     <input
-                        className="border border-gray-400 w-[30px]"
+                        className="border border-gray-400 w-[40px]"
                         type="text"
                         id="numberInput"
                         name="numberInput"
