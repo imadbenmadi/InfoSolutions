@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState } from 'react';
+import React from "react";
+import { useState } from "react";
 export default function Function_Objectif() {
     const [MinMax, SetMinMax] = useState("Min");
     const [Operatore, SetOperatore] = useState("<=");
@@ -7,13 +7,21 @@ export default function Function_Objectif() {
     const [X, SetX] = useState("");
     const [Y, SetY] = useState("");
     const [Value, SetValue] = useState("");
-
+    const [ContraintsNbr, SetContraintsNbr] = useState(2);
     const [selectOpen, setSelectOpen] = useState({
         MinMax: false,
         PlusMinus: false,
         Operatore: false,
     });
-
+    const handleContraintsNbrChange = (value) => {
+        SetContraintsNbr(value);
+    };
+    const decreese = () => {
+        if (ContraintsNbr > 2) SetContraintsNbr(ContraintsNbr - 1);
+    };
+    const increes = () => {
+        SetContraintsNbr(ContraintsNbr + 1);
+    };
     const MinMaxChanged = (value) => {
         SetMinMax(value);
         toggleSelect("MinMax");
@@ -77,131 +85,142 @@ export default function Function_Objectif() {
                 break;
         }
     };
-  return (
-      <div className=' md:flex'>
-          <div
-              className="text-xl font-semibold
-                  mb-3"
-          >
-              Function Objectif :
-          </div>
-          <div className="flex items-center gap-3 text">
-              <div className="flex items-center gap-1">
-                  <div
-                      onClick={() => toggleSelect("MinMax")}
-                      className="border border-gray-400 px-1 cursor-pointer relative"
-                  >
-                      {MinMax}
-                      {selectOpen.MinMax && (
-                          <div className="absolute bg-white border border-gray-400 mt-1 left-0 p-1">
-                              <div
-                                  onClick={() =>
-                                      handleOptionClick("min", "MinMax")
-                                  }
-                              >
-                                  Min
-                              </div>
-                              <div
-                                  onClick={() =>
-                                      handleOptionClick("max", "MinMax")
-                                  }
-                              >
-                                  Max
-                              </div>
-                          </div>
-                      )}
-                  </div>
-                  <div>Z= </div>
-              </div>
 
-              <div className="flex gap-1">
-                  <input
-                      className="border border-gray-400 w-[30px]"
-                      type="text"
-                      id="numberInput"
-                      name="numberInput"
-                      value={X}
-                      onChange={handleXChange}
-                      placeholder="10"
-                  />
-                  <div>X</div>
-              </div>
-              <div className="flex gap-1">
-                  <div
-                      onClick={() => toggleSelect("PlusMinus")}
-                      className="border border-gray-400 px-1 cursor-pointer relative"
-                  >
-                      {PlusMinus}
-                      {selectOpen.PlusMinus && (
-                          <div className="absolute bg-white border border-gray-400 mt-1 p-1 left-0">
-                              <div
-                                  onClick={() =>
-                                      handleOptionClick("+", "PlusMinus")
-                                  }
-                              >
-                                  +
-                              </div>
-                              <div
-                                  onClick={() =>
-                                      handleOptionClick("-", "PlusMinus")
-                                  }
-                              >
-                                  -
-                              </div>
-                          </div>
-                      )}
-                  </div>
-              </div>
-              <div className="flex gap-1">
-                  <input
-                      className="border border-gray-400 w-[30px]"
-                      type="text"
-                      id="numberInput"
-                      name="numberInput"
-                      value={Y}
-                      onChange={handleYChange}
-                      placeholder="1"
-                  />
-                  <div>Y</div>
-              </div>
-              <div className="flex gap-1">
-                  <div
-                      onClick={() => toggleSelect("Operatore")}
-                      className="border border-gray-400 px-1 cursor-pointer relative "
-                  >
-                      {Operatore}
-                      {selectOpen.Operatore && (
-                          <div className="absolute bg-white border border-gray-400 mt-1 px-1 left-0 ">
-                              <div
-                                  onClick={() =>
-                                      handleOptionClick(">=", "Operatore")
-                                  }
-                              >
-                                  {">="}
-                              </div>
-                              <div
-                                  onClick={() =>
-                                      handleOptionClick("<=", "Operatore")
-                                  }
-                              >
-                                  {"<="}
-                              </div>
-                          </div>
-                      )}
-                  </div>
-              </div>
-              <div>
-                  <input
-                      className="border border-gray-400 w-[40px]"
-                      type="text"
-                      id="numberInput"
-                      name="numberInput"
-                      value={Value}
-                      onChange={handleValueChange}
-                      placeholder="3"
-                  />
-              </div>
-          </div>
-      </div>
-  );
+    return (
+        <div className=" md:flex">
+            <div
+                className="text-xl font-semibold
+                  mb-3"
+            >
+                Function Objectif :
+            </div>
+            <div className="flex items-center gap-3 text">
+                <div className="flex items-center gap-1">
+                    <div
+                        onClick={() => toggleSelect("MinMax")}
+                        className="border border-gray-400 px-1 cursor-pointer relative"
+                    >
+                        {MinMax}
+                        {selectOpen.MinMax && (
+                            <div className="absolute bg-white border border-gray-400 mt-1 left-0 p-1">
+                                <div
+                                    onClick={() =>
+                                        handleOptionClick("min", "MinMax")
+                                    }
+                                >
+                                    Min
+                                </div>
+                                <div
+                                    onClick={() =>
+                                        handleOptionClick("max", "MinMax")
+                                    }
+                                >
+                                    Max
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    <div>Z= </div>
+                </div>
+
+                <div className="flex gap-1">
+                    <input
+                        className="border border-gray-400 w-[30px]"
+                        type="text"
+                        id="numberInput"
+                        name="numberInput"
+                        value={X}
+                        onChange={handleXChange}
+                        placeholder="10"
+                    />
+                    <div>X</div>
+                </div>
+                <div className="flex gap-1">
+                    <div
+                        onClick={() => toggleSelect("PlusMinus")}
+                        className="border border-gray-400 px-1 cursor-pointer relative"
+                    >
+                        {PlusMinus}
+                        {selectOpen.PlusMinus && (
+                            <div className="absolute bg-white border border-gray-400 mt-1 p-1 left-0">
+                                <div
+                                    onClick={() =>
+                                        handleOptionClick("+", "PlusMinus")
+                                    }
+                                >
+                                    +
+                                </div>
+                                <div
+                                    onClick={() =>
+                                        handleOptionClick("-", "PlusMinus")
+                                    }
+                                >
+                                    -
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div className="flex gap-1">
+                    <input
+                        className="border border-gray-400 w-[30px]"
+                        type="text"
+                        id="numberInput"
+                        name="numberInput"
+                        value={Y}
+                        onChange={handleYChange}
+                        placeholder="1"
+                    />
+                    <div>Y</div>
+                </div>
+                <div className="flex gap-1">
+                    <div
+                        onClick={() => toggleSelect("Operatore")}
+                        className="border border-gray-400 px-1 cursor-pointer relative "
+                    >
+                        {Operatore}
+                        {selectOpen.Operatore && (
+                            <div className="absolute bg-white border border-gray-400 mt-1 px-1 left-0 ">
+                                <div
+                                    onClick={() =>
+                                        handleOptionClick(">=", "Operatore")
+                                    }
+                                >
+                                    {">="}
+                                </div>
+                                <div
+                                    onClick={() =>
+                                        handleOptionClick("<=", "Operatore")
+                                    }
+                                >
+                                    {"<="}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div>
+                    <input
+                        className="border border-gray-400 w-[40px]"
+                        type="text"
+                        id="numberInput"
+                        name="numberInput"
+                        value={Value}
+                        onChange={handleValueChange}
+                        placeholder="3"
+                    />
+                </div>
+            </div>
+            {/* Nombre Des Contraint */}
+            <div className=" flex ">
+                <button className=" p-2" onClick={increes}>
+                    +
+                </button>
+                <div onChange={handleContraintsNbrChange}>{ContraintsNbr}</div>
+                <button className=" p-2" onClick={decreese}>
+                    -
+                </button>
+            </div>
+        </div>
+    );
 }
