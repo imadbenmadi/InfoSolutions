@@ -9,7 +9,8 @@ export const PLProvider = ({ children }) => {
     const [X, SetX] = useState("");
     const [Y, SetY] = useState("");
     const [Value, SetValue] = useState("");
-    const [ContraintsNbr, SetContraintsNbr] = useState(2);
+    const [Desision_var_Nbr, SetDesision_var_Nbr] = useState(2);
+    const [Constraints, SetConstraints] = useState([]);
 
     const contextValues = {
         MinMax,
@@ -24,8 +25,10 @@ export const PLProvider = ({ children }) => {
         SetY,
         Value,
         SetValue,
-        ContraintsNbr,
-        SetContraintsNbr,
+        Desision_var_Nbr,
+        SetDesision_var_Nbr,
+        Constraints,
+        SetConstraints,
     };
 
     return (

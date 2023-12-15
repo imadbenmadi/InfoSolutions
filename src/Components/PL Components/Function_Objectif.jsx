@@ -15,22 +15,22 @@ export default function Function_Objectif() {
         SetY,
         Value,
         SetValue,
-        ContraintsNbr,
-        SetContraintsNbr,
+        Desision_var_Nbr,
+        SetDesision_var_Nbr,
     } = usePLContext();
     const [selectOpen, setSelectOpen] = useState({
         MinMax: false,
         PlusMinus: false,
         Operatore: false,
     });
-    const handleContraintsNbrChange = (value) => {
-        SetContraintsNbr(value);
+    const handleDesision_var_NbrChange = (value) => {
+        SetDesision_var_Nbr(value);
     };
     const decreese = () => {
-        if (ContraintsNbr > 2) SetContraintsNbr(ContraintsNbr - 1);
+        if (Desision_var_Nbr > 2) SetDesision_var_Nbr(Desision_var_Nbr - 1);
     };
     const increes = () => {
-        SetContraintsNbr(ContraintsNbr + 1);
+        SetDesision_var_Nbr(Desision_var_Nbr + 1);
     };
     const MinMaxChanged = (value) => {
         SetMinMax(value);
@@ -221,15 +221,20 @@ export default function Function_Objectif() {
                     />
                 </div>
             </div>
-            {/* Nombre Des Contraint */}
-            <div className=" flex ">
-                <button className=" p-2" onClick={increes}>
-                    +
-                </button>
-                <div onChange={handleContraintsNbrChange}>{ContraintsNbr}</div>
-                <button className=" p-2" onClick={decreese}>
-                    -
-                </button>
+            {/* Nombre Des variables du décision */}
+            <div className=" flex mt-5 ">
+                <div>Varibales Des Déecision  :</div>
+                <div className="flex items-center border w-fit  ">
+                    <button className=" bg-gray-300 px-3" onClick={decreese}>
+                        -
+                    </button>
+                    <div className=" px-3" onChange={handleDesision_var_NbrChange}>
+                        {Desision_var_Nbr}
+                    </div>
+                    <button className=" bg-gray-300 px-3" onClick={increes}>
+                        +
+                    </button>
+                </div>
             </div>
         </div>
     );
