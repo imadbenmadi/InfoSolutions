@@ -1,13 +1,23 @@
 import React from "react";
 import { useState } from "react";
+import { usePLContext } from "../Apps/PLcontext";
 export default function Function_Objectif() {
-    const [MinMax, SetMinMax] = useState("Min");
-    const [Operatore, SetOperatore] = useState("<=");
-    const [PlusMinus, SetPlusMinus] = useState("+");
-    const [X, SetX] = useState("");
-    const [Y, SetY] = useState("");
-    const [Value, SetValue] = useState("");
-    const [ContraintsNbr, SetContraintsNbr] = useState(2);
+    const {
+        MinMax,
+        SetMinMax,
+        Operatore,
+        SetOperatore,
+        PlusMinus,
+        SetPlusMinus,
+        X,
+        SetX,
+        Y,
+        SetY,
+        Value,
+        SetValue,
+        ContraintsNbr,
+        SetContraintsNbr,
+    } = usePLContext();
     const [selectOpen, setSelectOpen] = useState({
         MinMax: false,
         PlusMinus: false,
