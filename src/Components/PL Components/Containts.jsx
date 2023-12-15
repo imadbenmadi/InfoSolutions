@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { usePLContext } from "../Apps/PLcontext";
 
 export default function Containts() {
-    const { ContraintsNbr, SetConstraints } = usePLContext();
+    const { Contraints, SetConstraints } = usePLContext();
     const [constraints, setConstraints] = useState([]);
     const [selectOpen, setSelectOpen] = useState({
         PlusMinus: false,
@@ -39,24 +39,27 @@ export default function Containts() {
         ]);
     };
 
-    const toggleSelect = (selectName) => {
+    const toggleSelect = (selectName, index) => {
         setSelectOpen((prev) => ({
             ...prev,
             [selectName]: !prev[selectName],
         }));
-    };
 
-    const handleOptionClick = (value, selectName, index) => {
-        setSelectOpen((prev) => ({
-            ...prev,
-            [selectName]: false,
-        }));
-
-        // Add logic to update the specific constraint property based on user selection
+        // Add logic to toggle between options without showing a dropdown menu
         const updatedConstraints = [...constraints];
+        const currentValue = updatedConstraints[index][selectName];
+        const newValue =
+            currentValue === "+" || currentValue === "-"
+                ? currentValue === "+"
+                    ? "-"
+                    : "+"
+                : currentValue === ">="
+                ? "<="
+                : ">=";
+
         updatedConstraints[index] = {
             ...updatedConstraints[index],
-            [selectName]: value,
+            [selectName]: newValue,
         };
 
         setConstraints(updatedConstraints);
@@ -79,7 +82,7 @@ export default function Containts() {
 
     return (
         <div>
-            <div>Constraints</div>
+            <div className="text-xl font-semibold mb-3">Constraints :</div>
             {constraints.map((constraint, index) => (
                 <div key={index} className="flex gap-1">
                     <div className="flex gap-1">
@@ -98,36 +101,10 @@ export default function Containts() {
                     </div>
                     <div className="flex gap-1">
                         <div
-                            onClick={() => toggleSelect("PlusMinus")}
+                            onClick={() => toggleSelect("PlusMinus", index)}
                             className="border border-gray-400 px-1 cursor-pointer relative"
                         >
                             {constraint.PlusMinus}
-                            {selectOpen.PlusMinus && (
-                                <div className="absolute bg-white border border-gray-400 mt-1 p-1 left-0">
-                                    <div
-                                        onClick={() =>
-                                            handleOptionClick(
-                                                "+",
-                                                "PlusMinus",
-                                                index
-                                            )
-                                        }
-                                    >
-                                        +
-                                    </div>
-                                    <div
-                                        onClick={() =>
-                                            handleOptionClick(
-                                                "-",
-                                                "PlusMinus",
-                                                index
-                                            )
-                                        }
-                                    >
-                                        -
-                                    </div>
-                                </div>
-                            )}
                         </div>
                     </div>
                     <div className="flex gap-1">
@@ -146,36 +123,10 @@ export default function Containts() {
                     </div>
                     <div className="flex gap-1">
                         <div
-                            onClick={() => toggleSelect("Operatore")}
+                            onClick={() => toggleSelect("Operatore", index)}
                             className="border border-gray-400 px-1 cursor-pointer relative "
                         >
                             {constraint.Operatore}
-                            {selectOpen.Operatore && (
-                                <div className="absolute bg-white border border-gray-400 mt-1 px-1 left-0 ">
-                                    <div
-                                        onClick={() =>
-                                            handleOptionClick(
-                                                ">=",
-                                                "Operatore",
-                                                index
-                                            )
-                                        }
-                                    >
-                                        {">="}
-                                    </div>
-                                    <div
-                                        onClick={() =>
-                                            handleOptionClick(
-                                                "<=",
-                                                "Operatore",
-                                                index
-                                            )
-                                        }
-                                    >
-                                        {"<="}
-                                    </div>
-                                </div>
-                            )}
                         </div>
                     </div>
                     <div>
