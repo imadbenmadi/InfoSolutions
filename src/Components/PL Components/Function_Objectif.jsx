@@ -9,9 +9,8 @@ export default function Function_Objectif() {
         Desision_var_Nbr,
         SetDesision_var_Nbr,
         variables,
-        setVariables
+        setVariables,
     } = usePLContext();
-
 
     // Initialize variables based on Desision_var_Nbr
     useEffect(() => {
@@ -25,11 +24,10 @@ export default function Function_Objectif() {
         setVariables(newVariables);
     }, [Desision_var_Nbr]);
 
-
-
     const decreese = () => {
         if (Desision_var_Nbr > 2) SetDesision_var_Nbr(Desision_var_Nbr - 1);
     };
+
     const increes = () => {
         if (Desision_var_Nbr < 8) {
             SetDesision_var_Nbr(Desision_var_Nbr + 1);
@@ -37,23 +35,18 @@ export default function Function_Objectif() {
     };
 
     // Variable Plus/Minus Handling
-    const Toogle_Plus_Minus = (index) => {
+    const togglePlusMinus = (index) => {
         const updatedVariables = [...variables];
         updatedVariables[index].PlusMinus =
             updatedVariables[index].PlusMinus === "+" ? "-" : "+";
         setVariables(updatedVariables);
     };
 
-    // Variable Name Change Handling with Input Validation
-   const handleVariableChange = (index, value) => {
-       // Input validation for numeric values (allowing negative and decimal numbers)
-       if (/^-?\d*\.?\d*$/.test(value) || value === "") {
-           const updatedVariables = [...variables];
-           updatedVariables[index].VariableName = value;
-           setVariables(updatedVariables);
-       }
-   };
-
+    const handleInputChange = (index, value) => {
+        const updatedVariables = [...variables];
+        updatedVariables[index].VariableName = value;
+        setVariables(updatedVariables);
+    };
 
     const handleToggle = (field) => {
         switch (field) {
@@ -101,29 +94,24 @@ export default function Function_Objectif() {
                     </div>
                     {/* Variables */}
                     {variables.map((variable, index) => (
-                        <>
+                        <div key={index} className="flex gap-1">
                             {/* Plus/Minus */}
                             <div
                                 className="flex gap-1 cursor-pointer"
-                                onClick={() => Toogle_Plus_Minus(index)}
+                                onClick={() => togglePlusMinus(index)}
                             >
                                 {variable.PlusMinus}
                             </div>
-                            <div key={index} className="flex gap-1">
-                                <input
-                                    className="border border-gray-400 w-[50px] text-center"
-                                    type="text"
-                                    onChange={(e) =>
-                                        handleVariableChange(
-                                            index,
-                                            e.target.value
-                                        )
-                                    }
-                                    placeholder="0"
-                                />
-                                <div>X{index}</div>
-                            </div>
-                        </>
+                            <input
+                                className="border border-gray-400 w-[50px] text-center"
+                                type="text"
+                                value={variable.VariableName}
+                                onChange={(e) =>
+                                    handleInputChange(index, e.target.value)
+                                }
+                                placeholder={`Variable ${index + 1}`}
+                            />
+                        </div>
                     ))}
                 </div>
             </div>
