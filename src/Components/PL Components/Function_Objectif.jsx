@@ -5,13 +5,13 @@ export default function Function_Objectif() {
     const {
         MinMax,
         SetMinMax,
-        PlusMinus,
         SetPlusMinus,
         Desision_var_Nbr,
         SetDesision_var_Nbr,
+        variables,
+        setVariables
     } = usePLContext();
 
-    const [variables, setVariables] = useState([]);
 
     // Initialize variables based on Desision_var_Nbr
     useEffect(() => {
@@ -25,10 +25,11 @@ export default function Function_Objectif() {
         setVariables(newVariables);
     }, [Desision_var_Nbr]);
 
+
+
     const decreese = () => {
         if (Desision_var_Nbr > 2) SetDesision_var_Nbr(Desision_var_Nbr - 1);
     };
-
     const increes = () => {
         if (Desision_var_Nbr < 8) {
             SetDesision_var_Nbr(Desision_var_Nbr + 1);
@@ -36,7 +37,7 @@ export default function Function_Objectif() {
     };
 
     // Variable Plus/Minus Handling
-    const handleVariableToggle = (index) => {
+    const Toogle_Plus_Minus = (index) => {
         const updatedVariables = [...variables];
         updatedVariables[index].PlusMinus =
             updatedVariables[index].PlusMinus === "+" ? "-" : "+";
@@ -57,7 +58,7 @@ export default function Function_Objectif() {
     const handleToggle = (field) => {
         switch (field) {
             case "MinMax":
-                SetMinMax((prev) => (prev === "min" ? "max" : "min"));
+                SetMinMax((prev) => (prev === "Min" ? "Max" : "Min"));
                 break;
             case "PlusMinus":
                 SetPlusMinus((prev) => (prev === "+" ? "-" : "+"));
@@ -104,7 +105,7 @@ export default function Function_Objectif() {
                             {/* Plus/Minus */}
                             <div
                                 className="flex gap-1 cursor-pointer"
-                                onClick={() => handleVariableToggle(index)}
+                                onClick={() => Toogle_Plus_Minus(index)}
                             >
                                 {variable.PlusMinus}
                             </div>
@@ -112,14 +113,13 @@ export default function Function_Objectif() {
                                 <input
                                     className="border border-gray-400 w-[50px] text-center"
                                     type="text"
-                                    value={variables[index].VariableName}
                                     onChange={(e) =>
                                         handleVariableChange(
                                             index,
                                             e.target.value
                                         )
                                     }
-                                    placeholder={`Variable ${index + 1}`}
+                                    placeholder="0"
                                 />
                                 <div>X{index}</div>
                             </div>
