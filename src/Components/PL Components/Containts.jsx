@@ -3,6 +3,7 @@ import { usePLContext } from "../Apps/PLcontext";
 
 export default function Containts() {
     const { Contraints, SetConstraints } = usePLContext();
+
     const [constraints, setConstraints] = useState([]);
     const [selectOpen, setSelectOpen] = useState({
         PlusMinus: false,
@@ -68,6 +69,8 @@ export default function Containts() {
     };
 
     const handleInputChange = (index, field, value) => {
+    // Input validation condition
+    if (/^-?\d*\.?\d*$/.test(value) || value === "") {
         // Update the specific field for the given constraint
         const updatedConstraints = [...constraints];
         updatedConstraints[index] = {
@@ -75,10 +78,17 @@ export default function Containts() {
             [field]: value,
         };
 
+        // Update the local state with the modified constraints
         setConstraints(updatedConstraints);
-        // Update the constraints array in the context
+
+        // Update the constraints array in the context (global state)
         SetConstraints(updatedConstraints);
-    };
+    } else {
+        // Handle invalid input, perhaps show an error message or take appropriate action
+        console.error("Invalid input. Please enter a valid numeric value.");
+    }
+};
+
 
     return (
         <div>

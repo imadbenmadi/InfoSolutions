@@ -81,6 +81,7 @@ export default function Function_Objectif() {
 
     return (
         <>
+            {/* Fonction Objectif */}
             <div className=" md:flex">
                 <div
                     className="text-xl font-semibold
@@ -89,6 +90,7 @@ export default function Function_Objectif() {
                     Function Objectif :
                 </div>
                 <div className="flex items-center gap-3 text">
+                    {/* Max z =  */}
                     <div className="flex items-center gap-1">
                         <div
                             onClick={() => toggleSelect("MinMax")}
@@ -116,10 +118,10 @@ export default function Function_Objectif() {
                         </div>
                         <div>Z= </div>
                     </div>
-
+                    {/* a x */}
                     <div className="flex gap-1">
                         <input
-                            className="border border-gray-400 w-[30px]"
+                            className="border border-gray-400 w-[50px] text-center"
                             type="text"
                             id="numberInput"
                             name="numberInput"
@@ -129,6 +131,7 @@ export default function Function_Objectif() {
                         />
                         <div>X</div>
                     </div>
+                    {/* Operatore */}
                     <div className="flex gap-1">
                         <div
                             onClick={() => toggleSelect("PlusMinus")}
@@ -155,9 +158,10 @@ export default function Function_Objectif() {
                             )}
                         </div>
                     </div>
+                    {/* a y*/}
                     <div className="flex gap-1">
                         <input
-                            className="border border-gray-400 w-[30px]"
+                            className="border border-gray-400 w-[50px] text-center"
                             type="text"
                             id="numberInput"
                             name="numberInput"
