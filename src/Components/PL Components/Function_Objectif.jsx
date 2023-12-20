@@ -1,195 +1,113 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { usePLContext } from "../Apps/PLcontext";
+
 export default function Function_Objectif() {
     const {
         MinMax,
         SetMinMax,
         PlusMinus,
         SetPlusMinus,
-        X,
-        SetX,
-        Y,
-        SetY,
         Desision_var_Nbr,
         SetDesision_var_Nbr,
     } = usePLContext();
-    const [selectOpen, setSelectOpen] = useState({
-        MinMax: false,
-        PlusMinus: false,
-        Operatore: false,
-    });
-    const handleDesision_var_NbrChange = (value) => {
-        SetDesision_var_Nbr(value);
-    };
+
+    const [variables, setVariables] = useState([]);
+
+    // Initialize variables based on Desision_var_Nbr
+    useEffect(() => {
+        const newVariables = Array.from(
+            { length: Desision_var_Nbr },
+            (_, index) => ({
+                VariableName: `X${index + 1}`,
+                SetValueFunction: `SetX${index + 1}`,
+            })
+        );
+        setVariables(newVariables);
+    }, [Desision_var_Nbr]);
+
     const decreese = () => {
         if (Desision_var_Nbr > 2) SetDesision_var_Nbr(Desision_var_Nbr - 1);
     };
+
     const increes = () => {
         SetDesision_var_Nbr(Desision_var_Nbr + 1);
     };
-    const MinMaxChanged = (value) => {
-        SetMinMax(value);
-        toggleSelect("MinMax");
-    };
-    const handlePlusMinusChange = (value) => {
-        SetPlusMinus(value);
-        toggleSelect("PlusMinus");
-    };
 
-    const handleXChange = (e) => {
-        const inputValue = e.target.value;
-        if (/^-?\d*\.?\d*$/.test(inputValue) || inputValue === "") {
-            SetX(inputValue);
-        }
-    };
-
-    const handleYChange = (e) => {
-        const inputValue = e.target.value;
-        if (/^-?\d*\.?\d*$/.test(inputValue) || inputValue === "") {
-            SetY(inputValue);
-        }
-    };
-    
-    const toggleSelect = (selectName) => {
-        setSelectOpen((prev) => ({
-            ...prev,
-            [selectName]: !prev[selectName],
-        }));
-    };
-
-    const handleOptionClick = (value, selectName) => {
-        if (selectOpen[selectName]) {
-            setSelectOpen((prev) => ({
-                ...prev,
-                [selectName]: false,
-            }));
-        }
-
-        switch (selectName) {
+    const handleToggle = (field) => {
+        switch (field) {
             case "MinMax":
-                MinMaxChanged(value);
+                SetMinMax((prev) => (prev === "min" ? "max" : "min"));
                 break;
-            
             case "PlusMinus":
-                handlePlusMinusChange(value);
+                SetPlusMinus((prev) => (prev === "+" ? "-" : "+"));
                 break;
             default:
                 break;
         }
     };
 
+    const handleVariableChange = (index, value) => {
+        const updatedVariables = [...variables];
+        updatedVariables[index].VariableName = value;
+        setVariables(updatedVariables);
+    };
+
+    const handleAddVariable = () => {
+        // Logic to add a new variable
+        console.log("Add a new variable");
+    };
+
     return (
         <>
-            {/* Fonction Objectif */}
-            <div className=" md:flex">
-                <div
-                    className="text-xl font-semibold
-                  mb-3"
-                >
+            {/* Variables Des Décision */}
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
+                <div className="text-xl font-semibold ">
                     Function Objectif :
                 </div>
-                <div className="flex items-center gap-3 text">
-                    {/* Max z =  */}
-                    <div className="flex items-center gap-1">
-                        <div
-                            onClick={() => toggleSelect("MinMax")}
-                            className="border border-gray-400 px-1 cursor-pointer relative"
-                        >
-                            {MinMax}
-                            {selectOpen.MinMax && (
-                                <div className="absolute bg-white border border-gray-400 mt-1 left-0 p-1">
-                                    <div
-                                        onClick={() =>
-                                            handleOptionClick("min", "MinMax")
-                                        }
-                                    >
-                                        Min
-                                    </div>
-                                    <div
-                                        onClick={() =>
-                                            handleOptionClick("max", "MinMax")
-                                        }
-                                    >
-                                        Max
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                        <div>Z= </div>
-                    </div>
-                    {/* a x */}
-                    <div className="flex gap-1">
-                        <input
-                            className="border border-gray-400 w-[50px] text-center"
-                            type="text"
-                            id="numberInput"
-                            name="numberInput"
-                            value={X}
-                            onChange={handleXChange}
-                            placeholder="10"
-                        />
-                        <div>X</div>
-                    </div>
-                    {/* Operatore */}
-                    <div className="flex gap-1">
-                        <div
-                            onClick={() => toggleSelect("PlusMinus")}
-                            className="border border-gray-400 px-1 cursor-pointer relative"
-                        >
-                            {PlusMinus}
-                            {selectOpen.PlusMinus && (
-                                <div className="absolute bg-white border border-gray-400 mt-1 p-1 left-0">
-                                    <div
-                                        onClick={() =>
-                                            handleOptionClick("+", "PlusMinus")
-                                        }
-                                    >
-                                        +
-                                    </div>
-                                    <div
-                                        onClick={() =>
-                                            handleOptionClick("-", "PlusMinus")
-                                        }
-                                    >
-                                        -
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                    {/* a y*/}
-                    <div className="flex gap-1">
-                        <input
-                            className="border border-gray-400 w-[50px] text-center"
-                            type="text"
-                            id="numberInput"
-                            name="numberInput"
-                            value={Y}
-                            onChange={handleYChange}
-                            placeholder="1"
-                        />
-                        <div>Y</div>
-                    </div>
-                    
-                </div>
-            </div>
-            {/* Nombre Des variables du décision */}
-            <div className=" flex mt-5 ">
-                <div>Varibales Des Déecision :</div>
-                <div className="flex items-center border w-fit  ">
-                    <button className=" bg-gray-300 px-3" onClick={decreese}>
+                <div>Variables Des Décision :</div>
+                <div className="flex items-center border w-fit">
+                    <button className="bg-gray-300 px-3" onClick={decreese}>
                         -
                     </button>
-                    <div
-                        className=" px-3"
-                        onChange={handleDesision_var_NbrChange}
-                    >
-                        {Desision_var_Nbr}
-                    </div>
-                    <button className=" bg-gray-300 px-3" onClick={increes}>
+                    <div className="px-3">{Desision_var_Nbr}</div>
+                    <button className="bg-gray-300 px-3" onClick={increes}>
                         +
                     </button>
+                </div>
+            </div>
+            {/* Function Objectif */}
+            <div className="md:flex">
+                <div className="flex items-center flex-wrap gap-3 text">
+                    {/* Min/Max */}
+                    <div
+                        className="flex items-center gap-1 cursor-pointer"
+                        onClick={() => handleToggle("MinMax")}
+                    >
+                        {MinMax}
+                        <div>Z= </div>
+                    </div>
+                    {/* Variables */}
+                    {variables.map((variable, index) => (
+                        <div key={index} className="flex gap-1">
+                            <input
+                                className="border border-gray-400 w-[50px] text-center"
+                                type="text"
+                                value={variables[index].VariableName}
+                                onChange={(e) =>
+                                    handleVariableChange(index, e.target.value)
+                                }
+                                placeholder={`Variable ${index + 1}`}
+                            />
+                            <div>{variable.VariableName}</div>
+                        </div>
+                    ))}
+                    {/* Plus/Minus */}
+                    <div
+                        className="flex gap-1 cursor-pointer"
+                        onClick={() => handleToggle("PlusMinus")}
+                    >
+                        {PlusMinus}
+                    </div>
                 </div>
             </div>
         </>
