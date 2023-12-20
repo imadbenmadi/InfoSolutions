@@ -19,7 +19,7 @@ export default function Function_Objectif() {
             { length: Desision_var_Nbr },
             (_, index) => ({
                 VariableName: `X${index + 1}`,
-                SetValueFunction: `SetX${index + 1}`,
+                PlusMinus: "+",
             })
         );
         setVariables(newVariables);
@@ -30,8 +30,29 @@ export default function Function_Objectif() {
     };
 
     const increes = () => {
-        SetDesision_var_Nbr(Desision_var_Nbr + 1);
+        if (Desision_var_Nbr < 8) {
+            SetDesision_var_Nbr(Desision_var_Nbr + 1);
+        }
     };
+
+    // Variable Plus/Minus Handling
+    const handleVariableToggle = (index) => {
+        const updatedVariables = [...variables];
+        updatedVariables[index].PlusMinus =
+            updatedVariables[index].PlusMinus === "+" ? "-" : "+";
+        setVariables(updatedVariables);
+    };
+
+    // Variable Name Change Handling with Input Validation
+   const handleVariableChange = (index, value) => {
+       // Input validation for numeric values (allowing negative and decimal numbers)
+       if (/^-?\d*\.?\d*$/.test(value) || value === "") {
+           const updatedVariables = [...variables];
+           updatedVariables[index].VariableName = value;
+           setVariables(updatedVariables);
+       }
+   };
+
 
     const handleToggle = (field) => {
         switch (field) {
@@ -46,33 +67,24 @@ export default function Function_Objectif() {
         }
     };
 
-    const handleVariableChange = (index, value) => {
-        const updatedVariables = [...variables];
-        updatedVariables[index].VariableName = value;
-        setVariables(updatedVariables);
-    };
-
-    const handleAddVariable = () => {
-        // Logic to add a new variable
-        console.log("Add a new variable");
-    };
-
     return (
         <>
             {/* Variables Des Décision */}
-            <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
+            <div className="flex flex-wrap items-center justify-start gap-4 mb-4">
                 <div className="text-xl font-semibold ">
                     Function Objectif :
                 </div>
-                <div>Variables Des Décision :</div>
-                <div className="flex items-center border w-fit">
-                    <button className="bg-gray-300 px-3" onClick={decreese}>
-                        -
-                    </button>
-                    <div className="px-3">{Desision_var_Nbr}</div>
-                    <button className="bg-gray-300 px-3" onClick={increes}>
-                        +
-                    </button>
+                <div className="flex flex-wrap items-center justify-center">
+                    <div>Variables Des Décision :</div>
+                    <div className="flex items-center border w-fit">
+                        <button className="bg-gray-300 px-3" onClick={decreese}>
+                            -
+                        </button>
+                        <div className="px-3">{Desision_var_Nbr}</div>
+                        <button className="bg-gray-300 px-3" onClick={increes}>
+                            +
+                        </button>
+                    </div>
                 </div>
             </div>
             {/* Function Objectif */}
@@ -88,26 +100,31 @@ export default function Function_Objectif() {
                     </div>
                     {/* Variables */}
                     {variables.map((variable, index) => (
-                        <div key={index} className="flex gap-1">
-                            <input
-                                className="border border-gray-400 w-[50px] text-center"
-                                type="text"
-                                value={variables[index].VariableName}
-                                onChange={(e) =>
-                                    handleVariableChange(index, e.target.value)
-                                }
-                                placeholder={`Variable ${index + 1}`}
-                            />
-                            <div>{variable.VariableName}</div>
-                        </div>
+                        <>
+                            {/* Plus/Minus */}
+                            <div
+                                className="flex gap-1 cursor-pointer"
+                                onClick={() => handleVariableToggle(index)}
+                            >
+                                {variable.PlusMinus}
+                            </div>
+                            <div key={index} className="flex gap-1">
+                                <input
+                                    className="border border-gray-400 w-[50px] text-center"
+                                    type="text"
+                                    value={variables[index].VariableName}
+                                    onChange={(e) =>
+                                        handleVariableChange(
+                                            index,
+                                            e.target.value
+                                        )
+                                    }
+                                    placeholder={`Variable ${index + 1}`}
+                                />
+                                <div>X{index}</div>
+                            </div>
+                        </>
                     ))}
-                    {/* Plus/Minus */}
-                    <div
-                        className="flex gap-1 cursor-pointer"
-                        onClick={() => handleToggle("PlusMinus")}
-                    >
-                        {PlusMinus}
-                    </div>
                 </div>
             </div>
         </>
