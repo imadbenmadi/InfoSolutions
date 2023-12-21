@@ -50,17 +50,6 @@ export default function Function_Objectif() {
             setVariables(updatedVariables);
         }
     };
-    // const handleInputChange = (index, field, value) => {
-    //     if (/^-?\d*\.?\d*$/.test(value) || value === "") {
-    //         const updatedConstraints = [...constraints];
-    //         updatedConstraints[index] = {
-    //             ...updatedConstraints[index],
-    //             [field]: value,
-    //         };
-    //         setConstraints(updatedConstraints);
-    //         SetConstraints(updatedConstraints);
-    //     }
-    // };
 
     return (
         <>
@@ -102,20 +91,20 @@ export default function Function_Objectif() {
                         {variables.map((variable, index) => (
                             <div
                                 key={index}
-                                className="flex items center justify-center w-[120px]  gap-1"
+                                className="flex items-center justify-center w-[80px] md:w-[120px]  gap-1"
                             >
                                 {/* PlusMinus */}
                                 {index !== 0 && (
                                     <div
                                         className="cursor-pointer border border-gray-400 w-[30px] text-center"
-                                        onClick={() => togglePlusMinus()}
+                                        onClick={() => togglePlusMinus(index)}
                                     >
                                         {variable.PlusMinus}
                                     </div>
                                 )}
 
                                 <input
-                                    className="border border-gray-400 w-[50px] text-center"
+                                    className="border border-gray-400 w-[30px] md:w-[50px] text-center"
                                     type="text"
                                     onChange={(e) =>
                                         handleInputChange(index, e.target.value)

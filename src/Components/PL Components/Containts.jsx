@@ -24,7 +24,6 @@ export default function Containts() {
                 newConstraint,
             ]);
         }
-        
     };
 
     const handleRemoveConstraint = (index) => {
@@ -69,7 +68,9 @@ export default function Containts() {
 
     return (
         <>
-            <div className="text-xl font-semibold mb-3">Constraints :</div>
+            <div className="text-xl font-semibold mb-3">
+                Constraints : 
+            </div>
 
             {/* Add Containt btn */}
             <div className="m-auto w-fit">
@@ -82,7 +83,10 @@ export default function Containts() {
             </div>
             <div className=" flex flex-col justify-center">
                 {constraints.map((constraint, index) => (
-                    <div key={index} className="flex items-center gap-2 mb-4 m-auto">
+                    <div
+                        key={index}
+                        className="flex items-center gap-2 mb-4 m-auto"
+                    >
                         {/* a x */}
                         <div className="flex gap-1">
                             <input
