@@ -39,16 +39,28 @@ export default function Function_Objectif() {
             updatedVariables[index].PlusMinus === "+" ? "-" : "+";
         setVariables(updatedVariables);
     };
-
-    const handleInputChange = (index, value) => {
-        const updatedVariables = [...variables];
-        updatedVariables[index].input = value;
-        setVariables(updatedVariables);
-    };
-
     const Toogle_Min_Max = () => {
         SetMinMax((prev) => (prev === "Min" ? "Max" : "Min"));
     };
+
+    const handleInputChange = (index, value) => {
+        if (/^-?\d*\.?\d*$/.test(value) || value === "") {
+            const updatedVariables = [...variables];
+            updatedVariables[index].input = value;
+            setVariables(updatedVariables);
+        }
+    };
+    // const handleInputChange = (index, field, value) => {
+    //     if (/^-?\d*\.?\d*$/.test(value) || value === "") {
+    //         const updatedConstraints = [...constraints];
+    //         updatedConstraints[index] = {
+    //             ...updatedConstraints[index],
+    //             [field]: value,
+    //         };
+    //         setConstraints(updatedConstraints);
+    //         SetConstraints(updatedConstraints);
+    //     }
+    // };
 
     return (
         <>
@@ -109,6 +121,7 @@ export default function Function_Objectif() {
                                         handleInputChange(index, e.target.value)
                                     }
                                     placeholder="0"
+                                    value={variable.input}
                                 />
                                 <div>{variable.VariableName}</div>
                             </div>
