@@ -4,8 +4,8 @@ import Header from "./Components/Header";
 import { Outlet } from "react-router";
 export default function App() {
     return (
-        <div className="relative h-[100vh] max-h-[100vh] w-[100vw]   ">
-            <div className=" md:flex">
+        <div className="relative h-[100vh] w-[100vw]   ">
+            <div className=" md:flex min-h-full w-full">
                 <div className=" md:flex-[20%] ">
                     <MenuBar />
                 </div>

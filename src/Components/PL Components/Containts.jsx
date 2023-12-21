@@ -14,15 +14,17 @@ export default function Containts() {
             Operatore: ">=",
             Value: "",
         };
-
-        SetConstraints((prevConstraints) => [
-            ...prevConstraints,
-            newConstraint,
-        ]);
-        setConstraints((prevConstraints) => [
-            ...prevConstraints,
-            newConstraint,
-        ]);
+        if (constraints.length < 3) {
+            SetConstraints((prevConstraints) => [
+                ...prevConstraints,
+                newConstraint,
+            ]);
+            setConstraints((prevConstraints) => [
+                ...prevConstraints,
+                newConstraint,
+            ]);
+        }
+        
     };
 
     const handleRemoveConstraint = (index) => {

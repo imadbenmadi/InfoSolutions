@@ -5,7 +5,6 @@ export default function Function_Objectif() {
     const {
         MinMax,
         SetMinMax,
-        SetPlusMinus,
         Desision_var_Nbr,
         SetDesision_var_Nbr,
         variables,
@@ -19,15 +18,17 @@ export default function Function_Objectif() {
             (_, index) => ({
                 VariableName: `X${index + 1}`,
                 PlusMinus: "+",
+                input: 0,
             })
         );
         setVariables(newVariables);
+
+        console.log(variables);
     }, [Desision_var_Nbr]);
 
     const decreese = () => {
         if (Desision_var_Nbr > 2) SetDesision_var_Nbr(Desision_var_Nbr - 1);
     };
-
     const increes = () => {
         if (Desision_var_Nbr < 8) {
             SetDesision_var_Nbr(Desision_var_Nbr + 1);
@@ -44,7 +45,7 @@ export default function Function_Objectif() {
 
     const handleInputChange = (index, value) => {
         const updatedVariables = [...variables];
-        updatedVariables[index].VariableName = value;
+        updatedVariables[index].input = value;
         setVariables(updatedVariables);
     };
 
@@ -83,36 +84,45 @@ export default function Function_Objectif() {
             </div>
             {/* Function Objectif */}
             <div className="md:flex">
-                <div className="flex items-center flex-wrap gap-3 text">
+                <div className="flex  gap-3 ">
                     {/* Min/Max */}
-                    <div
-                        className="flex items-center gap-1 cursor-pointer"
-                        onClick={() => handleToggle("MinMax")}
-                    >
-                        {MinMax}
+
+                    <div className="flex gap-3 ">
+                        <div
+                            className="cursor-pointer border border-gray-400 w-[50px] h-[30px]  text-center "
+                            onClick={() => handleToggle("MinMax")}
+                        >
+                            {MinMax}
+                        </div>
                         <div>Z= </div>
                     </div>
-                    {/* Variables */}
-                    {variables.map((variable, index) => (
-                        <div key={index} className="flex gap-1">
-                            {/* Plus/Minus */}
-                            <div
-                                className="flex gap-1 cursor-pointer"
-                                onClick={() => togglePlusMinus(index)}
-                            >
-                                {variable.PlusMinus}
+
+                    <div className="flex  flex-wrap gap-3 ">
+                        {/* Variables */}
+                        {variables.map((variable, index) => (
+                            <div key={index} className="flex gap-1">
+                                {/* PlusMinus */}
+                                {index !== 0 && (
+                                    <div
+                                        className="cursor-pointer border border-gray-400 w-[30px] text-center"
+                                        onClick={() => togglePlusMinus(index)}
+                                    >
+                                        {variable.PlusMinus}
+                                    </div>
+                                )}
+
+                                <input
+                                    className="border border-gray-400 w-[50px] text-center"
+                                    type="text"
+                                    onChange={(e) =>
+                                        handleInputChange(index, e.target.value)
+                                    }
+                                    placeholder="0"
+                                />
+                                <div>{variable.VariableName}</div>
                             </div>
-                            <input
-                                className="border border-gray-400 w-[50px] text-center"
-                                type="text"
-                                value={variable.VariableName}
-                                onChange={(e) =>
-                                    handleInputChange(index, e.target.value)
-                                }
-                                placeholder={`Variable ${index + 1}`}
-                            />
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </>
