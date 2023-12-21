@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import { usePLContext } from "../Apps/PLcontext";
 
-export default function Containts() {
-    const { Contraints, SetConstraints } = usePLContext();
-
+export default function Constraints() {
+    const { SetConstraints, Desision_var_Nbr } = usePLContext();
     const [constraints, setConstraints] = useState([]);
 
     const handleAddConstraint = () => {
-        const newConstraint = {
-            X: "",
-            PlusMinus: "+",
-            Y: "",
-            Operatore: ">=",
-            Value: "",
-        };
         if (constraints.length < 3) {
+            const newConstraint = {
+                Operatore: ">=",
+                Value: "",
+            };
+
+            // Dynamically add X, PlusMinus, and Y properties based on Desision_var_Nbr
+            for (let i = 1; i <= Desision_var_Nbr; i++) {
+                newConstraint[`X${i}`] = "";
+                newConstraint[`PlusMinus${i}`] = "+";
+            }
+
             SetConstraints((prevConstraints) => [
                 ...prevConstraints,
                 newConstraint,
@@ -40,19 +43,20 @@ export default function Containts() {
     const toggleSelect = (field, index) => {
         const updatedConstraints = [...constraints];
 
-        // Toggle between options
-        updatedConstraints[index][field] =
-            updatedConstraints[index][field] === "+"
-                ? "-"
-                : updatedConstraints[index][field] === "-"
-                ? "+"
-                : updatedConstraints[index][field] === ">="
-                ? "<="
-                : ">=";
+        if (field.startsWith("PlusMinus")) {
+            // Toggle for PlusMinus fields
+            updatedConstraints[index][field] =
+                updatedConstraints[index][field] === "+" ? "-" : "+";
+        } else if (field === "Operatore") {
+            // Toggle for Operatore field
+            updatedConstraints[index][field] =
+                updatedConstraints[index][field] === ">=" ? "<=" : ">=";
+        }
 
         setConstraints(updatedConstraints);
         SetConstraints(updatedConstraints);
     };
+
 
     const handleInputChange = (index, field, value) => {
         if (/^-?\d*\.?\d*$/.test(value) || value === "") {
@@ -68,108 +72,112 @@ export default function Containts() {
 
     return (
         <>
-            <div className="text-xl font-semibold mb-3">
-                Constraints : 
-            </div>
+            <div className="text-xl font-semibold mb-3">Constraints :</div>
 
-            {/* Add Containt btn */}
+            {/* Add Constraint btn */}
             <div className="m-auto w-fit">
                 <button
-                    className=" bg-green-500 p-2 rounded-3xl mb-5"
+                    className="bg-green-500 p-2 rounded-3xl mb-5"
                     onClick={handleAddConstraint}
                 >
                     Add Constraint
                 </button>
             </div>
-            <div className=" flex flex-col justify-center">
-                {constraints.map((constraint, index) => (
-                    <div
-                        key={index}
-                        className="flex items-center gap-2 mb-4 m-auto"
-                    >
-                        {/* a x */}
-                        <div className="flex gap-1">
-                            <input
-                                className="border border-gray-400 w-[50px] text-center"
-                                type="text"
-                                id={`X-${index}`}
-                                name={`X-${index}`}
-                                value={constraint.X}
-                                onChange={(e) =>
-                                    handleInputChange(
-                                        index,
-                                        "X",
-                                        e.target.value
-                                    )
-                                }
-                                placeholder="0"
-                            />
-                            <div>X</div>
-                        </div>
-                        {/* Operatore + - */}
-                        <div className="flex gap-1">
-                            <div
-                                onClick={() => toggleSelect("PlusMinus", index)}
-                                className="border border-gray-400 text-center w-[20px]  cursor-pointer relative"
-                            >
-                                {constraint.PlusMinus}
-                            </div>
-                        </div>
-                        {/* a y */}
-                        <div className="flex gap-1">
-                            <input
-                                className="border border-gray-400  w-[50px] text-center"
-                                type="text"
-                                id={`Y-${index}`}
-                                name={`Y-${index}`}
-                                value={constraint.Y}
-                                onChange={(e) =>
-                                    handleInputChange(
-                                        index,
-                                        "Y",
-                                        e.target.value
-                                    )
-                                }
-                                placeholder="0"
-                            />
-                            <div>Y</div>
-                        </div>
 
-                        {/* Operatore >= <= */}
-                        <div className="flex gap-1">
-                            <div
-                                onClick={() => toggleSelect("Operatore", index)}
-                                className="border border-gray-400 px-1 cursor-pointer relative "
-                            >
-                                {constraint.Operatore}
-                            </div>
-                        </div>
-                        {/* input value */}
-                        <div>
-                            <input
-                                className="border border-gray-400 w-[50px] text-center"
-                                type="text"
-                                id={`Value-${index}`}
-                                name={`Value-${index}`}
-                                value={constraint.Value}
-                                onChange={(e) =>
-                                    handleInputChange(
-                                        index,
-                                        "Value",
-                                        e.target.value
-                                    )
-                                }
-                                placeholder="3"
-                            />
-                        </div>
-                        <button
-                            className="w-[20px] h-[20px] bg-red-500 flex justify-center
-                        items-center text-white font-bold rounded-full"
-                            onClick={() => handleRemoveConstraint(index)}
+            {/* Contraints */}
+            <div className="flex flex-col justify-center">
+                {constraints.map((constraint, index) => (
+                    <>
+                        <div
+                            key={index}
+                            className="flex items-center flex-wrap gap-2  m-auto"
                         >
-                            x
-                        </button>
-                    </div>
+                            {Array.from(
+                                { length: Desision_var_Nbr },
+                                (_, i) => (
+                                    <React.Fragment key={i}>
+                                        {/* PlusMinus */}
+                                        <div className="flex gap-1 cursor-pointer border border-gray-400 w-[30px] text-center">
+                                            <div
+                                                onClick={() =>
+                                                    toggleSelect(
+                                                        `PlusMinus${i + 1}`,
+                                                        index
+                                                    )
+                                                }
+                                                className="border border-gray-400 text-center w-[20px] cursor-pointer relative"
+                                            >
+                                                {
+                                                    constraint[
+                                                        `PlusMinus${i + 1}`
+                                                    ]
+                                                }
+                                            </div>
+                                        </div>
+                                        {/* X */}
+                                        <div className="flex gap-1">
+                                            <input
+                                                className="border border-gray-400 w-[50px] text-center"
+                                                type="text"
+                                                id={`X${i + 1}-${index}`}
+                                                name={`X${i + 1}-${index}`}
+                                                value={constraint[`X${i + 1}`]}
+                                                onChange={function(e) {
+                                                    handleInputChange(
+                                                        index,
+                                                        `X${i + 1}`,
+                                                        e.target.value
+                                                    )
+                                                    console.log(constraint[`X${i + 1}`])
+                                                    }
+                                                }
+                                                placeholder="0"
+                                            />
+                                            <div>{`X${i + 1}`}</div>
+                                        </div>
+                                    </React.Fragment>
+                                )
+                            )}
+                            {/* Operator */}
+                            <div className="flex gap-1">
+                                <div
+                                    onClick={() =>
+                                        toggleSelect("Operatore", index)
+                                    }
+                                    className="border border-gray-400 px-1 cursor-pointer relative"
+                                >
+                                    {constraint.Operatore}
+                                </div>
+                            </div>
+                            {/* Value */}
+                            <div>
+                                <input
+                                    className="border border-gray-400 w-[50px] text-center"
+                                    type="text"
+                                    id={`Value-${index}`}
+                                    name={`Value-${index}`}
+                                    value={constraint.Value}
+                                    onChange={(e) =>
+                                        handleInputChange(
+                                            index,
+                                            "Value",
+                                            e.target.value
+                                        )
+                                    }
+                                    placeholder="3"
+                                />
+                            </div>
+                            {/* Remove Constraint */}
+                            <button
+                                className="w-[20px] h-[20px] bg-red-500 flex justify-center
+                            items-center text-white font-bold rounded-full"
+                                onClick={() => handleRemoveConstraint(index)}
+                            >
+                                x
+                            </button>
+                        </div>
+                        <div className="w-full h-[1px] my-4 bg-gray-300"></div>
+                    </>
                 ))}
             </div>
         </>

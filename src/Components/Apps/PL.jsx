@@ -14,7 +14,7 @@ const PL = () => {
             <PLProvider>
                 <Function_Objectif />
                 <div className="w-full h-[1px] my-4 bg-gray-300"></div>
-                <Contraints/>
+                <Contraints />
             </PLProvider>
         </div>
     );

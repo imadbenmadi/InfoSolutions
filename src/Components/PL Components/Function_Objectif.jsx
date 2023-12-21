@@ -27,7 +27,8 @@ export default function Function_Objectif() {
         if (Desision_var_Nbr > 2) SetDesision_var_Nbr(Desision_var_Nbr - 1);
     };
     const increes = () => {
-        if (Desision_var_Nbr < 8) {
+        // Chahnge it 6 
+        if (Desision_var_Nbr < 6) {
             SetDesision_var_Nbr(Desision_var_Nbr + 1);
         }
     };
