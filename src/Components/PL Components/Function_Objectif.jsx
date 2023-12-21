@@ -22,10 +22,7 @@ export default function Function_Objectif() {
             })
         );
         setVariables(newVariables);
-
-        console.log(variables);
     }, [Desision_var_Nbr]);
-
     const decreese = () => {
         if (Desision_var_Nbr > 2) SetDesision_var_Nbr(Desision_var_Nbr - 1);
     };
@@ -49,17 +46,8 @@ export default function Function_Objectif() {
         setVariables(updatedVariables);
     };
 
-    const handleToggle = (field) => {
-        switch (field) {
-            case "MinMax":
-                SetMinMax((prev) => (prev === "Min" ? "Max" : "Min"));
-                break;
-            case "PlusMinus":
-                SetPlusMinus((prev) => (prev === "+" ? "-" : "+"));
-                break;
-            default:
-                break;
-        }
+    const Toogle_Min_Max = () => {
+        SetMinMax((prev) => (prev === "Min" ? "Max" : "Min"));
     };
 
     return (
@@ -90,7 +78,7 @@ export default function Function_Objectif() {
                     <div className="flex gap-3 ">
                         <div
                             className="cursor-pointer border border-gray-400 w-[50px] h-fit  text-center "
-                            onClick={() => handleToggle("MinMax")}
+                            onClick={() => Toogle_Min_Max("MinMax")}
                         >
                             {MinMax}
                         </div>
@@ -100,12 +88,15 @@ export default function Function_Objectif() {
                     <div className="flex  flex-wrap gap-3 ">
                         {/* Variables */}
                         {variables.map((variable, index) => (
-                            <div key={index} className="flex items center justify-center w-[120px]  gap-1">
+                            <div
+                                key={index}
+                                className="flex items center justify-center w-[120px]  gap-1"
+                            >
                                 {/* PlusMinus */}
                                 {index !== 0 && (
                                     <div
                                         className="cursor-pointer border border-gray-400 w-[30px] text-center"
-                                        onClick={() => togglePlusMinus(index)}
+                                        onClick={() => togglePlusMinus()}
                                     >
                                         {variable.PlusMinus}
                                     </div>
