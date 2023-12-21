@@ -67,10 +67,20 @@ export default function Containts() {
 
     return (
         <>
-            <div>
-                <div className="text-xl font-semibold mb-3">Constraints :</div>
+            <div className="text-xl font-semibold mb-3">Constraints :</div>
+
+            {/* Add Containt btn */}
+            <div className="m-auto w-fit">
+                <button
+                    className=" bg-green-500 p-2 rounded-3xl mb-5"
+                    onClick={handleAddConstraint}
+                >
+                    Add Constraint
+                </button>
+            </div>
+            <div className=" flex flex-col justify-center">
                 {constraints.map((constraint, index) => (
-                    <div key={index} className="flex items-center gap-2 mb-4">
+                    <div key={index} className="flex items-center gap-2 mb-4 m-auto">
                         {/* a x */}
                         <div className="flex gap-1">
                             <input
@@ -155,15 +165,6 @@ export default function Containts() {
                         </button>
                     </div>
                 ))}
-            </div>
-            {/* Add Containt btn */}
-            <div className="m-auto w-fit">
-                <button
-                    className=" bg-green-500 p-2 rounded-3xl "
-                    onClick={handleAddConstraint}
-                >
-                    Add Constraint
-                </button>
             </div>
         </>
     );
