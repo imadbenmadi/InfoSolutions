@@ -89,7 +89,7 @@ export default function Function_Objectif() {
 
                     <div className="flex gap-3 ">
                         <div
-                            className="cursor-pointer border border-gray-400 w-[50px] h-[30px]  text-center "
+                            className="cursor-pointer border border-gray-400 w-[50px] h-fit  text-center "
                             onClick={() => handleToggle("MinMax")}
                         >
                             {MinMax}
@@ -100,7 +100,7 @@ export default function Function_Objectif() {
                     <div className="flex  flex-wrap gap-3 ">
                         {/* Variables */}
                         {variables.map((variable, index) => (
-                            <div key={index} className="flex gap-1">
+                            <div key={index} className="flex items center justify-center w-[120px]  gap-1">
                                 {/* PlusMinus */}
                                 {index !== 0 && (
                                     <div
