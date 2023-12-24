@@ -92,7 +92,7 @@ export default function Constraints() {
 
     return (
         <>
-            <div className=" flex items-start justify-start gap-10">
+            <div className=" flex items-start justify-center gap-10">
                 <div className="text-xl font-semibold mb-3">Constraints :</div>
                 {/* Add Constraint btn */}
                 <div className=" w-fit">
@@ -106,11 +106,11 @@ export default function Constraints() {
             </div>
 
             {/* Contraints */}
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center  w-fit m-auto">
                 {constraints.map((constraint, index) => (
                     <React.Fragment key={index}>
-                        <div className=" flex">
-                            <div className="flex-[95%] flex items-center flex-wrap gap-2  m-auto">
+                        <div className=" flex gap-6 items-center justify-center">
+                            <div className="flex-[95%] flex items-center flex-wrap gap-2 m-auto">
                                 {Array.from(
                                     { length: Desision_var_Nbr },
                                     (_, i) => (
@@ -196,7 +196,7 @@ export default function Constraints() {
                             </div>
                             {/* Remove Constraint */}
                             <button
-                                className="flex-[5%] w-[20px] h-[20px] bg-red-500 flex justify-center
+                                className=" w-[30px] h-[30px] bg-red-500 flex justify-center
                                     items-center text-white font-bold rounded-full"
                                 onClick={() => handleRemoveConstraint(index)}
                             >
