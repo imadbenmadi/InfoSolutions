@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Function_Objectif from "../PL Components/Function_Objectif";
 import Contraints from "../PL Components/Containts";
 import { PLProvider } from "./PLcontext";
-
+import Solution from "../PL Components/Solution";
 const PL = () => {
     
 
@@ -15,6 +15,7 @@ const PL = () => {
                 <Function_Objectif />
                 <div className="w-full h-[1px] my-4 bg-gray-300"></div>
                 <Contraints />
+                <Solution />
             </PLProvider>
         </div>
     );
