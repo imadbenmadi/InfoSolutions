@@ -14,7 +14,7 @@ export default function Methodes({ method, setMethod}) {
                         ? " bg-Blue text-white"
                         : " bg-white text-black"
                 }
-                        border p-2 rounded cursor-pointer text-lg font-medium`}
+                         border-2 p-2 rounded cursor-pointer text-lg font-medium`}
                 onClick={() => Toggle_Methode("Graphique")}
             >
                 Resolution Graphic
@@ -25,7 +25,7 @@ export default function Methodes({ method, setMethod}) {
                         ? " bg-Blue text-white"
                         : " bg-white text-black"
                 }
-                             border p-2 rounded cursor-pointer text-lg font-medium`}
+                             border-2 p-2 rounded cursor-pointer text-lg font-medium`}
                 onClick={() => Toggle_Methode("Symplexe")}
             >
                 Methode De Symplexe
