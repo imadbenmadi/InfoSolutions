@@ -8,7 +8,7 @@ const PL = () => {
 
     return (
         <div className=" text-Black">
-            <div className="text-Blue font-bold text-2xl underline mb-4">
+            <div className="text-Blue  font-bold text-2xl underline mb-4">
                 Programation Lineer
             </div>
             <PLProvider>

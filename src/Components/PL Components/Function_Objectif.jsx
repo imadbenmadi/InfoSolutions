@@ -55,7 +55,7 @@ export default function Function_Objectif() {
     return (
         <>
             {/* Variables Des Décision */}
-            <div className="flex flex-wrap items-center justify-start gap-4 mb-4">
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-4">
                 <div className="text-xl font-semibold ">
                     Function Objectif :
                 </div>
@@ -73,7 +73,7 @@ export default function Function_Objectif() {
                 </div>
             </div>
             {/* Function Objectif */}
-            <div className="md:flex">
+            <div className="md:flex md:justify-center">
                 <div className="flex  gap-3 ">
                     {/* Min/Max */}
 
