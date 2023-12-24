@@ -16,7 +16,7 @@ export default function MenuBar() {
                         MobileMenuVisible
                             ? "translate-y-[-100%] "
                             : " translate-y-[0%] delay-200 "
-                    }transition-translate duration-300 ease-in-out bg-Blue w-[100px] h-[100px] rounded-br-[80px] flex  flex-col gap-1 justify-center items-end  absolute top-[-25px] left-[-45px]  z-10`}
+                    }transition-translate duration-300 ease-in-out bg-Blue w-[100px] h-[100px] rounded-br-[80px] flex  flex-col gap-1 justify-center items-end  fixed top-[-25px] left-[-45px]  z-10`}
                     onClick={toggleMobileMenu}
                 >
                     <div className=" w-5 h-1 mr-6 bg-white rounded"></div>
