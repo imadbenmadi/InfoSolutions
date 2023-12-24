@@ -123,8 +123,8 @@ export default function MenuBar() {
             </div>
 
             {/* Laptop Menu Bar */}
-            <div className=" hidden md:block md:w-[100%]  h-[100%] bg-Blue w-[255px] relative">
-                <div className="flex flex-col items-center justify-start pt-8 gap-7 h-[100%] text-white font-semibold fixed top-0">
+            <div className=" hidden md:block md:w-[100%]  h-[100%] bg-Blue w-[255px] relative ">
+                <div className="flex flex-col items-center justify-center pt-8 gap-7 h-[100%] text-white font-semibold fixed top-0">
                     <Link className="ml-3" to={"/"} onClick={toggleMobileMenu}>
                         Home
                     </Link>

@@ -6,11 +6,11 @@ export default function App() {
     return (
         <div className="relative h-[100vh] w-[100vw]   ">
             <div className=" md:flex min-h-full w-full">
-                <div className=" md:flex-[20%] ">
+                <div className=" md:flex-[25%] ">
                     <MenuBar />
                 </div>
 
-                <div className="md:flex-[80%]  ">
+                <div className="md:flex-[75%]  ">
                     <Header />
                     <div className=" w-[90%] m-auto">
                         <Outlet />
