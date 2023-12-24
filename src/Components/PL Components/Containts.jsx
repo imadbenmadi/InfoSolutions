@@ -110,7 +110,7 @@ export default function Constraints() {
                 {constraints.map((constraint, index) => (
                     <React.Fragment key={index}>
                         <div className=" flex gap-2 md:gap-6 items-start justify-center">
-                            <div className="flex-[95%] flex items-center  flex-wrap  gap-x-12 gap-y-4 m-auto">
+                            <div className="flex-[95%] flex items-center  flex-wrap  gap-x-6 gap-y-4 m-auto">
                                 {Array.from(
                                     { length: Desision_var_Nbr },
                                     (_, i) => (
