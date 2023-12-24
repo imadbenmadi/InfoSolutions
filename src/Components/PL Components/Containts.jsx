@@ -97,7 +97,7 @@ export default function Constraints() {
                 {/* Add Constraint btn */}
                 <div className=" w-fit">
                     <button
-                        className="bg-green-500 p-2 rounded-3xl mb-5"
+                        className="bg-green-500 border border-black p-2 rounded-3xl mb-5"
                         onClick={handleAddConstraint}
                     >
                         Add Constraint
@@ -109,7 +109,7 @@ export default function Constraints() {
             <div className="flex flex-col justify-center  w-fit m-auto">
                 {constraints.map((constraint, index) => (
                     <React.Fragment key={index}>
-                        <div className=" flex gap-6 items-center justify-center">
+                        <div className=" flex gap-2 md:gap-6 items-center justify-center">
                             <div className="flex-[95%] flex items-center flex-wrap gap-2 m-auto">
                                 {Array.from(
                                     { length: Desision_var_Nbr },
@@ -164,39 +164,42 @@ export default function Constraints() {
                                         </React.Fragment>
                                     )
                                 )}
-                                {/* Operator */}
-                                <div className="flex gap-1">
-                                    <div
-                                        onClick={() =>
-                                            toggleSelect("Operatore", index)
-                                        }
-                                        className="border border-gray-400 px-1 cursor-pointer relative"
-                                    >
-                                        {constraint.Operatore}
+
+                                <div className=" flex ">
+                                    {/* Operator */}
+                                    <div className="flex gap-1">
+                                        <div
+                                            onClick={() =>
+                                                toggleSelect("Operatore", index)
+                                            }
+                                            className="border border-gray-400 px-1 cursor-pointer relative"
+                                        >
+                                            {constraint.Operatore}
+                                        </div>
                                     </div>
-                                </div>
-                                {/* Value */}
-                                <div>
-                                    <input
-                                        className="border border-gray-400 w-[50px] text-center"
-                                        type="text"
-                                        id={`Value-${index}`}
-                                        name={`Value-${index}`}
-                                        value={constraint.Value}
-                                        onChange={(e) =>
-                                            handleInputChange(
-                                                index,
-                                                "Value",
-                                                e.target.value
-                                            )
-                                        }
-                                        placeholder="3"
-                                    />
+                                    {/* Value */}
+                                    <div>
+                                        <input
+                                            className="border border-gray-400 w-[50px] text-center"
+                                            type="text"
+                                            id={`Value-${index}`}
+                                            name={`Value-${index}`}
+                                            value={constraint.Value}
+                                            onChange={(e) =>
+                                                handleInputChange(
+                                                    index,
+                                                    "Value",
+                                                    e.target.value
+                                                )
+                                            }
+                                            placeholder="3"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             {/* Remove Constraint */}
                             <button
-                                className=" w-[30px] h-[30px] bg-red-500 flex justify-center
+                                className=" border w-[30px] h-[30px] bg-red-500 flex justify-center
                                     items-center text-white font-bold rounded-full"
                                 onClick={() => handleRemoveConstraint(index)}
                             >
