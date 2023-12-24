@@ -92,16 +92,17 @@ export default function Constraints() {
 
     return (
         <>
-            <div className="text-xl font-semibold mb-3">Constraints :</div>
-
-            {/* Add Constraint btn */}
-            <div className="m-auto w-fit">
-                <button
-                    className="bg-green-500 p-2 rounded-3xl mb-5"
-                    onClick={handleAddConstraint}
-                >
-                    Add Constraint
-                </button>
+            <div className=" flex items-start justify-start gap-10">
+                <div className="text-xl font-semibold mb-3">Constraints :</div>
+                {/* Add Constraint btn */}
+                <div className=" w-fit">
+                    <button
+                        className="bg-green-500 p-2 rounded-3xl mb-5"
+                        onClick={handleAddConstraint}
+                    >
+                        Add Constraint
+                    </button>
+                </div>
             </div>
 
             {/* Contraints */}
@@ -115,57 +116,51 @@ export default function Constraints() {
                                     (_, i) => (
                                         <React.Fragment key={i}>
                                             {/* PlusMinus */}
-                                                {i !== 0 && (
-                                                    <div className="flex gap-1 cursor-pointer border border-gray-400 w-[20px] text-center">
-                                                        <div
-                                                            onClick={() =>
-                                                                toggleSelect(
-                                                                    `PlusMinus${
-                                                                        i + 1
-                                                                    }`,
-                                                                    index
-                                                                )
-                                                            }
-                                                            className="border border-gray-400 text-center w-[20px] cursor-pointer relative"
-                                                        >
-                                                            {
-                                                                constraint[
-                                                                    `PlusMinus${
-                                                                        i + 1
-                                                                    }`
-                                                                ]
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                )}
-
-                                                {/* X */}
-                                                <div className="flex gap-1">
-                                                    <input
-                                                        className="border border-gray-400 w-[40px] text-center"
-                                                        type="text"
-                                                        id={`X${
-                                                            i + 1
-                                                        }-${index}`}
-                                                        name={`X${
-                                                            i + 1
-                                                        }-${index}`}
-                                                        value={
-                                                            constraint[
-                                                                `X${i + 1}`
-                                                            ]
-                                                        }
-                                                        onChange={(e) =>
-                                                            handleInputChange(
-                                                                index,
-                                                                `X${i + 1}`,
-                                                                e.target.value
+                                            {i !== 0 && (
+                                                <div className="flex gap-1 cursor-pointer border border-gray-400 w-[20px] text-center">
+                                                    <div
+                                                        onClick={() =>
+                                                            toggleSelect(
+                                                                `PlusMinus${
+                                                                    i + 1
+                                                                }`,
+                                                                index
                                                             )
                                                         }
-                                                        placeholder="0"
-                                                    />
-                                                    <div>{`X${i + 1}`}</div>
+                                                        className="border border-gray-400 text-center w-[20px] cursor-pointer relative"
+                                                    >
+                                                        {
+                                                            constraint[
+                                                                `PlusMinus${
+                                                                    i + 1
+                                                                }`
+                                                            ]
+                                                        }
+                                                    </div>
                                                 </div>
+                                            )}
+
+                                            {/* X */}
+                                            <div className="flex gap-1">
+                                                <input
+                                                    className="border border-gray-400 w-[40px] text-center"
+                                                    type="text"
+                                                    id={`X${i + 1}-${index}`}
+                                                    name={`X${i + 1}-${index}`}
+                                                    value={
+                                                        constraint[`X${i + 1}`]
+                                                    }
+                                                    onChange={(e) =>
+                                                        handleInputChange(
+                                                            index,
+                                                            `X${i + 1}`,
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    placeholder="0"
+                                                />
+                                                <div>{`X${i + 1}`}</div>
+                                            </div>
                                         </React.Fragment>
                                     )
                                 )}

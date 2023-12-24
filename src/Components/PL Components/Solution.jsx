@@ -7,13 +7,14 @@ export default function Solution() {
 
     return (
         <div>
-        <Methodes method={method} setMethod={setMethod} />
-        {method === "Graphique" ? (
-            <Graph />
-        ): method === "Symplexe" ? (
-            <div>Symplexe</div>
-        )  
-        : null}
+            <div className=" my-10">
+                <Methodes method={method} setMethod={setMethod} />
+            </div>
+            {method === "Graphique" ? (
+                <Graph />
+            ) : method === "Symplexe" ? (
+                <div>Symplexe</div>
+            ) : null}
         </div>
     );
 }
