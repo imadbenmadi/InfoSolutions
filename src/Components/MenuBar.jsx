@@ -10,7 +10,7 @@ export default function MenuBar() {
         <>
             {/* Mobile menu bar */}
 
-            <div className="md:hidden  ">
+            <div className="md:hidden   ">
                 <div
                     className={`${
                         MobileMenuVisible
@@ -26,7 +26,9 @@ export default function MenuBar() {
 
                 <div
                     className={`${
-                        MobileMenuVisible ? " h-full delay-200" : " h-0 delay-200"
+                        MobileMenuVisible
+                            ? " h-full delay-200"
+                            : " h-0 delay-200"
                     } flex w-full fixed transition-all z-[999] `}
                 >
                     <div
@@ -123,58 +125,62 @@ export default function MenuBar() {
             </div>
 
             {/* Laptop Menu Bar */}
-            <div className=" hidden md:block md:w-[100%]  h-[100%] bg-Blue w-[255px] relative ">
-                <div className="flex flex-col items-center justify-center pt-8 gap-7 h-[100%] text-white font-semibold fixed top-0">
-                    <Link className="ml-3" to={"/"} onClick={toggleMobileMenu}>
+            <div className="hidden md:block w-[25%] h-screen bg-Blue fixed top-0">
+                <div className="pt-8 flex flex-col justify-start gap-6 h-full text-white font-semibold">
+                    <Link
+                        className="ml-3 block"
+                        to={"/"}
+                        onClick={toggleMobileMenu}
+                    >
                         Home
                     </Link>
-                    <div className=" w-full h-1 bg-white"></div>
+                    <div className="w-full h-1 bg-white my-2"></div>
                     <Link
-                        className=" ml-3"
+                        className="ml-3 block"
                         to={"/PL"}
                         onClick={toggleMobileMenu}
                     >
                         Programation Linéer
                     </Link>
                     <Link
-                        className="ml-3"
+                        className="ml-3 block"
                         to={"/PS"}
                         onClick={toggleMobileMenu}
                     >
                         Propabilité Statistique
                     </Link>
                     <Link
-                        className="ml-3"
+                        className="ml-3 block"
                         to={"/SE"}
                         onClick={toggleMobileMenu}
                     >
                         Systéme D'exploitation
                     </Link>
-                    <div className=" w-full h-1 bg-white"></div>
+                    <div className="w-full h-1 bg-white my-2"></div>
                     <Link
-                        className="ml-3"
+                        className="ml-3 block"
                         to={"/PTGL"}
                         onClick={toggleMobileMenu}
                     >
                         Théory Des Graphs
                     </Link>
                     <Link
-                        className="ml-3"
+                        className="ml-3 block"
                         to={"/TL"}
                         onClick={toggleMobileMenu}
                     >
                         Théory des Langage
                     </Link>
                     <Link
-                        className="ml-3"
+                        className="ml-3 block"
                         to={"/MN"}
                         onClick={toggleMobileMenu}
                     >
                         Méthodes Numérique
                     </Link>
-                    <div className=" w-full h-1 bg-white"></div>
+                    <div className="w-full h-1 bg-white my-2"></div>
                     <Link
-                        className="ml-3"
+                        className="ml-3 block"
                         to={"/SM"}
                         onClick={toggleMobileMenu}
                     >
