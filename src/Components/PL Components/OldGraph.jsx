@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import Plot from "react-plotly.js/factory";
 import { usePLContext } from "../Apps/PLcontext";
 import Graph_Methodes from "./Graph_Methodes";
 import Plot from "react-plotly.js";
-
 const Graph = () => {
     const { Constraints } = usePLContext();
-    const [plotComponent, setPlotComponent] = useState(null);
 
     useEffect(() => {
         const plotData = Constraints.map((constraint, index) => {
@@ -16,20 +15,11 @@ const Graph = () => {
             return {
                 type: "scatter",
                 mode: "lines",
-                name: `Constraint ${index + 1}`,
+                name: `Constraint ${
+                    index + 1
+                }: ${X1}x₁ ${PlusMinus1} ${X2}x₂ ${PlusMinus2} ${operator} ${Value}`,
                 x: [-1, 8],
-                y:
-                    PlusMinus2 === "+"
-                        ? [
-                              Value - (X1 * -1 + Number(X2) * -1),
-                              Value - (X1 * 8 + Number(X2) * 8),
-                          ]
-                        : PlusMinus2 === "-"
-                        ? [
-                              Value - (X1 * -1 - Number(X2) * -1),
-                              Value - (X1 * 8 - Number(X2) * 8),
-                          ]
-                        : null,
+                y: [(Value - X1 * -1) / X2, (Value - X1 * 8) / X2],
             };
         });
 
@@ -38,17 +28,14 @@ const Graph = () => {
             yaxis: { title: "Y" },
         };
 
-        const plot = (
+        return (
             <Plot
                 data={plotData}
                 layout={layout}
                 config={{ displayModeBar: false }}
-                style={{ width: "1000px", height: "500px" }}
+                style={{ width: "100%", height: "100%" }}
             />
         );
-        console.log("plotComponent:", plot);
-
-        setPlotComponent(plot);
     }, [Constraints]);
 
     const handleMethodChange = (newMethod) => {
@@ -60,7 +47,7 @@ const Graph = () => {
             <Graph_Methodes onMethodChange={handleMethodChange} />
             <div className="card mt-4">
                 <div id="constraint-plot" className="card-body">
-                    {plotComponent}
+                    {/* The Plotly chart will be rendered here */}
                 </div>
             </div>
         </div>

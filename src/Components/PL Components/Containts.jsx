@@ -32,11 +32,11 @@ export default function Constraints() {
         if (constraints.length < 3) {
             const newConstraint = {
                 Operatore: ">=",
-                Value: "",
+                Value: 0,
             };
 
             for (let i = 1; i <= Desision_var_Nbr; i++) {
-                newConstraint[`X${i}`] = "";
+                newConstraint[`X${i}`] = 0;
                 newConstraint[`PlusMinus${i}`] = "+";
             }
 
