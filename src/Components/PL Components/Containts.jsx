@@ -24,7 +24,6 @@ export default function Constraints() {
                 return newConstraint;
             }
         );
-
         setConstraints(newConstraints);
         SetConstraints(newConstraints);
     }, [Desision_var_Nbr, constraints.length, SetConstraints]);
@@ -87,6 +86,7 @@ export default function Constraints() {
             };
             setConstraints(updatedConstraints);
             SetConstraints(updatedConstraints);
+            console.log(updatedConstraints);
         }
     };
 
