@@ -105,6 +105,16 @@ export default function Constraints() {
                 </div>
             </div>
 
+            <div className="text-center mb-6">
+                {Array.from({ length: Desision_var_Nbr }, (_, index) => (
+                    <React.Fragment key={index}>
+                        {`X${index}`}
+                        {index < Desision_var_Nbr - 1 ? ", " : ""}
+                    </React.Fragment>
+                ))}
+                {" >= 0"}
+            </div>
+
             {/* Contraints */}
             <div className="flex flex-col justify-center  w-fit m-auto">
                 {constraints.map((constraint, index) => (
