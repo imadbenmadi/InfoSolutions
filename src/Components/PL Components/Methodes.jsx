@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
-export default function Methodes({ method, setMethod}) {
+import { PLProvider, usePLContext } from "../Apps/PLcontext";
+export default function Methodes({ method, setMethod }) {
+    const { Desision_var_Nbr } = usePLContext();
     function Toggle_Methode(selectedMethod) {
         if (method !== selectedMethod) {
             setMethod(selectedMethod);
@@ -8,17 +10,20 @@ export default function Methodes({ method, setMethod}) {
     }
     return (
         <div className=" flex items-center justify-center gap-6 ">
-            <div
-                className={`${
-                    method === "Graphique"
-                        ? " bg-Blue text-white"
-                        : " bg-white text-black"
-                }
+            {Desision_var_Nbr === 2 && (
+                <div
+                    className={`${
+                        method === "Graphique"
+                            ? " bg-Blue text-white"
+                            : " bg-white text-black"
+                    }
                          border-2 p-2 rounded cursor-pointer text-lg font-medium`}
-                onClick={() => Toggle_Methode("Graphique")}
-            >
-                Resolution Graphic
-            </div>
+                    onClick={() => Toggle_Methode("Graphique")}
+                >
+                    Resolution Graphic
+                </div>
+            )}
+
             <div
                 className={`${
                     method === "Symplexe"
