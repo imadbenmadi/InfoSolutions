@@ -94,7 +94,7 @@ const Graph = () => {
     };
 
     return (
-        <div className="mt-4 pb-20">
+        <div className="mt-4 pb-20 ">
             <Graph_Methodes onMethodChange={handleMethodChange} />
             <div className="card mt-4">
                 <div id="constraint-plot" className="card-body">
