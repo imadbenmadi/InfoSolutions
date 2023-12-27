@@ -17,22 +17,28 @@ const Graph = () => {
             yanchor: "top",
         },
         margin: { l: 0, r: 0, t: 50, b: 20 },
-        dragmode: false,
+        dragmode: "pan",
+        mode: "pan2d",
     });
     useEffect(() => {
         const handleRelayout = (eventData) => {
             const xMin = eventData["xaxis.range[0]"];
             const yMin = eventData["yaxis.range[0]"];
 
-            // If the zoom goes into negative values, enforce positive ranges
-            if (xMin < -1 || yMin < -1) {
-                const newLayout = {
-                    ...layout,
-                    xaxis: { range: [Math.max(-1, xMin), 10] },
-                    yaxis: { range: [Math.max(-1, yMin), 10] },
-                };
-                setLayout(newLayout);
-            }
+            const newMinX = Math.max(-1, xMin);
+            const newMinY = Math.max(-1, yMin);
+
+            const newMaxX = Math.max(newMinX + 11, 10); // Adjust the calculation based on your needs
+            const newMaxY = Math.max(newMinY + 11, 10); // Adjust the calculation based on your needs
+
+            // Enforce positive ranges
+            const newLayout = {
+                ...layout,
+                xaxis: { range: [newMinX, newMaxX] },
+                yaxis: { range: [newMinY, newMaxY] },
+            };
+
+            setLayout(newLayout);
         };
 
         const plotData = Constraints.map((constraint, index) => {
@@ -40,23 +46,28 @@ const Graph = () => {
                 constraint;
             const operator = Operatore === ">=" ? "≥" : "≤";
 
+            const yValues =
+                PlusMinus2 === "+"
+                    ? [
+                          Value - (X1 * 0 + Number(X2) * 0),
+                          Value - (X1 * 8 + Number(X2) * 10),
+                      ]
+                    : PlusMinus2 === "-"
+                    ? [
+                          Value - (X1 * -1 - Number(X2) * -1),
+                          Value - (X1 * 10 - Number(X2) * 10),
+                      ]
+                    : null;
+
+            // Adjust Y-values to stop at Y=0
+            const adjustedYValues = yValues.map((y) => Math.max(y, 0));
+
             return {
                 type: "scatter",
                 mode: "lines",
                 name: `Constraint ${index + 1}`,
                 x: [0, 10],
-                y:
-                    PlusMinus2 === "+"
-                        ? [
-                              Value - (X1 * 0 + Number(X2) * 0),
-                              Value - (X1 * 8 + Number(X2) * 10),
-                          ]
-                        : PlusMinus2 === "-"
-                        ? [
-                              Value - (X1 * -1 - Number(X2) * -1),
-                              Value - (X1 * 10 - Number(X2) * 10),
-                          ]
-                        : null,
+                y: adjustedYValues,
             };
         });
 
@@ -91,6 +102,7 @@ const Graph = () => {
                 useResizeHandler={true}
                 autosize={true}
                 onRelayout={handleRelayout} // Attach the handleZoom function to capture zoom events
+                
             />
         );
         setPlotComponent(plot);
@@ -101,7 +113,7 @@ const Graph = () => {
     };
 
     return (
-        <div className="mt-4 pb-20 ">
+        <div className="mt-4">
             <Graph_Methodes onMethodChange={handleMethodChange} />
             <div className="card mt-4">
                 <div id="constraint-plot" className="card-body">
