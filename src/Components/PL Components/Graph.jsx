@@ -6,88 +6,95 @@ import Plot from "react-plotly.js";
 const Graph = () => {
     const { Constraints } = usePLContext();
     const [plotComponent, setPlotComponent] = useState(null);
+    const [layout, setLayout] = useState({
+        xaxis: { range: [-1, 10] },
+        yaxis: { range: [-1, 10] },
+        showlegend: true,
+        legend: {
+            x: 0.1,
+            y: 1.1,
+            xanchor: "center",
+            yanchor: "top",
+        },
+        margin: { l: 0, r: 0, t: 50, b: 20 },
+        dragmode: false,
+    });
+    useEffect(() => {
+        const handleRelayout = (eventData) => {
+            const xMin = eventData["xaxis.range[0]"];
+            const yMin = eventData["yaxis.range[0]"];
 
-     useEffect(() => {
-         
+            // If the zoom goes into negative values, enforce positive ranges
+            if (xMin < -1 || yMin < -1) {
+                const newLayout = {
+                    ...layout,
+                    xaxis: { range: [Math.max(-1, xMin), 10] },
+                    yaxis: { range: [Math.max(-1, yMin), 10] },
+                };
+                setLayout(newLayout);
+            }
+        };
 
+        const plotData = Constraints.map((constraint, index) => {
+            const { PlusMinus1, PlusMinus2, Value, X1, X2, Operatore } =
+                constraint;
+            const operator = Operatore === ">=" ? "≥" : "≤";
 
-         const plotData = Constraints.map((constraint, index) => {
-             const { PlusMinus1, PlusMinus2, Value, X1, X2, Operatore } =
-                 constraint;
-             const operator = Operatore === ">=" ? "≥" : "≤";
+            return {
+                type: "scatter",
+                mode: "lines",
+                name: `Constraint ${index + 1}`,
+                x: [0, 10],
+                y:
+                    PlusMinus2 === "+"
+                        ? [
+                              Value - (X1 * 0 + Number(X2) * 0),
+                              Value - (X1 * 8 + Number(X2) * 10),
+                          ]
+                        : PlusMinus2 === "-"
+                        ? [
+                              Value - (X1 * -1 - Number(X2) * -1),
+                              Value - (X1 * 10 - Number(X2) * 10),
+                          ]
+                        : null,
+            };
+        });
 
-             return {
-                 type: "scatter",
-                 mode: "lines",
-                 name: `Constraint ${index + 1}`,
-                 x: [-1, 10],
-                 y:
-                     PlusMinus2 === "+"
-                         ? [
-                               Value - (X1 * -1 + Number(X2) * -1),
-                               Value - (X1 * 8 + Number(X2) * 10),
-                           ]
-                         : PlusMinus2 === "-"
-                         ? [
-                               Value - (X1 * -1 - Number(X2) * -1),
-                               Value - (X1 * 10 - Number(X2) * 10),
-                           ]
-                         : null,
-             };
-         });
+        const config = {
+            displayModeBar: true,
+            modeBarButtons: [
+                ["pan2d"],
+                ["zoomIn2d"],
+                ["zoomOut2d"],
+                ["resetScale2d"],
+                ["toImage"],
+            ],
+            displaylogo: false,
+            responsive: true,
+            editable: false,
+            showTips: false,
+            modeBarButtonsToRemove: ["select2d", "lasso2d"],
+            toImageButtonOptions: {
+                format: "png",
+                filename: "PL",
+                height: 500,
+                width: 700,
+            },
+        };
 
-         
-
-         const layout = {
-             xaxis: { range: [-1, 10] },
-             yaxis: { range: [-1, 10] },
-             showlegend: true,
-             legend: {
-                 x: 0.1,
-                 y: 1.1,
-                 xanchor: "center",
-                 yanchor: "top",
-             },
-             margin: { l: 0, r: 0, t: 50, b: 20 },
-             dragmode: false,
-         };
-
-         const config = {
-             displayModeBar: true,
-             modeBarButtons: [
-                 ["pan2d"],
-                 ["zoomIn2d"],
-                 ["zoomOut2d"],
-                 ["resetScale2d"],
-                 ["toImage"],
-             ],
-             displaylogo: false,
-             responsive: true,
-             editable: false,
-             scrollZoom: true,
-             showTips: false,
-             modeBarButtonsToRemove: ["select2d", "lasso2d"],
-             toImageButtonOptions: {
-                 format: "png",
-                 filename: "PL",
-                 height: 500,
-                 width: 700,
-             },
-
-         };
-
-         const plot = (
-             <Plot
-                 data={plotData}
-                 layout={layout}
-                 config={config}
-                 style={{ width: "90%", margin: "auto", height: "100%" }}
-                 useResizeHandler={true}
-                 autosize={true}
-             />
-         );
-         setPlotComponent(plot);
-     }, [Constraints]);
+        const plot = (
+            <Plot
+                data={plotData}
+                layout={layout}
+                config={config}
+                style={{ width: "90%", margin: "auto", height: "100%" }}
+                useResizeHandler={true}
+                autosize={true}
+                onRelayout={handleRelayout} // Attach the handleZoom function to capture zoom events
+            />
+        );
+        setPlotComponent(plot);
+    }, [Constraints, layout]);
 
     const handleMethodChange = (newMethod) => {
         // Add any specific logic when the method changes
