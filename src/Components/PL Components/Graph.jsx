@@ -7,6 +7,13 @@ const Graph = () => {
     const { Constraints } = usePLContext();
     const [plotComponent, setPlotComponent] = useState(null);
     const [layout, setLayout] = useState({
+        xaxis: {
+             // Set the step for the x-axis
+        },
+        yaxis: {
+            
+            range: [0, 50],
+        },
         showlegend: true,
         legend: {
             x: 0.1,
@@ -28,18 +35,19 @@ const Graph = () => {
                 PlusMinus2 === "+"
                     ? [
                           Number(Value) - (X1 * 0 + X2 * 0),
-                          Number(Value) - (X1 * 1000 + X2 * 1000),
+                          Number(Value) - (X1 * 100 + X2 * 100),
                       ]
                     : PlusMinus2 === "-"
                     ? [
                           Number(Value) - (X1 * 0 - X2 * 0),
-                          Number(Value) - (X1 * 1000 - X2 * 1000),
+                          Number(Value) - (X1 * 100 - X2 * 100),
                       ]
                     : null;
             // Adjust Y-values to stop at Y=0
             const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
-            console.log("Y-values:", yValues);
+            console.log("index:"+index+"\nY-values:",yValues);
             console.log("Adjusted Y-values:", adjustedYValues);
+            
             return {
                 type: "scatter",
                 mode: "lines",
