@@ -12,11 +12,11 @@ export default function Constraints() {
                 const existingConstraint = constraints[index] || {};
                 const newConstraint = {
                     Operatore: existingConstraint.Operatore || ">=",
-                    Value: existingConstraint.Value || "",
+                    Value: existingConstraint.Value || 0,
                 };
 
                 for (let i = 1; i <= Desision_var_Nbr; i++) {
-                    newConstraint[`X${i}`] = existingConstraint[`X${i}`] || "";
+                    newConstraint[`X${i}`] = existingConstraint[`X${i}`] || 0;
                     newConstraint[`PlusMinus${i}`] =
                         existingConstraint[`PlusMinus${i}`] || "+";
                 }
@@ -26,6 +26,7 @@ export default function Constraints() {
         );
         setConstraints(newConstraints);
         SetConstraints(newConstraints);
+        console.log(newConstraints);
     }, [Desision_var_Nbr, constraints.length, SetConstraints]);
 
     const handleAddConstraint = () => {
@@ -86,7 +87,6 @@ export default function Constraints() {
             };
             setConstraints(updatedConstraints);
             SetConstraints(updatedConstraints);
-            console.log(updatedConstraints);
         }
     };
 

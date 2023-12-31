@@ -7,8 +7,6 @@ const Graph = () => {
     const { Constraints } = usePLContext();
     const [plotComponent, setPlotComponent] = useState(null);
     const [layout, setLayout] = useState({
-        xaxis: { range: [-1, 10] },
-        yaxis: { range: [-1, 10] },
         showlegend: true,
         legend: {
             x: 0.1,
@@ -16,52 +14,35 @@ const Graph = () => {
             xanchor: "center",
             yanchor: "top",
         },
-        margin: { l: 0, r: 0, t: 50, b: 20 },
+        margin: { l: 50, r: 0, t: 50, b: 20 },
         dragmode: "pan",
         mode: "pan2d",
     });
     useEffect(() => {
-        const handleRelayout = (eventData) => {
-            const xMin = eventData["xaxis.range[0]"];
-            const yMin = eventData["yaxis.range[0]"];
-
-            const newMinX = Math.max(-1, xMin);
-            const newMinY = Math.max(-1, yMin);
-
-            const newMaxX = Math.max(newMinX + 11, 10); // Adjust the calculation based on your needs
-            const newMaxY = Math.max(newMinY + 11, 10); // Adjust the calculation based on your needs
-
-            // Enforce positive ranges
-            const newLayout = {
-                ...layout,
-                xaxis: { range: [newMinX, newMaxX] },
-                yaxis: { range: [newMinY, newMaxY] },
-            };
-
-            setLayout(newLayout);
-        };
+        
 
         const plotData = Constraints.map((constraint, index) => {
             const { PlusMinus1, PlusMinus2, Value, X1, X2, Operatore } =
                 constraint;
-            const operator = Operatore === ">=" ? "≥" : "≤";
+            // const operator = Operatore === ">=" ? ">=" : "<=";
 
             const yValues =
                 PlusMinus2 === "+"
                     ? [
                           Value - (X1 * 0 + Number(X2) * 0),
-                          Value - (X1 * 8 + Number(X2) * 10),
+                          Value - (X1 * 10 + Number(X2) * 10),
                       ]
                     : PlusMinus2 === "-"
                     ? [
-                          Value - (X1 * -1 - Number(X2) * -1),
-                          Value - (X1 * 10 - Number(X2) * 10),
+                          Value + (X1 * 0 - Number(X2) * 0),
+                          Value + (X1 * 10 - Number(X2) * 10),
                       ]
                     : null;
 
             // Adjust Y-values to stop at Y=0
-            const adjustedYValues = yValues.map((y) => Math.max(y, 0));
-
+            const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
+            console.log("Y-values:", yValues);
+            console.log("Adjusted Y-values:", adjustedYValues);
             return {
                 type: "scatter",
                 mode: "lines",
@@ -101,12 +82,10 @@ const Graph = () => {
                 style={{ width: "90%", margin: "auto", height: "100%" }}
                 useResizeHandler={true}
                 autosize={true}
-                onRelayout={handleRelayout} // Attach the handleZoom function to capture zoom events
-                
             />
         );
         setPlotComponent(plot);
-    }, [Constraints, layout]);
+    }, [Constraints]);
 
     const handleMethodChange = (newMethod) => {
         // Add any specific logic when the method changes
