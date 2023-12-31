@@ -19,8 +19,6 @@ const Graph = () => {
         mode: "pan2d",
     });
     useEffect(() => {
-        
-
         const plotData = Constraints.map((constraint, index) => {
             const { PlusMinus1, PlusMinus2, Value, X1, X2, Operatore } =
                 constraint;
@@ -29,16 +27,15 @@ const Graph = () => {
             const yValues =
                 PlusMinus2 === "+"
                     ? [
-                          Value - (X1 * 0 + Number(X2) * 0),
-                          Value - (X1 * 10 + Number(X2) * 10),
+                          Number(Value) - (X1 * 0 + X2 * 0),
+                          Number(Value) - (X1 * 1000 + X2 * 1000),
                       ]
                     : PlusMinus2 === "-"
                     ? [
-                          Value + (X1 * 0 - Number(X2) * 0),
-                          Value + (X1 * 10 - Number(X2) * 10),
+                          Number(Value) - (X1 * 0 - X2 * 0),
+                          Number(Value) - (X1 * 1000 - X2 * 1000),
                       ]
                     : null;
-
             // Adjust Y-values to stop at Y=0
             const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
             console.log("Y-values:", yValues);
