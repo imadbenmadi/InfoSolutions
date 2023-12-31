@@ -15,7 +15,15 @@ body {
     --Black: #383838;
     --Blue: #3067b1;
 }
+div.modebar-btn {
+  cursor: default;
+  pointer-events: none;
+  box-shadow: none !important;
+}
 
+div.modebar-btn:hover {
+  background-color: transparent !important;
+}
 
 @layer base {
     html {

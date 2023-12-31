@@ -8,10 +8,9 @@ const Graph = () => {
     const [plotComponent, setPlotComponent] = useState(null);
     const [layout, setLayout] = useState({
         xaxis: {
-             // Set the step for the x-axis
+            // Set the step for the x-axis
         },
         yaxis: {
-            
             range: [0, 50],
         },
         showlegend: true,
@@ -24,6 +23,8 @@ const Graph = () => {
         margin: { l: 50, r: 0, t: 50, b: 20 },
         dragmode: "pan",
         mode: "pan2d",
+        autosize: true,
+        responsive: true,
     });
     useEffect(() => {
         const plotData = Constraints.map((constraint, index) => {
@@ -45,9 +46,9 @@ const Graph = () => {
                     : null;
             // Adjust Y-values to stop at Y=0
             const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
-            console.log("index:"+index+"\nY-values:",yValues);
+            console.log("index:" + index + "\nY-values:", yValues);
             console.log("Adjusted Y-values:", adjustedYValues);
-            
+
             return {
                 type: "scatter",
                 mode: "lines",
@@ -66,6 +67,7 @@ const Graph = () => {
                 ["resetScale2d"],
                 ["toImage"],
             ],
+
             displaylogo: false,
             responsive: true,
             editable: false,
@@ -76,6 +78,10 @@ const Graph = () => {
                 filename: "PL",
                 height: 500,
                 width: 700,
+            },
+            modeBar: {
+                // Adjust the size of the mode bar buttons
+                size: 50,
             },
         };
 
@@ -100,7 +106,10 @@ const Graph = () => {
         <div className="mt-4">
             <Graph_Methodes onMethodChange={handleMethodChange} />
             <div className="card mt-4">
-                <div id="constraint-plot" className="card-body">
+                <div
+                    id="constraint-plot"
+                    className="card-body w-[90vw] md:w-full h-[400px] relative border-[1px] border-[#ccc]"
+                >
                     {plotComponent}
                 </div>
             </div>
