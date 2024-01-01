@@ -8,20 +8,6 @@ const Graph = () => {
     const { Constraints } = usePLContext();
     const [plotComponent, setPlotComponent] = useState(null);
     const [layout, setLayout] = useState({
-        shapes: [
-            {
-                type: "rect",
-                x0: 0,
-                x1: 0,
-                y0: 0,
-                y1: 0,
-                fillcolor: "#d3d3d3",
-                opacity: 0.2,
-                line: {
-                    width: 0,
-                },
-            },
-        ],
         xaxis: {
             // Set the step for the x-axis
         },
@@ -40,9 +26,22 @@ const Graph = () => {
         mode: "pan2d",
         autosize: true,
         responsive: true,
+        shapes: [
+            // {
+            //     type: "rect",
+            //     x0: 0,
+            //     x1: 0,
+            //     y0: 0,
+            //     y1: 0,
+            //     fillcolor: "#d3d3d3",
+            //     opacity: 0.2,
+            //     line: {
+            //         width: 0,
+            //     },
+            // },
+        ],
     });
     useEffect(() => {
-        const shadingHeight = 5; // Adjust this value according to your preferences
         // Calculate constraints plot data
         const plotData = Constraints.map((constraint, index) => {
             const { PlusMinus1, PlusMinus2, Value, X1, X2, Operatore } =
@@ -62,34 +61,44 @@ const Graph = () => {
                     : null;
 
             const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
+            const shadingHeight = 5;
             const borders =
                 Operatore === ">="
                     ? [
-                        adjustedYValues[0] + shadingHeight,
-                        adjustedYValues[1] + shadingHeight,
-                    ]
+                          adjustedYValues[0] + shadingHeight,
+                          adjustedYValues[1] + shadingHeight,
+                      ]
                     : Operatore === "<="
                     ? [
-                        adjustedYValues[0] - shadingHeight,
-                        adjustedYValues[1] - shadingHeight,
-                        ] : null;
-            setLayout((prevLayout) => ({
-                ...prevLayout,
-                shapes: [
-                    {
-                        type: "rect",
-                        x0: 0, // Set the x0 value based on your requirements
-                        x1: 10, // Set the x1 value based on your requirements
-                        y0: borders[0], // Set the y0 value based on your requirements
-                        y1: borders[1], // Set the y1 value based on your requirements
-                        fillcolor: "#d3d3d3",
-                        opacity: 0.2,
-                        line: {
-                            width: 0,
-                        },
-                    },
-                ],
-            }));
+                          adjustedYValues[0] - shadingHeight,
+                          adjustedYValues[1] - shadingHeight,
+                      ]
+                    : null;
+            console.log("borders", borders[0], borders[1]);
+            setLayout((prevLayout) => {
+                const newShapes = borders
+                    ? [
+                          {
+                              type: "rect",
+                              x0: 0,
+                              x1: 10,
+                              y0: borders[0],
+                              y1: borders[1],
+                              fillcolor: "#d3d3d3",
+                              opacity: 0.2,
+                              line: {
+                                  width: 0,
+                              },
+                          },
+                      ]
+                    : [];
+
+                return {
+                    ...prevLayout,
+                    shapes: newShapes,
+                };
+            });
+
             return {
                 type: "scatter",
                 mode: "lines",
@@ -98,8 +107,8 @@ const Graph = () => {
                 y: adjustedYValues,
             };
         });
-        
-
+        console.log("layout", layout.shapes);
+        console.log("---------------------");
 
         const config = {
             displayModeBar: true,
