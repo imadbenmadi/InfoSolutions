@@ -20,13 +20,11 @@ export default function Constraints() {
                     newConstraint[`PlusMinus${i}`] =
                         existingConstraint[`PlusMinus${i}`] || "+";
                 }
-
                 return newConstraint;
             }
         );
         setConstraints(newConstraints);
         SetConstraints(newConstraints);
-        console.log(newConstraints);
     }, [Desision_var_Nbr, constraints.length, SetConstraints]);
 
     const handleAddConstraint = () => {
