@@ -56,72 +56,44 @@ const Graph = () => {
                 y: adjustedYValues,
             };
         });
-        // Calculate shaded regions for each constraint
+        const shadingHeight = 5; // Adjust this value according to your preferences
         const shadedRegions = Constraints.map((constraint, index) => {
             const { PlusMinus2, Value, X1, X2, Operatore } = constraint;
 
-            const shadedYValues =
-                Operatore === ">="
-                    ? PlusMinus2 === "+"
-                        ? [
-                              Number(Value) - (X1 * 0 + X2 * 0),
-                              Number(Value) - (X1 * 100 + X2 * 100),
-                          ]
-                        : PlusMinus2 === "-"
-                        ? [
-                              Number(Value) - (X1 * 0 - X2 * 0),
-                              Number(Value) - (X1 * 100 - X2 * 100),
-                          ]
-                        : null
-                    : Operatore === "<="
-                    ? PlusMinus2 === "+"
-                        ? [
-                              Number(Value) - (X1 * 0 + X2 * 0),
-                              Number(Value) - (X1 * 100 + X2 * 100),
-                          ]
-                        : PlusMinus2 === "-"
-                        ? [
-                              Number(Value) - (X1 * 0 - X2 * 0),
-                              Number(Value) - (X1 * 100 - X2 * 100),
-                          ]
-                        : null
+            const yValues =
+                PlusMinus2 === "+"
+                    ? [
+                          Number(Value) - (X1 * 0 + X2 * 0),
+                          Number(Value) - (X1 * 100 + X2 * 100),
+                      ]
+                    : PlusMinus2 === "-"
+                    ? [
+                          Number(Value) - (X1 * 0 - X2 * 0),
+                          Number(Value) - (X1 * 100 - X2 * 100),
+                      ]
                     : null;
 
-            const adjustedShadedYValues = shadedYValues.map((y) =>
-                y < 0 ? 0 : y * scalingFactor
-            );
-            const shadingYValues = shadedYValues.map((y) =>
-                y < 0 ? 0 : y * scalingFactor
-            );
+            const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
+
+            const shadedYValues =
+                Operatore === ">="
+                    ? [adjustedYValues[0], adjustedYValues[1] + shadingHeight]
+                    : Operatore === "<="
+                    ? [adjustedYValues[0] - shadingHeight, adjustedYValues[1]]
+                    : null;
+
             return {
                 type: "scatter",
                 mode: "lines",
                 name: `Shading ${index + 1}`,
-                x: [0, 10],
-                y: shadingYValues,
+                x: [0, 10], // Arbitrary x-values
+                y: shadedYValues,
                 fill: "toself",
                 fillcolor: "rgba(100,100,100,0.2)", // Adjust the background color
             };
         });
-        // Combine shaded regions to get the feasible region
-        const feasibleRegion = {
-            type: "scatter",
-            mode: "lines",
-            name: "Feasible Region",
-            x: [0, 10],
-            y: shadedRegions.reduce(
-                (acc, region) =>
-                    acc.map((value, i) => Math.min(value, region.y[i])),
-                [Infinity, Infinity]
-            ),
-            fill: "toself",
-            fillcolor: "rgba(0,255,0,0.2)",
-        };
-        const updatedPlotData = [...plotData, ...shadedRegions, feasibleRegion];
-        console.log("--------------------");
-        console.log("shadedRegions", shadedRegions);
-        console.log("feasibleRegion", feasibleRegion);
-        console.log("updatedPlotData", updatedPlotData);
+
+        const updatedPlotData = [...plotData, ...shadedRegions];
         const config = {
             displayModeBar: true,
             modeBarButtons: [
