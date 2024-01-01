@@ -8,6 +8,20 @@ const Graph = () => {
     const { Constraints } = usePLContext();
     const [plotComponent, setPlotComponent] = useState(null);
     const [layout, setLayout] = useState({
+        shapes: [
+            {
+                type: "rect",
+                x0: 0,
+                x1: 0,
+                y0: 0,
+                y1: 0,
+                fillcolor: "#d3d3d3",
+                opacity: 0.2,
+                line: {
+                    width: 0,
+                },
+            },
+        ],
         xaxis: {
             // Set the step for the x-axis
         },
@@ -28,6 +42,7 @@ const Graph = () => {
         responsive: true,
     });
     useEffect(() => {
+        const shadingHeight = 5; // Adjust this value according to your preferences
         // Calculate constraints plot data
         const plotData = Constraints.map((constraint, index) => {
             const { PlusMinus1, PlusMinus2, Value, X1, X2, Operatore } =
@@ -47,7 +62,34 @@ const Graph = () => {
                     : null;
 
             const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
-
+            const borders =
+                Operatore === ">="
+                    ? [
+                        adjustedYValues[0] + shadingHeight,
+                        adjustedYValues[1] + shadingHeight,
+                    ]
+                    : Operatore === "<="
+                    ? [
+                        adjustedYValues[0] - shadingHeight,
+                        adjustedYValues[1] - shadingHeight,
+                        ] : null;
+            setLayout((prevLayout) => ({
+                ...prevLayout,
+                shapes: [
+                    {
+                        type: "rect",
+                        x0: 0, // Set the x0 value based on your requirements
+                        x1: 10, // Set the x1 value based on your requirements
+                        y0: borders[0], // Set the y0 value based on your requirements
+                        y1: borders[1], // Set the y1 value based on your requirements
+                        fillcolor: "#d3d3d3",
+                        opacity: 0.2,
+                        line: {
+                            width: 0,
+                        },
+                    },
+                ],
+            }));
             return {
                 type: "scatter",
                 mode: "lines",
@@ -56,50 +98,9 @@ const Graph = () => {
                 y: adjustedYValues,
             };
         });
-        const shadingHeight = 5; // Adjust this value according to your preferences
-        const shadedRegions = Constraints.map((constraint, index) => {
-            const { PlusMinus2, Value, X1, X2, Operatore } = constraint;
+        
 
-            const yValues =
-                PlusMinus2 === "+"
-                    ? [
-                          Number(Value) - (X1 * 0 + X2 * 0),
-                          Number(Value) - (X1 * 100 + X2 * 100),
-                      ]
-                    : PlusMinus2 === "-"
-                    ? [
-                          Number(Value) - (X1 * 0 - X2 * 0),
-                          Number(Value) - (X1 * 100 - X2 * 100),
-                      ]
-                    : null;
 
-            const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
-
-            const shadedYValues =
-                Operatore === ">="
-                    ? [
-                          adjustedYValues[0] + shadingHeight,
-                          adjustedYValues[1] + shadingHeight,
-                      ]
-                    : Operatore === "<="
-                    ? [
-                          adjustedYValues[0] - shadingHeight,
-                          adjustedYValues[1] - shadingHeight,
-                      ]
-                    : null;
-            console.log(shadedYValues);
-            return {
-                type: "scatter",
-                mode: "lines",
-                name: `Shading ${index + 1}`,
-                x: [0, 10], // Arbitrary x-values
-                y: shadedYValues,
-                fill: "toself",
-                fillcolor: "rgba(100,100,100,0.2)", // Adjust the background color
-            };
-        });
-
-        const updatedPlotData = [...plotData, ...shadedRegions];
         const config = {
             displayModeBar: true,
             modeBarButtons: [
@@ -128,7 +129,7 @@ const Graph = () => {
         };
         const plot = (
             <Plot
-                data={updatedPlotData}
+                data={plotData}
                 layout={layout}
                 config={config}
                 style={{ width: "90%", margin: "auto", height: "100%" }}
