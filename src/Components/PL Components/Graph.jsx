@@ -4,9 +4,22 @@ import Graph_Methodes from "./Graph_Methodes";
 import Plot from "react-plotly.js";
 
 const Graph = () => {
-    const scalingFactor = 2;
     const { Constraints } = usePLContext();
     const [plotComponent, setPlotComponent] = useState(null);
+    const [shape, Setshape] = useState({
+        type: "rect",
+        xref: "x",
+        yref: "paper",
+        x0: 0,
+        x1: 0,
+        y0: 0,
+        y1: 0,
+        fillcolor: "#d3d3d3",
+        opacity: 0.2,
+        line: {
+            width: 0,
+        },
+    });
     const [layout, setLayout] = useState({
         xaxis: {
             // Set the step for the x-axis
@@ -26,20 +39,6 @@ const Graph = () => {
         mode: "pan2d",
         autosize: true,
         responsive: true,
-        shapes: [
-            // {
-            //     type: "rect",
-            //     x0: 0,
-            //     x1: 0,
-            //     y0: 0,
-            //     y1: 0,
-            //     fillcolor: "#d3d3d3",
-            //     opacity: 0.2,
-            //     line: {
-            //         width: 0,
-            //     },
-            // },
-        ],
     });
     useEffect(() => {
         // Calculate constraints plot data
@@ -74,30 +73,21 @@ const Graph = () => {
                           adjustedYValues[1] - shadingHeight,
                       ]
                     : null;
-            console.log("borders", borders[0], borders[1]);
-            setLayout((prevLayout) => {
-                const newShapes = borders
-                    ? [
-                          {
-                              type: "rect",
-                              x0: 0,
-                              x1: 10,
-                              y0: borders[0],
-                              y1: borders[1],
-                              fillcolor: "#d3d3d3",
-                              opacity: 0.2,
-                              line: {
-                                  width: 0,
-                              },
-                          },
-                      ]
-                    : [];
-
-                return {
-                    ...prevLayout,
-                    shapes: newShapes,
-                };
+            Setshape({
+                type: "rect",
+                xref: "x",
+                yref: "paper",
+                x0: 0,
+                x1: 10,
+                y0: borders[0],
+                y1: borders[1],
+                fillcolor: "#d3d3d3",
+                opacity: 0.2,
+                line: {
+                    width: 0,
+                },
             });
+            
 
             return {
                 type: "scatter",
@@ -107,8 +97,6 @@ const Graph = () => {
                 y: adjustedYValues,
             };
         });
-        console.log("layout", layout.shapes);
-        console.log("---------------------");
 
         const config = {
             displayModeBar: true,
@@ -138,7 +126,7 @@ const Graph = () => {
         };
         const plot = (
             <Plot
-                data={plotData}
+                data={[plotData, shape ]}
                 layout={layout}
                 config={config}
                 style={{ width: "90%", margin: "auto", height: "100%" }}
