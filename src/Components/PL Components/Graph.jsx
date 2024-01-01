@@ -77,11 +77,17 @@ const Graph = () => {
 
             const shadedYValues =
                 Operatore === ">="
-                    ? [adjustedYValues[0], adjustedYValues[1] + shadingHeight]
+                    ? [
+                          adjustedYValues[0] + shadingHeight,
+                          adjustedYValues[1] + shadingHeight,
+                      ]
                     : Operatore === "<="
-                    ? [adjustedYValues[0] - shadingHeight, adjustedYValues[1]]
+                    ? [
+                          adjustedYValues[0] - shadingHeight,
+                          adjustedYValues[1] - shadingHeight,
+                      ]
                     : null;
-
+            console.log(shadedYValues);
             return {
                 type: "scatter",
                 mode: "lines",
