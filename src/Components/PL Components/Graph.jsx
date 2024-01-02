@@ -87,7 +87,6 @@ const Graph = () => {
                     width: 0,
                 },
             });
-            
 
             return {
                 type: "scatter",
@@ -97,7 +96,9 @@ const Graph = () => {
                 y: adjustedYValues,
             };
         });
-
+        // plotData.push(shape);
+        // console.log(shape);
+        // const Data = [plotData, shape];
         const config = {
             displayModeBar: true,
             modeBarButtons: [
@@ -124,9 +125,29 @@ const Graph = () => {
                 size: 50,
             },
         };
+        const layout = {
+            xaxis: {
+                // Set the step for the x-axis
+            },
+            yaxis: {
+                range: [0, 50],
+            },
+            showlegend: true,
+            legend: {
+                x: 0.1,
+                y: 1.1,
+                xanchor: "center",
+                yanchor: "top",
+            },
+            margin: { l: 50, r: 0, t: 50, b: 20 },
+            dragmode: "pan",
+            mode: "pan2d",
+            autosize: true,
+            responsive: true,
+        };
         const plot = (
             <Plot
-                data={[plotData, shape ]}
+                data={plotData}
                 layout={layout}
                 config={config}
                 style={{ width: "90%", margin: "auto", height: "100%" }}
