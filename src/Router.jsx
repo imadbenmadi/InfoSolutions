@@ -1,6 +1,6 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-// import Home from "./Components/Home";
+import Home from "./Components/Home";
 import App from "./App";
 import PL from "./Apps/PL/PL";
 import PS from "./Apps/PS/PS";
@@ -12,7 +12,7 @@ const routes = createBrowserRouter([
         path: "/",
         element: <App />,
         children: [
-            // { index: true, element: <Home /> },
+            { index: true, element: <Home /> },
             { path: "/PL", element: <PL /> },
             { path: "/PS", element: <Not_Finished /> },
             { path: "/SM", element: <Not_Finished />},

@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/Cntic_Logo.png";
+import logo from "../../public/Cntic_Logo.png";
 
 export default function Header() {
     return (

@@ -1,13 +1,13 @@
 import React from "react";
 import "./Font/Font.css";
 
-// import MenuBar from "./Components/MenuBar";
-// import Header from "./Components/Header";
+import MenuBar from "./Components/MenuBar";
+import Header from "./Components/Header";
 import { Outlet } from "react-router";
 export default function App() {
     return (
         <div className="cairo-Font relative h-[100vh] w-[100vw]   ">
-            {/* <div className=" md:flex min-h-full w-full">
+            <div className=" md:flex min-h-full w-full">
                 <div className=" md:flex-[25%] ">
                     <MenuBar />
                 </div>
@@ -18,8 +18,8 @@ export default function App() {
                         <Outlet />
                     </div>
                 </div>
-            </div> */}
-            hello
+            </div>
+            
         </div>
     );
 }
