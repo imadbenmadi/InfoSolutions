@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    -webkit-tap-highlight-color: transparent; /* For WebKit browsers like Safari and Chrome */
+    
+    outline: none; /* Removes the default focus outline */
+    outline-style: none; /* Additional property for other browsers */
+    outline-width: 0; /* Additional property for other browsers */
+    -moz-outline-style: none; /* For Mozilla Firefox */
+}
+:root {
+    --Black: #383838;
+    --Blue: #3067b1;
+}
+div.modebar-btn {
+  cursor: default;
+  pointer-events: none;
+  box-shadow: none !important;
+}
+
+div.modebar-btn:hover {
+  background-color: transparent !important;
+}
+
+@layer base {
+    html {
+        font-family: "Inria Sans" sans-serif;
+    }
+}
