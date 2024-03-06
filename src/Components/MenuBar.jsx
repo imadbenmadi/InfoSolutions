@@ -73,7 +73,7 @@ export default function MenuBar() {
                             >
                                 Propabilité Statistique
                             </Link>
-                            <Link
+                            {/* <Link
                                 className="ml-3"
                                 to={"/SE"}
                                 onClick={toggleMobileMenu}
@@ -83,7 +83,7 @@ export default function MenuBar() {
                             <div className=" w-full h-1 bg-white"></div>
                             <Link
                                 className="ml-3"
-                                to={"/PTGL"}
+                                to={"/TG"}
                                 onClick={toggleMobileMenu}
                             >
                                 Théory Des Graphs
@@ -94,14 +94,14 @@ export default function MenuBar() {
                                 onClick={toggleMobileMenu}
                             >
                                 Théory des Langage
-                            </Link>
-                            <Link
+                            </Link> */}
+                            {/* <Link
                                 className="ml-3"
                                 to={"/MN"}
                                 onClick={toggleMobileMenu}
                             >
                                 Méthodes Numérique
-                            </Link>
+                            </Link> */}
                             <div className=" w-full h-1 bg-white"></div>
                             <Link
                                 className="ml-3"
@@ -149,7 +149,7 @@ export default function MenuBar() {
                     >
                         Propabilité Statistique
                     </Link>
-                    <Link
+                    {/* <Link
                         className="ml-3 block"
                         to={"/SE"}
                         onClick={toggleMobileMenu}
@@ -159,7 +159,7 @@ export default function MenuBar() {
                     <div className="w-full h-1 bg-white my-2"></div>
                     <Link
                         className="ml-3 block"
-                        to={"/PTGL"}
+                        to={"/TG"}
                         onClick={toggleMobileMenu}
                     >
                         Théory Des Graphs
@@ -177,7 +177,7 @@ export default function MenuBar() {
                         onClick={toggleMobileMenu}
                     >
                         Méthodes Numérique
-                    </Link>
+                    </Link> */}
                     <div className="w-full h-1 bg-white my-2"></div>
                     <Link
                         className="ml-3 block"
