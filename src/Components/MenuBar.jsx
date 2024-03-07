@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import { FaHome } from "react-icons/fa";
+
 export default function MenuBar() {
     const [MobileMenuVisible, setMobileMenuVisibility] = useState(false);
     const toggleMobileMenu = () => {
@@ -52,25 +55,34 @@ export default function MenuBar() {
                         </div>
                         <div className="flex flex-col items-start justify-center gap-7 h-[100%] text-white font-semibold ">
                             <Link
-                                className="ml-3"
+                                className="ml-3 flex items-center gap-2 text-2xl"
                                 to={"/"}
                                 onClick={toggleMobileMenu}
                             >
+                                <div className=" bg-white text-Blue text-2xl p-2 rounded-md">
+                                    <FaHome />
+                                </div>
                                 Home
                             </Link>
                             <div className=" w-full h-1 bg-white"></div>
                             <Link
-                                className=" ml-3"
+                                className=" ml-3 flex items-center gap-2 text-2xl"
                                 to={"/PL"}
                                 onClick={toggleMobileMenu}
                             >
+                                <div className="font-bold bg-white text-Blue text-2xl p-2 rounded-md">
+                                    PL
+                                </div>
                                 Programation Linéer
                             </Link>
                             <Link
-                                className="ml-3"
+                                className="ml-3 flex items-center gap-2 text-2xl"
                                 to={"/PS"}
                                 onClick={toggleMobileMenu}
                             >
+                                <div className=" font-bold bg-white text-Blue text-2xl p-2 rounded-md">
+                                    PS
+                                </div>
                                 Propabilité Statistique
                             </Link>
                             {/* <Link
@@ -102,12 +114,15 @@ export default function MenuBar() {
                             >
                                 Méthodes Numérique
                             </Link> */}
-                            <div className=" w-full h-1 bg-white"></div>
+                            <div className=" w-full h-1 bg-white "></div>
                             <Link
-                                className="ml-3"
+                                className="ml-3 flex items-center gap-2 text-2xl"
                                 to={"/SM"}
                                 onClick={toggleMobileMenu}
                             >
+                                <div className=" font-bold bg-white text-Blue text-2xl p-2 rounded-md">
+                                    PS
+                                </div>
                                 Systéme Machine
                             </Link>
                         </div>
@@ -128,25 +143,34 @@ export default function MenuBar() {
             <div className="hidden md:block w-[25%] h-screen bg-Blue fixed top-0">
                 <div className="pt-8 flex flex-col justify-start gap-6 h-full text-white font-semibold">
                     <Link
-                        className="ml-3 block"
+                        className="ml-3 flex items-center gap-2 text-2xl "
                         to={"/"}
                         onClick={toggleMobileMenu}
                     >
+                        <div className=" font-bold bg-white text-Blue text-2xl p-2 rounded-md">
+                            <FaHome />
+                        </div>
                         Home
                     </Link>
                     <div className="w-full h-1 bg-white my-2"></div>
                     <Link
-                        className="ml-3 block"
+                        className="ml-3 flex items-center gap-2 text-2xl"
                         to={"/PL"}
                         onClick={toggleMobileMenu}
                     >
+                        <div className=" font-bold bg-white text-Blue text-2xl p-2 rounded-md">
+                            PL
+                        </div>
                         Programation Linéer
                     </Link>
                     <Link
-                        className="ml-3 block"
+                        className="ml-3 flex items-center gap-2 text-2xl"
                         to={"/PS"}
                         onClick={toggleMobileMenu}
                     >
+                        <div className=" font-bold bg-white text-Blue text-2xl p-2 rounded-md">
+                            PL
+                        </div>
                         Propabilité Statistique
                     </Link>
                     {/* <Link
@@ -180,13 +204,16 @@ export default function MenuBar() {
                     </Link> */}
                     <div className="w-full h-1 bg-white my-2"></div>
                     <Link
-                        className="ml-3 block"
+                        className="ml-3 flex items-center gap-2 text-2xl"
                         to={"/SM"}
                         onClick={toggleMobileMenu}
                     >
+                        <div className=" font-bold bg-white text-Blue text-2xl p-2 rounded-md">
+                            PL
+                        </div>
                         Systéme Machine
                     </Link>
-                </div> 
+                </div>
             </div>
         </>
     );
