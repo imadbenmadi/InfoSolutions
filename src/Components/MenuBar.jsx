@@ -186,7 +186,7 @@ export default function MenuBar() {
                     >
                         Systéme Machine
                     </Link>
-                </div>
+                </div> 
             </div>
         </>
     );
