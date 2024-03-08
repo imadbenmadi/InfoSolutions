@@ -7,14 +7,12 @@ import { Outlet } from "react-router";
 export default function App() {
     return (
         <div className="cairo-Font relative   ">
-            <div className=" md:flex min-h-full ">
-                <div className=" md:flex-[25%] ">
-                    <MenuBar />
-                </div>
+            <div className=" md:flex  min-h-full ">
+                <MenuBar />
 
-                <div className="md:flex-[75%]  ">
+                <div className="w-full flex flex-col items-center ">
                     <Header />
-                    <div className=" w-[90%] m-auto">
+                    <div className="w-full">
                         <Outlet />
                     </div>
                 </div>

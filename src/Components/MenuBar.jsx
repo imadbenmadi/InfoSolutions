@@ -12,7 +12,7 @@ export default function MenuBar() {
         setMobileMenuVisibility(!MobileMenuVisible);
     };
     const toggleDesktopMenu = () => {
-        setDesktopMenuVisible(!MobileMenuVisible);
+        setDesktopMenuVisible(!DesktopMenuVisible);
     };
     return (
         <>
@@ -94,8 +94,7 @@ export default function MenuBar() {
                                 </div>
                                 Propabilité Statistique
                             </Link>
-                            
-                            
+
                             {/* <Link
                                 className="ml-3"
                                 to={"/TG"}
@@ -117,7 +116,7 @@ export default function MenuBar() {
                             >
                                 Méthodes Numérique
                             </Link> */}
-                            
+
                             <div className=" w-full h-1 bg-white "></div>
                             <Link
                                 className="ml-3 flex items-center gap-2 text-xl"
@@ -144,98 +143,32 @@ export default function MenuBar() {
             </div>
 
             {/* Laptop Menu Bar */}
-            <div className="hidden md:block w-[25%] h-screen bg-Blue fixed top-0">
-                {DesktopMenuVisible ? (
-                    <>
-                        <div
-                            className="w-10 h-10 bg-white rounded-full flex justify-center items-center absolute right-2 top-2"
-                            onClick={toggleDesktopMenu}
-                        >
-                            X
-                        </div>
-                        <div className="pt-8 flex flex-col justify-start gap-6 h-full text-white font-semibold">
-                            <Link
-                                className="ml-3 flex items-center gap-2 text-2xl "
-                                to={"/"}
-                                onClick={toggleMobileMenu}
-                            >
-                                <div className=" font-bold bg-white text-Blue text-2xl p-2 rounded-md">
-                                    <FaHome />
-                                </div>
-                                Home
-                            </Link>
-                            <div className="w-full h-1 bg-white my-2"></div>
-                            <Link
-                                className="ml-3 flex items-center gap-2 text-2xl"
-                                to={"/PL"}
-                                onClick={toggleMobileMenu}
-                            >
-                                <div className=" font-bold bg-white text-Blue text-2xl p-2 rounded-md">
-                                    PL
-                                </div>
-                                Programation Linéer
-                            </Link>
-                            <Link
-                                className="ml-3 flex items-center gap-2 text-2xl"
-                                to={"/PS"}
-                                onClick={toggleMobileMenu}
-                            >
-                                <div className=" font-bold bg-white text-Blue text-2xl p-2 rounded-md">
-                                    PL
-                                </div>
-                                Propabilité Statistique
-                            </Link>
-                            {/* <Link
-                                className="ml-3 block"
-                                to={"/SE"}
-                                onClick={toggleMobileMenu}
-                            >
-                                Systéme D'exploitation
-                            </Link>
-                            <div className="w-full h-1 bg-white my-2"></div>
-                            <Link
-                                className="ml-3 block"
-                                to={"/TG"}
-                                onClick={toggleMobileMenu}
-                            >
-                                Théory Des Graphs
-                            </Link>
-                            <Link
-                                className="ml-3 block"
-                                to={"/TL"}
-                                onClick={toggleMobileMenu}
-                            >
-                                Théory des Langage
-                            </Link>
-                            <Link
-                                className="ml-3 block"
-                                to={"/MN"}
-                                onClick={toggleMobileMenu}
-                            >
-                                Méthodes Numérique
-                            </Link> */}
-                            <div className="w-full h-1 bg-white my-2"></div>
-                            <Link
-                                className="ml-3 flex items-center gap-2 text-2xl"
-                                to={"/SM"}
-                                onClick={toggleMobileMenu}
-                            >
-                                <div className=" font-bold bg-white text-Blue text-2xl p-2 rounded-md">
-                                    PL
-                                </div>
-                                Systéme Machine
-                            </Link>
-                        </div>
-                    </>
-                ) : (
+            {DesktopMenuVisible ? (
+                <div className="hidden md:block   bg-Blue w-[250px]  min-h-screen relative ">
                     <div
-                        className="w-10 h-10 bg-white rounded-full flex justify-center items-center absolute right-2 top-2"
+                        className="w-[40px] h-[40px] text-xl bg-white text-Blue font-bold 
+                            rounded-bl-xl  rounded-tr-xl rounded-tl-sm  rounded-br-sm 
+                            flex justify-center items-center absolute right-2 top-2"
                         onClick={toggleDesktopMenu}
                     >
-                        M
+                        <IoClose className=" font-bold text-2xl" />
                     </div>
-                )}
-            </div>
+                    <div className="pt-8 flex flex-col justify-start gap-6 h-full text-white font-semibold">
+                        {/* Menu links */}
+                    </div>
+                </div>
+            ) : (
+                <div className=" hidden md:block   bg-Blue w-[70px]  min-h-screen relative ">
+                    <div
+                        className="flex justify-center items-center flex-col gap-2 absolute top-4 left-4"
+                        onClick={toggleDesktopMenu}
+                    >
+                        <div className=" w-8 h-1 mr-6 bg-white rounded"></div>
+                        <div className=" w-8 h-1 mr-6 bg-white rounded"></div>
+                        <div className=" w-8 h-1 mr-6 bg-white rounded"></div>
+                    </div>
+                </div>
+            )}
         </>
     );
 }
