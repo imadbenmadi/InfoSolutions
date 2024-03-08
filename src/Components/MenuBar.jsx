@@ -154,18 +154,147 @@ export default function MenuBar() {
                         <IoClose className=" font-bold text-2xl" />
                     </div>
                     <div className="pt-8 flex flex-col justify-start gap-6 h-full text-white font-semibold">
-                        {/* Menu links */}
+                        <div className="flex flex-col items-start justify-start gap-7 pt-4 h-[100%] text-white font-semibold ">
+                            <Link
+                                className="ml-3 flex items-center gap-2 text-xl"
+                                to={"/"}
+                                onClick={toggleMobileMenu}
+                            >
+                                <div className=" bg-white text-Blue text-xl p-2 rounded-md">
+                                    <FaHome />
+                                </div>
+                                Home
+                            </Link>
+                            <div className=" w-full h-1 bg-white"></div>
+                            <Link
+                                className=" ml-3 flex items-center gap-2 text-xl"
+                                to={"/PL"}
+                                onClick={toggleMobileMenu}
+                            >
+                                <div className="font-bold bg-white text-Blue text-xl p-2 rounded-md">
+                                    PL
+                                </div>
+                                Programation Linéer
+                            </Link>
+                            <Link
+                                className="ml-3 flex items-center gap-2 text-xl"
+                                to={"/PS"}
+                                onClick={toggleMobileMenu}
+                            >
+                                <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
+                                    PS
+                                </div>
+                                Propabilité Statistique
+                            </Link>
+
+                            {/* <Link
+                                className="ml-3"
+                                to={"/TG"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Théory Des Graphs
+                            </Link>
+                            <Link
+                                className="ml-3"
+                                to={"/TL"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Théory des Langage
+                            </Link>
+                            <Link
+                                className="ml-3"
+                                to={"/MN"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Méthodes Numérique
+                            </Link> */}
+
+                            <div className=" w-full h-1 bg-white "></div>
+                            <Link
+                                className="ml-3 flex items-center gap-2 text-xl"
+                                to={"/SM"}
+                                onClick={toggleMobileMenu}
+                            >
+                                <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
+                                    PS
+                                </div>
+                                Systéme Machine
+                            </Link>
+                        </div>
                     </div>
                 </div>
             ) : (
                 <div className=" hidden md:block   bg-Blue w-[70px]  min-h-screen relative ">
-                    <div
-                        className="flex justify-center items-center flex-col gap-2 absolute top-4 left-4"
-                        onClick={toggleDesktopMenu}
-                    >
-                        <div className=" w-8 h-1 mr-6 bg-white rounded"></div>
-                        <div className=" w-8 h-1 mr-6 bg-white rounded"></div>
-                        <div className=" w-8 h-1 mr-6 bg-white rounded"></div>
+                    <div className="flex flex-col items-start justify-start gap-7 pt-4 h-[100%] text-white font-semibold ">
+                        <div
+                            className=" flex flex-col gap-1  w-full items-center"
+                            onClick={toggleDesktopMenu}
+                        >
+                            <div className=" w-8 h-1 bg-white rounded"></div>
+                            <div className=" w-8 h-1 bg-white rounded"></div>
+                            <div className=" w-8 h-1 bg-white rounded"></div>
+                        </div>
+                        <Link
+                            className="ml-3 flex items-center gap-2 text-xl"
+                            to={"/"}
+                            onClick={toggleMobileMenu}
+                        >
+                            <div className=" bg-white text-Blue text-xl p-2 rounded-md">
+                                <FaHome />
+                            </div>
+                        </Link>
+                        <div className=" w-full h-1 bg-white"></div>
+                        <Link
+                            className=" ml-3 flex items-center gap-2 text-xl"
+                            to={"/PL"}
+                            onClick={toggleMobileMenu}
+                        >
+                            <div className="font-bold bg-white text-Blue text-xl p-2 rounded-md">
+                                PL
+                            </div>
+                        </Link>
+                        <Link
+                            className="ml-3 flex items-center gap-2 text-xl"
+                            to={"/PS"}
+                            onClick={toggleMobileMenu}
+                        >
+                            <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
+                                PS
+                            </div>
+                        </Link>
+
+                        {/* <Link
+                                className="ml-3"
+                                to={"/TG"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Théory Des Graphs
+                            </Link>
+                            <Link
+                                className="ml-3"
+                                to={"/TL"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Théory des Langage
+                            </Link>
+                            <Link
+                                className="ml-3"
+                                to={"/MN"}
+                                onClick={toggleMobileMenu}
+                            >
+                                Méthodes Numérique
+                            </Link> */}
+
+                        <div className=" w-full h-1 bg-white "></div>
+                        <Link
+                            className="ml-3 flex items-center gap-2 text-xl"
+                            to={"/SM"}
+                            onClick={toggleMobileMenu}
+                        >
+                            <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
+                                PS
+                            </div>
+                        </Link>
                     </div>
                 </div>
             )}
