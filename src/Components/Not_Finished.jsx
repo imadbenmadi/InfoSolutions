@@ -5,23 +5,22 @@ function Not_Finished() {
     return (
         <div
             className="flex items-center justify-center 
-      text-gray font-bold pt-16 "
+            text-gray font-bold  "
         >
             <div className="p-8 bg-white rounded-md shadow-lg text-center">
                 <h1 className="text-3xl md:text-5xl mb-4 text-gray-800">
-                    Oops! This Page is Not Finished Yet
+                    عفوًا! هذه الصفحة لم تنتهي بعد
                 </h1>
                 <p className="text-lg mb-8 text-gray">
-                    We're working hard to bring you something awesome. Check
-                    back later!
+                    نحن نعمل بجد لتقديم شيء رائع لك. تحقق لاحقًا!
                 </p>
                 <img
                     src={Comming_Soon}
-                    alt="Under Construction"
+                    alt="تحت الإنشاء"
                     className=" w-32 h-32 md:w-64 md:h-64 mx-auto mb-8"
                 />
                 <p className="text-sm text-gray-600">
-                    Thank you for your patience!
+                    شكرًا لصبرك! قسم Cntic club ما زال يعمل على هذا الجزء.
                 </p>
             </div>
         </div>
