@@ -6,8 +6,8 @@ import Header from "./Components/Header";
 import { Outlet } from "react-router";
 export default function App() {
     return (
-        <div className="cairo-Font relative h-[100vh] w-[100vw]   ">
-            <div className=" md:flex min-h-full w-full">
+        <div className="cairo-Font relative   ">
+            <div className=" md:flex min-h-full ">
                 <div className=" md:flex-[25%] ">
                     <MenuBar />
                 </div>
@@ -19,7 +19,6 @@ export default function App() {
                     </div>
                 </div>
             </div>
-            
         </div>
     );
 }
