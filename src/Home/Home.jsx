@@ -1,37 +1,46 @@
-import React from "react";
+import { motion, useInView } from "framer-motion";
 import CardModel from "../Components/homePage/CardModel";
-import CardOfMember from "../Components/homePage/CardOfMember";
-import imgSalah from "../assets/salah.jpg";
-import imgImad from "../assets/imad.jpg";
+import OurMember from "../Components/homePage/OurMember";
+import { useRef } from "react";
+import Feedback from "../Components/homePage/Feedback";
+
 function Home() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.5 } },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div className="md:px-32 p-5  ">
-      <div className=" grid gap-5 min-h-fit md:h-screen h-fit   grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
-        <CardModel shortNameModel="pl" modelNama="Programation Linéer" />
-        <CardModel shortNameModel="PS" modelNama=" probability statistics" />
-        <CardModel shortNameModel="SM" modelNama="Systéme Machine" />
+    <motion.div
+      className="md:px-32 p-5"
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "hidden" : "visible"}
+    >
+      <div className="grid gap-5 min-h-fit md:h-screen h-fit grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
+        <motion.div variants={itemVariants}>
+          <CardModel shortNameModel="pl" modelNama="Programation Linéer" />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <CardModel shortNameModel="PS" modelNama="probability statistics" />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <CardModel shortNameModel="SM" modelNama="Systéme Machine" />
+        </motion.div>
       </div>
-      <div className=" py-5 my-5">
-        <div className="font-bold mx-auto text-xl text-center py-5 md:p-10 md:text-3xl">
-          {" "}
-          How Make This Platform ?{" "}
-        </div>
-        <div className=" mx-auto grid max-w-4xl gap-5    grid-cols-2 max-lg:grid-cols-1 max-md:grid-cols-1">
-          <CardOfMember
-            image={imgSalah}
-            fullName="salah eddine khenfer"
-            skilles=" full stack"
-            dec="I'm delighted to develop this website aimed at assisting individuals in accomplishing various tasks and enhancing their studying experience "
-          />
-          <CardOfMember
-            image={imgImad}
-            fullName="imad eddine benmadi "
-            skilles=" full stack"
-            dec="I'm thrilled to be working on this website dedicated to helping people tackle a wide range of tasks and enriching their learning journey"
-          />
-        </div>
-      </div>
-    </div>
+      give me your Feedback
+      <Feedback />
+      {/* how make this platform */}
+      <OurMember />
+    </motion.div>
   );
 }
 
