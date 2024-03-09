@@ -29,27 +29,33 @@ function CardOfMember({ image, fullName, skilles, dec }) {
         </div>
         <div className="mt-2 text-sm leading-6 text-gray-500">{dec}</div>
         <div className="flex gap-4 pr-20 mt-6">
-          <motion.img
-            transition={{ duration: 0.2 }}
-            whileHover={{ scale: 1.55 }}
-            loading="lazy"
-            src={facbook}
-            className="shrink-0 w-6 aspect-square"
-          />
-          <motion.img
-            transition={{ duration: 0.2 }}
-            whileHover={{ scale: 1.55 }}
-            loading="lazy"
-            src={github}
-            className="shrink-0 w-[20px]  aspect-square"
-          />
-          <motion.img
-            transition={{ duration: 0.2 }}
-            whileHover={{ scale: 1.5 }}
-            loading="lazy"
-            src={instagram}
-            className="shrink-0 w-6 aspect-square"
-          />
+          <a href={linkFac}>
+            <motion.img
+              transition={{ duration: 0.2 }}
+              whileHover={{ scale: 1.55 }}
+              loading="lazy"
+              src={facbook}
+              className="shrink-0 w-6 aspect-square"
+            />
+          </a>
+          <a href={linkGit}>
+            <motion.img
+              transition={{ duration: 0.2 }}
+              whileHover={{ scale: 1.55 }}
+              loading="lazy"
+              src={github}
+              className="shrink-0 w-[20px]  aspect-square"
+            />
+          </a>
+          <a href={linkInsta}>
+            <motion.img
+              transition={{ duration: 0.2 }}
+              whileHover={{ scale: 1.5 }}
+              loading="lazy"
+              src={instagram}
+              className="shrink-0 w-6 aspect-square"
+            />
+          </a>
         </div>
       </div>
     </motion.div>

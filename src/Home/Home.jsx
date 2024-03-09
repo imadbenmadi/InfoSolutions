@@ -6,7 +6,7 @@ import imgImad from "../assets/imad.jpg";
 function Home() {
   return (
     <div className="md:px-32 p-5  ">
-      <div className=" grid gap-5 min-h-fit h-screen   grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
+      <div className=" grid gap-5 min-h-fit md:h-screen h-fit   grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
         <CardModel shortNameModel="pl" modelNama="Programation Linéer" />
         <CardModel shortNameModel="PS" modelNama=" probability statistics" />
         <CardModel shortNameModel="SM" modelNama="Systéme Machine" />
