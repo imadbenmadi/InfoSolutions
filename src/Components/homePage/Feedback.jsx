@@ -33,7 +33,7 @@ function Feedback() {
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className=" w-full  md:px-20 "
+      className=" w-full  md:px-20  duration-500"
     >
       <Formik
         initialValues={{
@@ -51,63 +51,83 @@ function Feedback() {
         {({ errors, touched }) => (
           <Form>
             <motion.div variants={itemVariants}>
-              <label htmlFor="firstName">First Name</label>
+              <label
+                className=" font-semibold ml-6 md:text-xl "
+                htmlFor="firstName"
+              >
+                First Name
+              </label>
               <Field
                 id="firstName"
                 name="firstName"
                 type="text"
-                className={`block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
+                className={`block w-full p-4 focus:outline-none  text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
                   errors.firstName && touched.firstName ? "border-red-500" : ""
                 }`}
                 placeholder="Jane"
               />
               {errors.firstName && touched.firstName && (
-                <div className="text-red-500">{errors.firstName}</div>
+                <div className="text-red-500 mb-3 pl-4">{errors.firstName}</div>
               )}
             </motion.div>
             <motion.div variants={itemVariants}>
-              <label htmlFor="lastName">Last Name</label>
+              <label
+                className=" font-semibold ml-6 md:text-xl "
+                htmlFor="lastName"
+              >
+                Last Name
+              </label>
               <Field
                 id="lastName"
                 name="lastName"
                 type="text"
-                className={`block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
-                  errors.lastName && touched.lastName ? "border-red-500" : ""
+                className={`block w-full p-4 focus:outline-none  text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
+                  errors.lastName && touched.lastName ? "border-red-500 " : ""
                 }`}
                 placeholder="Doe"
               />
               {errors.lastName && touched.lastName && (
-                <div className="text-red-500">{errors.lastName}</div>
+                <div className="text-red-500 mb-3 pl-4">{errors.lastName}</div>
               )}
             </motion.div>
             <motion.div variants={itemVariants}>
-              <label htmlFor="email">Email</label>
+              <label
+                htmlFor="email"
+                className=" font-semibold ml-6 md:text-xl "
+              >
+                Email
+              </label>
               <Field
                 id="email"
                 name="email"
                 type="email"
-                className={`block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
+                className={`block w-full p-4 focus:outline-none  text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
                   errors.email && touched.email ? "border-red-500" : ""
                 }`}
                 placeholder="jane@acme.com"
               />
               {errors.email && touched.email && (
-                <div className="text-red-500">{errors.email}</div>
+                <div className="text-red-500 mb-3 pl-4">{errors.email}</div>
               )}
             </motion.div>
             <motion.div variants={itemVariants}>
-              <label htmlFor="Feedback">Feedback</label>
+              <label
+                className=" font-semibold ml-6 md:text-xl "
+                htmlFor="Feedback"
+              >
+                Feedback
+              </label>
               <Field
                 as="textarea"
                 id="Feedback"
                 name="Feedback"
-                className={`block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
+                className={`block w-full focus:outline-none  p-4 text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
                   errors.Feedback && touched.Feedback ? "border-red-500" : ""
                 }`}
                 placeholder="Give me your Feedback"
               />
               {errors.Feedback && touched.Feedback && (
-                <div className="text-red-500">{errors.Feedback}</div>
+                <div className="text-red-500 mb-3 pl-4">{errors.Feedback}</div>
               )}
             </motion.div>
             <motion.div
@@ -116,7 +136,7 @@ function Feedback() {
             >
               <button
                 type="submit"
-                className="bg-blue-500  mx-auto w-fit  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                className="bg-blue-500  mx-auto w-fit  hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded-full"
               >
                 {" "}
                 Submit

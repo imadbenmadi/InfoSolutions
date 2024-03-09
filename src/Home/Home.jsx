@@ -26,7 +26,7 @@ function Home() {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-      <div className="grid gap-5 min-h-fit md:h-screen h-fit grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
+      <div className="grid  gap-x-10 min-h-fit md:h-screen h-fit grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
         <motion.div variants={itemVariants}>
           <CardModel shortNameModel="pl" modelNama="Programation Linéer" />
         </motion.div>
