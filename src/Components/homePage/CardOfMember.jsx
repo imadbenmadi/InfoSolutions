@@ -3,7 +3,15 @@ import { motion } from "framer-motion";
 import facbook from "../../assets/facebook.jpg";
 import instagram from "../../assets/indtagram.png";
 import github from "../../assets/github.png";
-function CardOfMember({ image, fullName, skilles, dec }) {
+function CardOfMember({
+  image,
+  fullName,
+  skilles,
+  dec,
+  linkFac,
+  linkGit,
+  linkInsta,
+}) {
   return (
     <motion.div
       className=" cursor-pointer
