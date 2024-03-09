@@ -27,17 +27,21 @@ function Feedback() {
   };
 
   return (
-    <div className=" w-full  md:px-20 ">
+    <motion.div
+      ref={ref}
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className=" w-full  md:px-20 "
+    >
       <Formik
+        ref={ref}
         initialValues={{
           firstName: "",
           lastName: "",
           email: "",
           Feedback: "",
         }}
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "hidden" : "visible"}
         validationSchema={validationSchema}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
@@ -118,7 +122,7 @@ function Feedback() {
           </Form>
         )}
       </Formik>
-    </div>
+    </motion.div>
   );
 }
 
