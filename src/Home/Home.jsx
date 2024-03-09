@@ -3,6 +3,7 @@ import CardModel from "../Components/homePage/CardModel";
 import OurMember from "../Components/homePage/OurMember";
 import { useRef } from "react";
 import Feedback from "../Components/homePage/Feedback";
+import Footer from "../Components/homePage/Footer";
 
 function Home() {
   const ref = useRef(null);
@@ -21,12 +22,12 @@ function Home() {
   return (
     <motion.div
       ref={ref}
-      className="md:px-32 p-5"
+      className=""
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-      <div className="grid  gap-x-10 min-h-fit md:h-screen h-fit grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
+      <div className="grid md:px-32 p-5 gap-x-10 min-h-fit md:h-screen h-fit grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
         <motion.div variants={itemVariants}>
           <CardModel shortNameModel="pl" modelNama="Programation Linéer" />
         </motion.div>
@@ -46,7 +47,7 @@ function Home() {
           <CardModel shortNameModel="SM" modelNama="Systéme Machine" />
         </motion.div>
       </div>
-      <div>
+      <div className="md:px-32 p-5">
         <h1 className="font-bold mx-auto text-xl text-center py-5 md:p-10 md:text-3xl">
           {" "}
           give me your Feedback
@@ -56,6 +57,7 @@ function Home() {
 
       {/* how make this platform */}
       <OurMember />
+      <Footer />
     </motion.div>
   );
 }
