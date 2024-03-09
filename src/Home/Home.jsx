@@ -36,6 +36,15 @@ function Home() {
         <motion.div variants={itemVariants}>
           <CardModel shortNameModel="SM" modelNama="Systéme Machine" />
         </motion.div>
+        <motion.div variants={itemVariants}>
+          <CardModel shortNameModel="SM" modelNama="Systéme Machine" />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <CardModel shortNameModel="SM" modelNama="Systéme Machine" />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <CardModel shortNameModel="SM" modelNama="Systéme Machine" />
+        </motion.div>
       </div>
       <div>
         <h1 className="font-bold mx-auto text-xl text-center py-5 md:p-10 md:text-3xl">

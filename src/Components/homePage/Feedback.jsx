@@ -29,13 +29,13 @@ function Feedback() {
   return (
     <motion.div
       ref={ref}
+      transition={{ duration: 5 }}
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       className=" w-full  md:px-20 "
     >
       <Formik
-        ref={ref}
         initialValues={{
           firstName: "",
           lastName: "",
@@ -65,7 +65,7 @@ function Feedback() {
                 <div className="text-red-500">{errors.firstName}</div>
               )}
             </motion.div>
-            <div>
+            <motion.div variants={itemVariants}>
               <label htmlFor="lastName">Last Name</label>
               <Field
                 id="lastName"
@@ -79,8 +79,8 @@ function Feedback() {
               {errors.lastName && touched.lastName && (
                 <div className="text-red-500">{errors.lastName}</div>
               )}
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={itemVariants}>
               <label htmlFor="email">Email</label>
               <Field
                 id="email"
@@ -94,8 +94,8 @@ function Feedback() {
               {errors.email && touched.email && (
                 <div className="text-red-500">{errors.email}</div>
               )}
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={itemVariants}>
               <label htmlFor="Feedback">Feedback</label>
               <Field
                 as="textarea"
@@ -109,8 +109,11 @@ function Feedback() {
               {errors.Feedback && touched.Feedback && (
                 <div className="text-red-500">{errors.Feedback}</div>
               )}
-            </div>
-            <div className="w-full my-5  flex justify-center ">
+            </motion.div>
+            <motion.div
+              variants={itemVariants}
+              className="w-full my-5  flex justify-center "
+            >
               <button
                 type="submit"
                 className="bg-blue-500  mx-auto w-fit  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
@@ -118,7 +121,7 @@ function Feedback() {
                 {" "}
                 Submit
               </button>
-            </div>
+            </motion.div>
           </Form>
         )}
       </Formik>

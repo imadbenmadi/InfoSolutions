@@ -9,7 +9,7 @@ function OurMember() {
   const isInView = useInView(ref, { once: true });
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.5 } },
+    visible: { opacity: 1, transition: { staggerChildren: 0.8 } },
   };
 
   const itemVariants = {
@@ -26,9 +26,9 @@ function OurMember() {
         className="mx-auto grid max-w-4xl gap-5 grid-cols-2 max-lg:grid-cols-1 max-md:grid-cols-1"
         variants={containerVariants}
         initial="hidden"
-        animate={isInView ? "hidden" : "visible"}
+        animate={isInView ? "visible" : "hidden"}
       >
-        <motion.div variants={itemVariants}>
+        <motion.div ref={ref} variants={itemVariants}>
           <CardOfMember
             image={imgSalah}
             fullName="salah eddine khenfer"
