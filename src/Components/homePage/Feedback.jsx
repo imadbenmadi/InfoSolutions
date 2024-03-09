@@ -13,7 +13,7 @@ function Feedback() {
   });
 
   return (
-    <div className=" w-full  px-20 ">
+    <div className=" w-full  md:px-20 ">
       <Formik
         initialValues={{
           firstName: "",
@@ -89,10 +89,10 @@ function Feedback() {
                 <div className="text-red-500">{errors.Feedback}</div>
               )}
             </div>
-            <div className="w-full ">
+            <div className="w-full my-5  flex justify-center ">
               <button
                 type="submit"
-                className="bg-blue-500 mx-auto  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                className="bg-blue-500  mx-auto w-fit  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
               >
                 {" "}
                 Submit
