@@ -20,10 +20,11 @@ function Home() {
 
   return (
     <motion.div
+      ref={ref}
       className="md:px-32 p-5"
       variants={containerVariants}
       initial="hidden"
-      animate={isInView ? "hidden" : "visible"}
+      animate={isInView ? "visible" : "hidden"}
     >
       <div className="grid gap-5 min-h-fit md:h-screen h-fit grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1">
         <motion.div variants={itemVariants}>

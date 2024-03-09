@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import React, { useRef } from "react";
 import * as Yup from "yup";
 
@@ -35,6 +35,9 @@ function Feedback() {
           email: "",
           Feedback: "",
         }}
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "hidden" : "visible"}
         validationSchema={validationSchema}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
@@ -43,7 +46,7 @@ function Feedback() {
       >
         {({ errors, touched }) => (
           <Form>
-            <div>
+            <motion.div variants={itemVariants}>
               <label htmlFor="firstName">First Name</label>
               <Field
                 id="firstName"
@@ -57,7 +60,7 @@ function Feedback() {
               {errors.firstName && touched.firstName && (
                 <div className="text-red-500">{errors.firstName}</div>
               )}
-            </div>
+            </motion.div>
             <div>
               <label htmlFor="lastName">Last Name</label>
               <Field
