@@ -1,5 +1,6 @@
 import { Field, Form, Formik } from "formik";
-import React from "react";
+import { useInView } from "framer-motion";
+import React, { useRef } from "react";
 import * as Yup from "yup";
 
 function Feedback() {
@@ -11,6 +12,19 @@ function Feedback() {
       .required("Email is required"),
     Feedback: Yup.string().required("Feedback is required"),
   });
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.5 } },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
     <div className=" w-full  md:px-20 ">
