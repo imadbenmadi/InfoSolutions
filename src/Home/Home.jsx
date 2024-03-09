@@ -36,8 +36,14 @@ function Home() {
           <CardModel shortNameModel="SM" modelNama="Systéme Machine" />
         </motion.div>
       </div>
-      give me your Feedback
-      <Feedback />
+      <div>
+        <h1 className="font-bold mx-auto text-xl text-center py-5 md:p-10 md:text-3xl">
+          {" "}
+          give me your Feedback
+        </h1>
+        <Feedback />
+      </div>
+
       {/* how make this platform */}
       <OurMember />
     </motion.div>
