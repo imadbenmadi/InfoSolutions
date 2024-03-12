@@ -1,9 +1,9 @@
 import { motion, useInView } from "framer-motion";
-import CardModel from "../Components/homePage/CardModel";
-import OurMember from "../Components/homePage/OurMember";
+import CardModel from "./Components/CardModel";
+import OurMember from "./Components/OurMember";
 import { useRef } from "react";
-import Feedback from "../Components/homePage/Feedback";
-import Footer from "../Components/homePage/Footer";
+import Feedback from "./Components/Feedback";
+import Footer from "./Components/Footer";
 
 function Home() {
   const ref = useRef(null);
