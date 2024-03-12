@@ -144,17 +144,19 @@ export default function MenuBar() {
 
             {/* Laptop Menu Bar */}
             {DesktopMenuVisible ? (
-                <div className="hidden md:block fixed z-50   bg-Blue w-[250px]  custom-overflow h-screen overflow-auto ">
-                    <div
-                        className="w-[40px] h-[40px] text-xl bg-white text-Blue font-bold 
+                <div className="hidden md:block     bg-Blue w-[250px]   h-screen  shrink-0 ">
+                    <div className=" flex justify-end pr-2 pt-2">
+                        <div
+                            className="w-[40px] h-[40px] text-xl bg-white text-Blue font-bold 
                             rounded-bl-xl  rounded-tr-xl rounded-tl-sm  rounded-br-sm 
-                            flex justify-center items-center absolute right-2 top-2 cursor-pointer"
-                        onClick={toggleDesktopMenu}
-                    >
-                        <IoClose className=" font-bold text-2xl" />
+                            flex justify-center items-center  right-2 top-2 cursor-pointer"
+                            onClick={toggleDesktopMenu}
+                        >
+                            <IoClose className=" font-bold text-2xl" />
+                        </div>
                     </div>
 
-                    <div className="pt-16 flex flex-col justify-start gap-6 text-white font-semibold">
+                    <div className=" pt-6 w-[250px] fixed flex flex-col gap-7 text-white font-semibold custom-overflow overflow-auto">
                         <Link
                             className="ml-3 flex items-center gap-2 text-xl"
                             onClick={toggleDesktopMenu}
@@ -201,8 +203,8 @@ export default function MenuBar() {
                     </div>
                 </div>
             ) : (
-                <div className=" hidden md:block   bg-Blue w-[70px]  h-screen  ">
-                    <div className="flex flex-col gap-7 pt-4  text-white font-semibold fixed w-[70px] h-screen  overflow-auto custom-overflow ">
+                <div className=" hidden md:block   bg-Blue w-[70px]  h-screen shrink-0  ">
+                    <div className="flex flex-col gap-7 pt-4  text-white font-semibold fixed w-[70px] h-screen  overflow-y-auto flex-wrap custom-overflow ">
                         <div
                             className=" flex flex-col gap-1  w-full items-center cursor-pointer"
                             onClick={toggleDesktopMenu}
