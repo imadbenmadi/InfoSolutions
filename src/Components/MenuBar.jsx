@@ -196,7 +196,7 @@ export default function MenuBar() {
                             onClick={toggleDesktopMenu}
                         >
                             <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
-                                PS
+                                SM
                             </div>
                             Systéme Machine
                         </Link>
@@ -250,7 +250,7 @@ export default function MenuBar() {
                             
                         >
                             <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
-                                PS
+                                SM
                             </div>
                         </Link>
                     </div>

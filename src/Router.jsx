@@ -15,7 +15,7 @@ const routes = createBrowserRouter([
             { index: true, element: <Home /> },
             { path: "/PL", element: <PL /> },
             { path: "/PS", element: <Not_Finished /> },
-            { path: "/SM", element: <Not_Finished />},
+            { path: "/SM", element: <SM /> },
             {
                 path: "*",
                 element: <NotFound />,
