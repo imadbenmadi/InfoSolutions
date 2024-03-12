@@ -3,7 +3,8 @@ import Page_Title from '../../Components/Page_Title'
 function SM() {
   return (
       <div>
-          <Page_Title title="Systeme Machine" />
+      <Page_Title title="Systeme Machine" />
+      <div>a</div>
       </div>
   );
 }

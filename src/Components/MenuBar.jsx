@@ -187,8 +187,6 @@ export default function MenuBar() {
                             Propabilité Statistique
                         </Link>
 
-                        
-
                         <div className=" w-full h-1 bg-white "></div>
                         <Link
                             className="ml-3 flex items-center gap-2 text-xl"
@@ -203,8 +201,8 @@ export default function MenuBar() {
                     </div>
                 </div>
             ) : (
-                <div className=" hidden md:block  fixed bg-Blue w-[70px] custom-overflow h-screen overflow-auto  ">
-                    <div className="flex flex-col items-start justify-start gap-7 pt-4  text-white font-semibold ">
+                <div className=" hidden md:block   bg-Blue w-[70px]  h-screen  ">
+                    <div className="flex flex-col gap-7 pt-4  text-white font-semibold fixed w-[70px] h-screen  overflow-auto custom-overflow ">
                         <div
                             className=" flex flex-col gap-1  w-full items-center cursor-pointer"
                             onClick={toggleDesktopMenu}
@@ -216,7 +214,6 @@ export default function MenuBar() {
                         <Link
                             className="ml-3 flex items-center gap-2 text-xl"
                             to={"/"}
-                            
                         >
                             <div className=" bg-white text-Blue text-xl p-2 rounded-md">
                                 <FaHome />
@@ -226,7 +223,6 @@ export default function MenuBar() {
                         <Link
                             className=" ml-3 flex items-center gap-2 text-xl"
                             to={"/PL"}
-                            
                         >
                             <div className="font-bold bg-white text-Blue text-xl p-2 rounded-md">
                                 PL
@@ -235,19 +231,16 @@ export default function MenuBar() {
                         <Link
                             className="ml-3 flex items-center gap-2 text-xl"
                             to={"/PS"}
-                            
                         >
                             <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
                                 PS
                             </div>
                         </Link>
-                        
 
                         <div className=" w-full h-1 bg-white "></div>
                         <Link
                             className="ml-3 flex items-center gap-2 text-xl"
                             to={"/SM"}
-                            
                         >
                             <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
                                 SM
