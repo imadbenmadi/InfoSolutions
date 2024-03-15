@@ -1,39 +1,57 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import PageTitle from "../../Components/Page_Title";
 
 function SM() {
   const [inputValue, setInputValue] = useState("");
   const [outputValue, setOutputValue] = useState("0");
-  const [inputType, setInputType] = useState("ثنائي");
-  const [outputType, setOutputType] = useState("عشري");
+  const [inputType, setInputType] = useState("ثنائي"); // Default input type
+  const [outputType, setOutputType] = useState(""); // Initially empty output type
   const [isNumValid, setIsNumValid] = useState(true);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    const regexDecimal = /^[0-1\b]+$/; // Only allow decimal numbers and backspace (\b)
-    const regexHex = /^[0-9A-Fa-f\b]+$/; // Only allow hexadecimal numbers and backspace (\b)
+    const regexBinary = /^[01\b]+$/; // Allow only binary numbers (0, 1, and backspace)
+    const regexHex = /^[0-9A-F\b]+$/; // Allow only hexadecimal numbers (0-9, A-F, and backspace)
+    const regexOctal = /^[0-7\b]+$/; // Allow only octal numbers (0-7 and backspace)
 
-    if (
-      value === "" ||
-      (inputType === "ثنائي" && regexDecimal.test(value)) ||
-      (inputType === "السادس عشري" && regexHex.test(value))
-    ) {
+    let isValidInput = true;
+
+    switch (inputType) {
+      case "ثنائي":
+        isValidInput = regexBinary.test(value);
+        break;
+      case "السادس عشري":
+        isValidInput = regexHex.test(value.toUpperCase()); // Convert to uppercase for correct validation
+        break;
+      case "ثماني":
+        isValidInput = regexOctal.test(value);
+        break;
+      default:
+      // No specific validation for other input types (e.g., decimal)
+    }
+
+    if (value === "" || isValidInput) {
       setIsNumValid(true);
       setInputValue(value);
     } else {
-      setIsNumValid(false); // Invalid input
+      setIsNumValid(false);
     }
   };
 
   const handleConversion = () => {
+    if (inputValue === "") {
+      return; // Handle empty input gracefully
+    }
+
+    const inputValueParsed = parseInt(inputValue, getInputBase()); // Ensure correct base conversion
     let result;
-    const inputValueParsed = parseInt(inputValue, getInputBase());
+
     switch (outputType) {
-      case "ثنائي":
+      case "ثنائي":
         result = inputValueParsed.toString(2);
         break;
       case "السادس عشري":
-        result = inputValueParsed.toString(16).toUpperCase();
+        result = inputValueParsed.toString(16).toUpperCase(); // Ensure uppercase output
         break;
       case "ثماني":
         result = inputValueParsed.toString(8);
@@ -44,12 +62,13 @@ function SM() {
       default:
         result = "";
     }
+
     setOutputValue(result);
   };
 
   const getInputBase = () => {
     switch (inputType) {
-      case "ثنائي":
+      case "ثنائي":
         return 2;
       case "السادس عشري":
         return 16;
@@ -58,13 +77,24 @@ function SM() {
       case "عشري":
         return 10;
       default:
-        return 10;
+        return 10; // Default base for other input types
     }
   };
 
-  const outputTypeOptions = ["ثنائي", "السادس عشري", "ثماني", "عشري"].filter(
-    (type) => type !== inputType
-  );
+  const [outputTypeOptions, setOutputTypeOptions] = useState([
+    "ثنائي",
+    "السادس عشري",
+    "ثماني",
+    "عشري",
+  ]);
+
+  useEffect(() => {
+    setOutputTypeOptions(
+      ["ثنائي", "السادس عشري", "ثماني", "عشري"].filter(
+        (type) => type !== inputType
+      )
+    );
+  }, [inputType]);
 
   const handleRemoveResult = () => {
     setOutputValue("0");
@@ -84,7 +114,7 @@ function SM() {
               className="border border-gray-500 rounded-md px-2 py-1 mr-2"
             >
               <option value="ثنائي">ثنائي</option>
-              <option value="السادس عشري">السادس عشر</option>
+              <option value="السادس عشري">السادس عشري</option>
               <option value="ثماني">ثماني</option>
               <option value="عشري">العشري</option>
             </select>
