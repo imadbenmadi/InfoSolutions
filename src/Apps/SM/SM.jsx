@@ -4,15 +4,15 @@ import PageTitle from "../../Components/Page_Title";
 function SM() {
   const [inputValue, setInputValue] = useState("");
   const [outputValue, setOutputValue] = useState("0");
-  const [inputType, setInputType] = useState("ثنائي"); // Default input type
-  const [outputType, setOutputType] = useState(""); // Initially empty output type
+  const [inputType, setInputType] = useState("ثنائي");
+  const [outputType, setOutputType] = useState("عشري");
   const [isNumValid, setIsNumValid] = useState(true);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    const regexBinary = /^[01\b]+$/; // Allow only binary numbers (0, 1, and backspace)
-    const regexHex = /^[0-9A-F\b]+$/; // Allow only hexadecimal numbers (0-9, A-F, and backspace)
-    const regexOctal = /^[0-7\b]+$/; // Allow only octal numbers (0-7 and backspace)
+    const regexBinary = /^[01\b]+$/;
+    const regexHex = /^[0-9A-F\b]+$/;
+    const regexOctal = /^[0-7\b]+$/;
 
     let isValidInput = true;
 
@@ -21,13 +21,12 @@ function SM() {
         isValidInput = regexBinary.test(value);
         break;
       case "السادس عشري":
-        isValidInput = regexHex.test(value.toUpperCase()); // Convert to uppercase for correct validation
+        isValidInput = regexHex.test(value.toUpperCase());
         break;
       case "ثماني":
         isValidInput = regexOctal.test(value);
         break;
       default:
-      // No specific validation for other input types (e.g., decimal)
     }
 
     if (value === "" || isValidInput) {
@@ -37,33 +36,44 @@ function SM() {
       setIsNumValid(false);
     }
   };
-
   const handleConversion = () => {
     if (inputValue === "") {
-      return; // Handle empty input gracefully
+      setOutputValue("");
+      return;
     }
 
-    const inputValueParsed = parseInt(inputValue, getInputBase()); // Ensure correct base conversion
-    let result;
+    try {
+      let inputValueParsed;
+      if (getInputBase() === 16) {
+        inputValueParsed = parseInt(inputValue, 16);
+      } else {
+        inputValueParsed = parseInt(inputValue, getInputBase());
+      }
 
-    switch (outputType) {
-      case "ثنائي":
-        result = inputValueParsed.toString(2);
-        break;
-      case "السادس عشري":
-        result = inputValueParsed.toString(16).toUpperCase(); // Ensure uppercase output
-        break;
-      case "ثماني":
-        result = inputValueParsed.toString(8);
-        break;
-      case "عشري":
-        result = inputValueParsed.toString(10);
-        break;
-      default:
-        result = "";
+      let result;
+      switch (outputType) {
+        case "ثنائي": // Binary
+          result = inputValueParsed.toString(2);
+          break;
+        case "السادس عشري": // Hexadecimal
+          result = inputValueParsed.toString(16).toUpperCase();
+          break;
+        case "ثماني": // Octal
+          result = inputValueParsed.toString(8);
+          break;
+        case "عشري": // Decimal
+          result = inputValueParsed.toString(10);
+          break;
+        default:
+          console.error("Invalid output type:", outputType);
+          setOutputValue("");
+      }
+
+      setOutputValue(result);
+    } catch (error) {
+      console.error("Conversion error:", error.message);
+      setOutputValue("");
     }
-
-    setOutputValue(result);
   };
 
   const getInputBase = () => {
