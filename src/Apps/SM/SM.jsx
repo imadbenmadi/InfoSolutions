@@ -4,19 +4,19 @@ import PageTitle from "../../Components/Page_Title";
 function SM() {
   const [inputValue, setInputValue] = useState("");
   const [outputValue, setOutputValue] = useState("0");
-  const [inputType, setInputType] = useState("binary");
-  const [outputType, setOutputType] = useState("decimal");
+  const [inputType, setInputType] = useState("ثنائي");
+  const [outputType, setOutputType] = useState("عشري");
   const [isNumValid, setIsNumValid] = useState(true);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    const regexDecimal = /^[0-9\b]+$/; // Only allow decimal numbers and backspace (\b)
+    const regexDecimal = /^[0-1\b]+$/; // Only allow decimal numbers and backspace (\b)
     const regexHex = /^[0-9A-Fa-f\b]+$/; // Only allow hexadecimal numbers and backspace (\b)
 
     if (
       value === "" ||
-      (inputType === "binary" && regexDecimal.test(value)) ||
-      (inputType === "hexadecimal" && regexHex.test(value))
+      (inputType === "ثنائي" && regexDecimal.test(value)) ||
+      (inputType === "السادس عشري" && regexHex.test(value))
     ) {
       setIsNumValid(true);
       setInputValue(value);
@@ -29,16 +29,16 @@ function SM() {
     let result;
     const inputValueParsed = parseInt(inputValue, getInputBase());
     switch (outputType) {
-      case "binary":
+      case "ثنائي":
         result = inputValueParsed.toString(2);
         break;
-      case "hexadecimal":
+      case "السادس عشري":
         result = inputValueParsed.toString(16).toUpperCase();
         break;
-      case "octal":
+      case "ثماني":
         result = inputValueParsed.toString(8);
         break;
-      case "decimal":
+      case "عشري":
         result = inputValueParsed.toString(10);
         break;
       default:
@@ -49,13 +49,13 @@ function SM() {
 
   const getInputBase = () => {
     switch (inputType) {
-      case "binary":
+      case "ثنائي":
         return 2;
-      case "hexadecimal":
+      case "السادس عشري":
         return 16;
-      case "octal":
+      case "ثماني":
         return 8;
-      case "decimal":
+      case "عشري":
         return 10;
       default:
         return 10;
