@@ -9,14 +9,15 @@ function SM() {
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    const regex = /^[0-9\b]+$/; // Only allow numbers and backspace (\b)
+    const regexDecimal = /^[0-9\b]+$/; // Only allow decimal numbers and backspace (\b)
+    const regexHex = /^[0-9A-Fa-f\b]+$/; // Only allow hexadecimal numbers and backspace (\b)
 
-    // If the input matches the regex pattern or it's an empty string, update the state
-    if (value === "" || regex.test(value)) {
+    // If the input matches the regex pattern for decimal or hexadecimal or it's an empty string, update the state
+    if (value === "" || regexDecimal.test(value) || regexHex.test(value)) {
       setIsNum(false);
       setInputValue(value);
     } else {
-      setIsNum(true);
+      setIsNum(true); // Invalid input
     }
   };
 
@@ -93,13 +94,13 @@ function SM() {
           placeholder="ادخل الرقم هنا"
         />
         {isNum && (
-          <div className="text-red-500 font-bold"> يجب ان يكون الرقم </div>
+          <div className="text-red-500 font-bold"> يجب ان يكون الرقم صالح</div>
         )}
         <div className="my-5 text-2xl text-center   font-bold ">
           {" "}
           النتيجة
-          <div className="min-w-[80%]  h-fit min-h-10 px-5  bg-slate-400">
-            {outputValue || ""}
+          <div className="min-w-[80%]  h-fit min-h-10 px-5  bg-slate-200">
+            {isNaN(outputValue) ? "0" : outputValue}
           </div>
         </div>
 

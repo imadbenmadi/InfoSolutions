@@ -4,6 +4,7 @@ import OurMember from "./Components/OurMember";
 import { useRef } from "react";
 import Feedback from "./Components/Feedback";
 import Footer from "./Components/Footer";
+import { useNavigate } from "react-router";
 
 function Home() {
   const ref = useRef(null);
@@ -18,6 +19,8 @@ function Home() {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
+
+  const nav = useNavigate();
 
   return (
     <motion.div
@@ -44,7 +47,7 @@ function Home() {
         <motion.div variants={itemVariants}>
           <CardModel shortNameModel="PS" modelNama="probability statistics" />
         </motion.div>
-        <motion.div variants={itemVariants}>
+        <motion.div onClick={() => nav("/SM")} variants={itemVariants}>
           <CardModel shortNameModel="SM" modelNama="Systéme Machine" />
         </motion.div>
         {/* <motion.div variants={itemVariants}>
