@@ -37,8 +37,7 @@ function Feedback() {
     >
       <Formik
         initialValues={{
-          firstName: "",
-          lastName: "",
+          FeedBackChoice: "",
           email: "",
           Feedback: "",
         }}
@@ -50,36 +49,30 @@ function Feedback() {
       >
         {({ errors, touched }) => (
           <Form>
-            <motion.div variants={itemVariants}>
+            <motion.div
+              className="flex justify-center items-center mb-3"
+              variants={itemVariants}
+            >
               <label
-                className=" font-semibold ml-6 md:text-xl "
-                htmlFor="lastName"
+                className=" w-[20%] font-semibold ml-6 md:text-xl "
+                htmlFor="FeedBackChoice"
               >
                 عنوان الاقتراح
               </label>
-              {/* <Field
-                id="lastName"
-                name="lastName"
-                type="select"
-                className={`block w-full p-4 focus:outline-none  text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
-                  errors.lastName && touched.lastName ? "border-red-500 " : ""
-                }`}
-                placeholder="Doe"
-              >
-                <option value="red">Red</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-              </Field> */}
+
               <Field
                 as="select"
-                name="color"
-                className={`block w-full p-4 focus:outline-none duration-300  px-5 text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
+                name="FeedBackChoice"
+                id="FeedBackChoice"
+                className={`block w-[80%] float-left  p-4 focus:outline-none duration-300  px-5 text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
                   errors.lastName && touched.lastName ? "border-red-500 " : ""
                 }`}
               >
-                <option value="red">Red</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
+                <option className=" float-left" value="probability statistics">
+                  probability statistics
+                </option>
+                <option value="Systéme Machine">Systéme Machine</option>
+                <option value="Programation Linéer">Programation Linéer</option>
               </Field>
               {errors.lastName && touched.lastName && (
                 <div className="text-red-500 mb-3 pl-4">{errors.lastName}</div>
@@ -119,7 +112,7 @@ function Feedback() {
                 className={`block w-full focus:outline-none  p-4 text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
                   errors.Feedback && touched.Feedback ? "border-red-500" : ""
                 }`}
-                placeholder="Give me your Feedback"
+                placeholder="اترك اقتراحك هنا"
               />
               {errors.Feedback && touched.Feedback && (
                 <div className="text-red-500 mb-3 pl-4">{errors.Feedback}</div>
@@ -134,7 +127,7 @@ function Feedback() {
                 className="bg-blue-500  mx-auto w-fit  hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded-full"
               >
                 {" "}
-                Submit
+                ارسل الاقتراح
               </button>
             </motion.div>
           </Form>
