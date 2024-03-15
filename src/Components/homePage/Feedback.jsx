@@ -37,8 +37,7 @@ function Feedback() {
     >
       <Formik
         initialValues={{
-          firstName: "",
-          lastName: "",
+          FeedBackChoice: "",
           email: "",
           Feedback: "",
         }}
@@ -53,26 +52,15 @@ function Feedback() {
             <motion.div variants={itemVariants}>
               <label
                 className=" font-semibold ml-6 md:text-xl "
-                htmlFor="lastName"
+                htmlFor="FeedBackChoice"
               >
                 عنوان الاقتراح
               </label>
-              {/* <Field
-                id="lastName"
-                name="lastName"
-                type="select"
-                className={`block w-full p-4 focus:outline-none  text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
-                  errors.lastName && touched.lastName ? "border-red-500 " : ""
-                }`}
-                placeholder="Doe"
-              >
-                <option value="red">Red</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-              </Field> */}
+
               <Field
                 as="select"
-                name="color"
+                name="FeedBackChoice"
+                id="FeedBackChoice"
                 className={`block w-full p-4 focus:outline-none duration-300  px-5 text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
                   errors.lastName && touched.lastName ? "border-red-500 " : ""
                 }`}
