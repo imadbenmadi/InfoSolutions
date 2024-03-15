@@ -83,10 +83,10 @@ function SM() {
               onChange={(e) => setInputType(e.target.value)}
               className="border border-gray-500 rounded-md px-2 py-1 mr-2"
             >
-              <option value="binary">ثنائي</option>
-              <option value="hexadecimal">السادس عشر</option>
-              <option value="octal">ثماني</option>
-              <option value="decimal">العشري</option>
+              <option value="ثنائي">ثنائي</option>
+              <option value="السادس عشري">السادس عشر</option>
+              <option value="ثماني">ثماني</option>
+              <option value="عشري">العشري</option>
             </select>
           </div>
           <div>
