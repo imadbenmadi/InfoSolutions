@@ -90,6 +90,7 @@ function SM() {
           className="border border-gray-500 rounded-md px-2 py-1 mb-2"
           pattern="[0-9]*" // Only allows numbers
           inputMode="numeric"
+          placeholder="ادخل الرقم هنا"
         />
         {isNum && (
           <div className="text-red-500 font-bold"> يجب ان يكون الرقم </div>
