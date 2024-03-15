@@ -21,6 +21,7 @@ function Home() {
 
   return (
     <motion.div
+      dir="rtl"
       ref={ref}
       className=""
       variants={containerVariants}

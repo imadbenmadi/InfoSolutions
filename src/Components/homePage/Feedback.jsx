@@ -53,39 +53,34 @@ function Feedback() {
             <motion.div variants={itemVariants}>
               <label
                 className=" font-semibold ml-6 md:text-xl "
-                htmlFor="firstName"
-              >
-                First Name
-              </label>
-              <Field
-                id="firstName"
-                name="firstName"
-                type="text"
-                className={`block w-full p-4 focus:outline-none  text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
-                  errors.firstName && touched.firstName ? "border-red-500" : ""
-                }`}
-                placeholder="Jane"
-              />
-              {errors.firstName && touched.firstName && (
-                <div className="text-red-500 mb-3 pl-4">{errors.firstName}</div>
-              )}
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <label
-                className=" font-semibold ml-6 md:text-xl "
                 htmlFor="lastName"
               >
-                Last Name
+                عنوان الاقتراح
               </label>
-              <Field
+              {/* <Field
                 id="lastName"
                 name="lastName"
-                type="text"
+                type="select"
                 className={`block w-full p-4 focus:outline-none  text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
                   errors.lastName && touched.lastName ? "border-red-500 " : ""
                 }`}
                 placeholder="Doe"
-              />
+              >
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+              </Field> */}
+              <Field
+                as="select"
+                name="color"
+                className={`block w-full p-4 focus:outline-none duration-300  px-5 text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
+                  errors.lastName && touched.lastName ? "border-red-500 " : ""
+                }`}
+              >
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+              </Field>
               {errors.lastName && touched.lastName && (
                 <div className="text-red-500 mb-3 pl-4">{errors.lastName}</div>
               )}
@@ -95,7 +90,7 @@ function Feedback() {
                 htmlFor="email"
                 className=" font-semibold ml-6 md:text-xl "
               >
-                Email
+                الايميل
               </label>
               <Field
                 id="email"
@@ -115,7 +110,7 @@ function Feedback() {
                 className=" font-semibold ml-6 md:text-xl "
                 htmlFor="Feedback"
               >
-                Feedback
+                الاقتراح
               </label>
               <Field
                 as="textarea"

@@ -21,8 +21,8 @@ function CardOfMember({
   };
   return (
     <motion.div
-      className=" cursor-pointer
-      mx-auto h-[30rem] flex flex-col rounded-lg justify-center pb-4 bg-white border border-gray-200 border-solid max-w-[300px] max-md:maw-w-full"
+      className=" text-center cursor-pointer
+      mx-auto h-[20rem] flex flex-col rounded-lg justify-center pb-4 bg-white border border-gray-200 border-solid max-w-[200px] max-md:maw-w-full"
       ref={ref}
       style={{ duration: 1, ease: "easeOut" }}
       transition={{ duration: 0.2 }}
@@ -45,8 +45,7 @@ function CardOfMember({
         <div className="mt-1 text-sm leading-5 text-gray-700 whitespace-nowrap">
           {skilles}
         </div>
-        <div className="mt-2 text-sm leading-6 text-gray-500">{dec}</div>
-        <div className="flex gap-4 pr-20 mt-6">
+        <div className="flex gap-4 mx-auto mt-6">
           <a href={linkFac}>
             <motion.img
               transition={{ duration: 0.2 }}

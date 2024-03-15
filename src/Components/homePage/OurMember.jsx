@@ -20,7 +20,7 @@ function OurMember() {
     <div className="py-5 my-5">
       <div className="font-bold mx-auto text-xl text-center py-5 md:p-10 md:text-3xl">
         {" "}
-        How Make This Platform ?{" "}
+        Who Make This Platform ?{" "}
       </div>
       <motion.div
         className="mx-auto grid max-w-4xl gap-5 grid-cols-2 max-lg:grid-cols-1 max-md:grid-cols-1"
