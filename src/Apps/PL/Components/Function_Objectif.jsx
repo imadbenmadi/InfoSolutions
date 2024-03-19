@@ -48,13 +48,13 @@ export default function Function_Objectif() {
     };
 
     return (
-        <>
+        <div className="  ">
             {/* Variables Des Décision */}
             <div className="flex flex-wrap items-center justify-center gap-4 mb-4">
                 <div className="text-xl font-semibold ">
                     Function Objectif :
                 </div>
-                <div className="flex flex-wrap items-center justify-center">
+                {/* <div className="flex flex-wrap items-center justify-center">
                     <div>Variables Des Décision :</div>
                     <div className="flex items-center border w-fit">
                         <button className="bg-gray-300 px-3" onClick={decreese}>
@@ -65,14 +65,14 @@ export default function Function_Objectif() {
                             +
                         </button>
                     </div>
-                </div>
+                </div> */}
             </div>
             {/* Function Objectif */}
-            <div className="md:flex md:justify-center">
-                <div className="flex  gap-3 ">
+            <div className="flex justify-center ">
+                <div className="flex  gap-2 md:gap-4 ">
                     {/* Min/Max */}
 
-                    <div className="flex gap-3 ">
+                    <div className="flex gap-1 ">
                         <div
                             className="cursor-pointer border border-gray-400 w-[50px] h-fit  text-center "
                             onClick={() => Toogle_Min_Max("MinMax")}
@@ -82,12 +82,12 @@ export default function Function_Objectif() {
                         <div>Z= </div>
                     </div>
 
-                    <div className="flex  flex-wrap gap-3 ">
+                    <div className="flex  flex-wrap gap-2 ">
                         {/* Variables */}
                         {variables.map((variable, index) => (
                             <div
                                 key={index}
-                                className="flex items-center justify-center w-[80px] md:w-[120px]  gap-1"
+                                className="flex items-center justify-center   gap-1"
                             >
                                 {/* PlusMinus */}
                                 {index !== 0 && (
@@ -100,7 +100,7 @@ export default function Function_Objectif() {
                                 )}
 
                                 <input
-                                    className="border border-gray-400 w-[30px] md:w-[50px] text-center"
+                                    className="border border-gray-400 w-[70px]  text-center"
                                     type="text"
                                     onChange={(e) =>
                                         handleInputChange(index, e.target.value)
@@ -114,6 +114,6 @@ export default function Function_Objectif() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
