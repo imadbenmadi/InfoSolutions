@@ -20,12 +20,12 @@ export default function Solution() {
                 <div>Symplexe</div>
             ) : null} */}
 
-            <div className=" flex items-center justify-around gap-6 w-full ">
+            <div className=" flex items-center justify-center md:justify-around gap-6 w-full text-lg md:text-xl ">
                 <div
                     className={`${
                         method === "sommets" ? " text-Blue" : " text-black"
                     }
-                       cursor-pointer text-xl font-bold`}
+                       cursor-pointer  font-bold`}
                     onClick={() => Toggle_Methode("sommets")}
                 >
                     recensement des sommets
@@ -34,7 +34,7 @@ export default function Solution() {
                     className={`${
                         method === "Droits" ? " text-Blue" : "  text-black"
                     }
-                             cursor-pointer text-xl font-bold`}
+                             cursor-pointer  font-bold`}
                     onClick={() => Toggle_Methode("Droits")}
                 >
                     Droit Parallèle

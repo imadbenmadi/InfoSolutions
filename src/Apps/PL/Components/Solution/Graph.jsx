@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { usePLContext } from "../../PLcontext";
-// import Graph_Methodes from "./Graph_Methodes";
 import Plot from "react-plotly.js";
 
 const Graph = () => {
@@ -34,7 +33,7 @@ const Graph = () => {
             xanchor: "center",
             yanchor: "top",
         },
-        margin: { l: 50, r: 0, t: 50, b: 20 },
+        margin: { l: 20, r: 20, t: 20, b: 20 },
         dragmode: "pan",
         mode: "pan2d",
         autosize: true,
@@ -139,7 +138,7 @@ const Graph = () => {
                 xanchor: "center",
                 yanchor: "top",
             },
-            margin: { l: 50, r: 0, t: 50, b: 20 },
+            margin: { l: 20, r: 20, t: 20, b: 20 },
             dragmode: "pan",
             mode: "pan2d",
             autosize: true,
@@ -150,7 +149,7 @@ const Graph = () => {
                 data={plotData}
                 layout={layout}
                 config={config}
-                style={{ width: "90%", margin: "auto", height: "100%" }}
+                style={{ width: "100%", height: "100%" }}
                 useResizeHandler={true}
                 autosize={true}
             />
@@ -163,12 +162,11 @@ const Graph = () => {
     };
 
     return (
-        <div className="mt-4">
-            
+        <div className="mt-4 mb-8">
             <div className="card mt-4">
                 <div
                     id="constraint-plot"
-                    className="card-body w-[90%] m-auto  h-[400px] md:h-[600px] relative border-[1px] border-[#ccc]"
+                    className="card-body w-full md:w-[90%] m-auto  h-[400px] md:h-[600px] relative border-[1px] border-[#ccc]"
                 >
                     {plotComponent}
                 </div>
