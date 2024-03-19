@@ -144,10 +144,10 @@ export default function MenuBar() {
 
             {/* Laptop Menu Bar */}
             {DesktopMenuVisible ? (
-                <div className="hidden md:block     bg-Blue w-[250px]   h-screen  shrink-0 ">
-                    <div className=" flex justify-end pr-2 pt-2">
+                <div className="hidden md:block     bg-Blue w-[250px]     shrink-0 ">
+                    <div className=" flex justify-end pr-2 pt-2 ">
                         <div
-                            className="w-[40px] h-[40px] text-xl bg-white text-Blue font-bold 
+                            className="w-[40px] h-[40px] text-xl bg-white  text-Blue font-bold 
                             rounded-bl-xl  rounded-tr-xl rounded-tl-sm  rounded-br-sm 
                             flex justify-center items-center  right-2 top-2 cursor-pointer"
                             onClick={toggleDesktopMenu}
@@ -204,7 +204,7 @@ export default function MenuBar() {
                 </div>
             ) : (
                 <div className=" hidden md:block   bg-Blue w-[70px]  h-screen shrink-0  ">
-                    <div className="flex flex-col gap-7 pt-4  text-white font-semibold fixed w-[70px] h-screen  overflow-y-auto flex-wrap custom-overflow ">
+                    <div className="flex flex-col gap-7 pt-4  text-white font-semibold bg-Blue fixed w-[70px] h-screen  overflow-y-auto flex-wrap custom-overflow ">
                         <div
                             className=" flex flex-col gap-1  w-full items-center cursor-pointer"
                             onClick={toggleDesktopMenu}
