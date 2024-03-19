@@ -49,12 +49,9 @@ function Feedback() {
       >
         {({ errors, touched }) => (
           <Form>
-            <motion.div
-              className="flex justify-center items-center mb-3"
-              variants={itemVariants}
-            >
+            <motion.div variants={itemVariants}>
               <label
-                className=" w-[20%] font-semibold ml-6 md:text-xl "
+                className=" font-semibold ml-6 md:text-xl "
                 htmlFor="FeedBackChoice"
               >
                 عنوان الاقتراح
@@ -64,11 +61,11 @@ function Feedback() {
                 as="select"
                 name="FeedBackChoice"
                 id="FeedBackChoice"
-                className={`block w-[80%] float-left  p-4 focus:outline-none duration-300  px-5 text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
+                className={`block w-full p-4 focus:outline-none duration-300  px-5 text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
                   errors.lastName && touched.lastName ? "border-red-500 " : ""
                 }`}
               >
-                <option className=" float-left" value="probability statistics">
+                <option value="probability statistics">
                   probability statistics
                 </option>
                 <option value="Systéme Machine">Systéme Machine</option>
@@ -112,7 +109,7 @@ function Feedback() {
                 className={`block w-full focus:outline-none  p-4 text-gray-900 border border-gray-300 rounded-3xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
                   errors.Feedback && touched.Feedback ? "border-red-500" : ""
                 }`}
-                placeholder="اترك اقتراحك هنا"
+                placeholder="Give me your Feedback"
               />
               {errors.Feedback && touched.Feedback && (
                 <div className="text-red-500 mb-3 pl-4">{errors.Feedback}</div>
@@ -127,7 +124,7 @@ function Feedback() {
                 className="bg-blue-500  mx-auto w-fit  hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded-full"
               >
                 {" "}
-                ارسل الاقتراح
+                Submit
               </button>
             </motion.div>
           </Form>
