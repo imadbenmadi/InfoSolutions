@@ -144,62 +144,64 @@ export default function MenuBar() {
 
             {/* Laptop Menu Bar */}
             {DesktopMenuVisible ? (
-                <div className="hidden md:block     bg-Blue w-[250px]     shrink-0 ">
-                    <div className=" flex justify-end pr-2 pt-2 ">
-                        <div
-                            className="w-[40px] h-[40px] text-xl bg-white  text-Blue font-bold 
+                <div className="hidden md:block   min-h-screen   bg-Blue w-[250px]     shrink-0 ">
+                    <div className=" fixed top-0 ">
+                        <div className=" flex justify-end pr-2 pt-2 ">
+                            <div
+                                className="w-[40px] h-[40px] text-xl bg-white  text-Blue font-bold 
                             rounded-bl-xl  rounded-tr-xl rounded-tl-sm  rounded-br-sm 
                             flex justify-center items-center  right-2 top-2 cursor-pointer"
-                            onClick={toggleDesktopMenu}
-                        >
-                            <IoClose className=" font-bold text-2xl" />
+                                onClick={toggleDesktopMenu}
+                            >
+                                <IoClose className=" font-bold text-2xl" />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className=" pt-6 w-[250px] fixed flex flex-col gap-7 text-white font-semibold custom-overflow overflow-auto">
-                        <Link
-                            className="ml-3 flex items-center gap-2 text-xl"
-                            onClick={toggleDesktopMenu}
-                            to={"/"}
-                        >
-                            <div className=" bg-white text-Blue text-xl p-2 rounded-md">
-                                <FaHome />
-                            </div>
-                            Home
-                        </Link>
-                        <div className=" w-full h-1 bg-white"></div>
-                        <Link
-                            className=" ml-3 flex items-center gap-2 text-xl"
-                            to={"/PL"}
-                            onClick={toggleDesktopMenu}
-                        >
-                            <div className="font-bold bg-white text-Blue text-xl p-2 rounded-md">
-                                PL
-                            </div>
-                            Programation Linéer
-                        </Link>
-                        <Link
-                            className="ml-3 flex items-center gap-2 text-xl"
-                            to={"/PS"}
-                            onClick={toggleDesktopMenu}
-                        >
-                            <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
-                                PS
-                            </div>
-                            Propabilité Statistique
-                        </Link>
+                        <div className=" pt-6 w-[250px]  flex flex-col gap-7 text-white font-semibold custom-overflow overflow-auto">
+                            <Link
+                                className="ml-3 flex items-center gap-2 text-xl"
+                                onClick={toggleDesktopMenu}
+                                to={"/"}
+                            >
+                                <div className=" bg-white text-Blue text-xl p-2 rounded-md">
+                                    <FaHome />
+                                </div>
+                                Home
+                            </Link>
+                            <div className=" w-full h-1 bg-white"></div>
+                            <Link
+                                className=" ml-3 flex items-center gap-2 text-xl"
+                                to={"/PL"}
+                                onClick={toggleDesktopMenu}
+                            >
+                                <div className="font-bold bg-white text-Blue text-xl p-2 rounded-md">
+                                    PL
+                                </div>
+                                Programation Linéer
+                            </Link>
+                            <Link
+                                className="ml-3 flex items-center gap-2 text-xl"
+                                to={"/PS"}
+                                onClick={toggleDesktopMenu}
+                            >
+                                <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
+                                    PS
+                                </div>
+                                Propabilité Statistique
+                            </Link>
 
-                        <div className=" w-full h-1 bg-white "></div>
-                        <Link
-                            className="ml-3 flex items-center gap-2 text-xl"
-                            to={"/SM"}
-                            onClick={toggleDesktopMenu}
-                        >
-                            <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
-                                SM
-                            </div>
-                            Systéme Machine
-                        </Link>
+                            <div className=" w-full h-1 bg-white "></div>
+                            <Link
+                                className="ml-3 flex items-center gap-2 text-xl"
+                                to={"/SM"}
+                                onClick={toggleDesktopMenu}
+                            >
+                                <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
+                                    SM
+                                </div>
+                                Systéme Machine
+                            </Link>
+                        </div>
                     </div>
                 </div>
             ) : (

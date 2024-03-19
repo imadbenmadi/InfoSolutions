@@ -3,6 +3,7 @@ import Page_Title from "../../Components/Page_Title";
 import { PLProvider } from "./PLcontext";
 import Function_Objectif from "./Components/Function_Objectif";
 import Constraints from "./Components/Constraints";
+import Solution from "./Components/Solution";
 function PL() {
     return (
         <div>
@@ -11,6 +12,7 @@ function PL() {
                 <Function_Objectif />
                 <div className="w-full h-[1px] my-4 bg-gray-300"></div>
                 <Constraints />
+                <Solution />
             </PLProvider>
         </div>
     );
