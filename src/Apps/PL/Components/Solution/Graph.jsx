@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { usePLContext } from "../PLcontext";
+import { usePLContext } from "../../PLcontext";
 // import Graph_Methodes from "./Graph_Methodes";
 import Plot from "react-plotly.js";
 
@@ -164,26 +164,7 @@ const Graph = () => {
 
     return (
         <div className="mt-4">
-            {/* <div className=" flex items-center justify-around gap-6 w-full ">
-                <div
-                    className={`${
-                        method === "sommets" ? " text-Blue" : " text-black"
-                    }
-                       cursor-pointer text-xl font-bold`}
-                    onClick={() => Toggle_Methode("sommets")}
-                >
-                    recensement des sommets
-                </div>
-                <div
-                    className={`${
-                        method === "Droits" ? " text-Blue" : "  text-black"
-                    }
-                             cursor-pointer text-xl font-bold`}
-                    onClick={() => Toggle_Methode("Droits")}
-                >
-                    Droit Parallèle
-                </div>
-            </div> */}
+            
             <div className="card mt-4">
                 <div
                     id="constraint-plot"
@@ -197,4 +178,3 @@ const Graph = () => {
 };
 
 export default Graph;
-

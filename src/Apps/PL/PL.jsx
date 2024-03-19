@@ -3,7 +3,7 @@ import Page_Title from "../../Components/Page_Title";
 import { PLProvider } from "./PLcontext";
 import Function_Objectif from "./Components/Function_Objectif";
 import Constraints from "./Components/Constraints";
-import Solution from "./Components/Solution";
+import Solution from "./Components/Solution/Solution";
 function PL() {
     return (
         <div>
