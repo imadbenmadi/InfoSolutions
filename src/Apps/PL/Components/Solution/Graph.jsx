@@ -44,6 +44,7 @@ const Graph = () => {
         const plotData = Constraints.map((constraint, index) => {
             const { PlusMinus1, PlusMinus2, Value, X1, X2, Operatore } =
                 constraint;
+            console.log(constraint);
 
             const yValues =
                 PlusMinus2 === "+"

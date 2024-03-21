@@ -13,7 +13,7 @@ export default function App() {
         <div className="w-full flex flex-col items-center ">
           <Header />
           <div className="w-full">
-            <Outlet dir="rtl" />
+            <Outlet dir="rtl"  />
           </div>
         </div>
       </div>

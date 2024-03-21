@@ -7,7 +7,7 @@ import { IoClose } from "react-icons/io5";
 
 export default function MenuBar() {
     const [MobileMenuVisible, setMobileMenuVisibility] = useState(false);
-    const [DesktopMenuVisible, setDesktopMenuVisible] = useState(false);
+    const [DesktopMenuVisible, setDesktopMenuVisible] = useState(true);
     const toggleMobileMenu = () => {
         setMobileMenuVisibility(!MobileMenuVisible);
     };
