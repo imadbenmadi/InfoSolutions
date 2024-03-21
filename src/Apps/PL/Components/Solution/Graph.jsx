@@ -14,19 +14,36 @@ const Graph = () => {
 
             const yValues =
                 PlusMinus2 === "+"
-                    ? [
-                          (Number(Value) - Number(X1) * 0) / Number(X2),
-                          (Number(Value) - Number(X1) * 100) / Number(X2),
-                      ]
+                    ? Number(X2) == 0
+                        ? [Number(X1), Number(X1)]
+                        : [
+                              (Number(Value) - Number(X1) * 0) / Number(X2),
+                              (Number(Value) - Number(X1) * 100) / Number(X2),
+                          ]
                     : PlusMinus2 === "-"
-                    ? [
-                          (Number(Value) - Number(X1) * 0) / (-1 * Number(X2)),
-                          (Number(Value) - Number(X1) * 100) /
-                              (-1 * Number(X2)),
-                      ]
+                    ? Number(X2) == 0
+                        ? [Number(X1), Number(X1)]
+                        : [
+                              (Number(Value) - Number(X1) * 0) /
+                                  (-1 * Number(X2)),
+                              (Number(Value) - Number(X1) * 100) /
+                                  (-1 * Number(X2)),
+                          ]
                     : null;
-            // console.log(X1 + " " + X2 + " " + Value + " " + PlusMinus1 + " " + PlusMinus2 + " " + Operatore);
-            // console.log(yValues);
+            console.log(
+                X1 +
+                    " " +
+                    X2 +
+                    " " +
+                    Value +
+                    " " +
+                    PlusMinus1 +
+                    " " +
+                    PlusMinus2 +
+                    " " +
+                    Operatore
+            );
+            console.log(yValues);
             const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
             const shadingHeight = 5;
             const borders =
