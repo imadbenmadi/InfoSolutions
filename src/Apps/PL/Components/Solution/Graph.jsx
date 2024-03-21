@@ -16,17 +16,29 @@ const Graph = () => {
                 PlusMinus2 === "+"
                     ? Number(X2) == 0
                         ? [Number(X1), Number(X1)]
+                        : Number(X1) == 0
+                        ? [
+                              Number(Value) / Number(X2),
+                              Number(Value) / Number(X2),
+                          ]
                         : [
-                              (Number(Value) - Number(X1) * 0) / Number(X2),
-                              (Number(Value) - Number(X1) * 100) / Number(X2),
+                              Number(Value) / Number(X2),
+                              (Number(Value) -
+                                  Number(X1) * (Number(Value) / Number(X1))) /
+                                  Number(X2),
                           ]
                     : PlusMinus2 === "-"
                     ? Number(X2) == 0
                         ? [Number(X1), Number(X1)]
+                        : Number(X1) == 0
+                        ? [
+                              Number(Value) / Number(X2),
+                              Number(Value) / Number(X2),
+                          ]
                         : [
-                              (Number(Value) - Number(X1) * 0) /
-                                  (-1 * Number(X2)),
-                              (Number(Value) - Number(X1) * 100) /
+                              Number(Value) / (-1 * Number(X2)),
+                              (Number(Value) -
+                                  Number(X1) * (Number(Value) / Number(X1))) /
                                   (-1 * Number(X2)),
                           ]
                     : null;
@@ -43,27 +55,31 @@ const Graph = () => {
             //         " " +
             //         Operatore
             // );
-            // console.log(yValues);
+
+            console.log(
+                Number(Value) - Number(X1) * (Number(Value) / Number(X1))
+            );
+            console.log(yValues);
             const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
             const shadingHeight = 5;
-            const borders =
-                Operatore === ">="
-                    ? [
-                          adjustedYValues[0] + shadingHeight,
-                          adjustedYValues[1] + shadingHeight,
-                      ]
-                    : Operatore === "<="
-                    ? [
-                          adjustedYValues[0] - shadingHeight,
-                          adjustedYValues[1] - shadingHeight,
-                      ]
-                    : null;
-
+            // const borders =
+            //     Operatore === ">="
+            //         ? [
+            //               adjustedYValues[0] + shadingHeight,
+            //               adjustedYValues[1] + shadingHeight,
+            //           ]
+            //         : Operatore === "<="
+            //         ? [
+            //               adjustedYValues[0] - shadingHeight,
+            //               adjustedYValues[1] - shadingHeight,
+            //           ]
+            //         : null;
+            const Xaxe = Number(X1) == 0 ? 10 : Number(Value) / Number(X1) || 10;
             return {
                 type: "scatter",
                 mode: "lines",
                 name: `Constraint ${index + 1}`,
-                x: [0, 10],
+                x: [0, Xaxe],
                 y: adjustedYValues,
             };
         });
