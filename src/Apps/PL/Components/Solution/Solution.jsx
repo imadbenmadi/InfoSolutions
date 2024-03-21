@@ -20,7 +20,7 @@ export default function Solution() {
                 <div>Symplexe</div>
             ) : null} */}
 
-            <div className=" flex items-center justify-center md:justify-around gap-6 w-full text-lg md:text-xl ">
+            {/* <div className=" flex items-center justify-center md:justify-around gap-6 w-full text-lg md:text-xl ">
                 <div
                     className={`${
                         method === "sommets" ? " text-Blue" : " text-black"
@@ -39,7 +39,7 @@ export default function Solution() {
                 >
                     Droit Parallèle
                 </div>
-            </div>
+            </div> */}
             <Graph method={method} setMethod={setMethod} />
         </div>
     );
