@@ -73,12 +73,12 @@ const Graph = () => {
                 // Set the step for the x-axis
             },
             yaxis: {
-                // range: [0, 50],
+                range: [0, 10],
             },
             showlegend: true,
             legend: {
                 x: 0.1,
-                y: 1.1,
+                y: 1.2,
                 xanchor: "center",
                 yanchor: "top",
             },
