@@ -106,7 +106,7 @@ export default function Function_Objectif() {
                                         handleInputChange(index, e.target.value)
                                     }
                                     placeholder="0"
-                                    value={variable.input}
+                                    // value={variable.input}
                                 />
                                 <div>{variable.VariableName}</div>
                             </div>
