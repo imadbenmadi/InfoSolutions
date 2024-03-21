@@ -30,20 +30,20 @@ const Graph = () => {
                                   (-1 * Number(X2)),
                           ]
                     : null;
-            console.log(
-                X1 +
-                    " " +
-                    X2 +
-                    " " +
-                    Value +
-                    " " +
-                    PlusMinus1 +
-                    " " +
-                    PlusMinus2 +
-                    " " +
-                    Operatore
-            );
-            console.log(yValues);
+            // console.log(
+            //     X1 +
+            //         " " +
+            //         X2 +
+            //         " " +
+            //         Value +
+            //         " " +
+            //         PlusMinus1 +
+            //         " " +
+            //         PlusMinus2 +
+            //         " " +
+            //         Operatore
+            // );
+            // console.log(yValues);
             const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
             const shadingHeight = 5;
             const borders =
@@ -73,7 +73,7 @@ const Graph = () => {
                 // Set the step for the x-axis
             },
             yaxis: {
-                range: [0, 50],
+                // range: [0, 50],
             },
             showlegend: true,
             legend: {
