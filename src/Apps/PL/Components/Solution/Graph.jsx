@@ -5,60 +5,28 @@ import Plot from "react-plotly.js";
 const Graph = () => {
     const { Constraints } = usePLContext();
     const [plotComponent, setPlotComponent] = useState(null);
-    const [shape, Setshape] = useState({
-        type: "rect",
-        xref: "x",
-        yref: "paper",
-        x0: 0,
-        x1: 0,
-        y0: 0,
-        y1: 0,
-        fillcolor: "#d3d3d3",
-        opacity: 0.2,
-        line: {
-            width: 0,
-        },
-    });
-    const [layout, setLayout] = useState({
-        xaxis: {
-            // Set the step for the x-axis
-        },
-        yaxis: {
-            range: [0, 50],
-        },
-        showlegend: true,
-        legend: {
-            x: 0.1,
-            y: 1.1,
-            xanchor: "center",
-            yanchor: "top",
-        },
-        margin: { l: 20, r: 20, t: 20, b: 20 },
-        dragmode: "pan",
-        mode: "pan2d",
-        autosize: true,
-        responsive: true,
-    });
+
     useEffect(() => {
         // Calculate constraints plot data
         const plotData = Constraints.map((constraint, index) => {
             const { PlusMinus1, PlusMinus2, Value, X1, X2, Operatore } =
                 constraint;
-            console.log(constraint);
 
             const yValues =
                 PlusMinus2 === "+"
                     ? [
-                          Number(Value) - (X1 * 0 + X2 * 0),
-                          Number(Value) - (X1 * 100 + X2 * 100),
+                          (Number(Value) - Number(X1) * 0) / Number(X2),
+                          (Number(Value) - Number(X1) * 100) / Number(X2),
                       ]
                     : PlusMinus2 === "-"
                     ? [
-                          Number(Value) - (X1 * 0 - X2 * 0),
-                          Number(Value) - (X1 * 100 - X2 * 100),
+                          (Number(Value) - Number(X1) * 0) / (-1 * Number(X2)),
+                          (Number(Value) - Number(X1) * 100) /
+                              (-1 * Number(X2)),
                       ]
                     : null;
-
+            // console.log(X1 + " " + X2 + " " + Value + " " + PlusMinus1 + " " + PlusMinus2 + " " + Operatore);
+            // console.log(yValues);
             const adjustedYValues = yValues.map((y) => (y < 0 ? 0 : y));
             const shadingHeight = 5;
             const borders =
@@ -73,20 +41,6 @@ const Graph = () => {
                           adjustedYValues[1] - shadingHeight,
                       ]
                     : null;
-            Setshape({
-                type: "rect",
-                xref: "x",
-                yref: "paper",
-                x0: 0,
-                x1: 10,
-                y0: borders[0],
-                y1: borders[1],
-                fillcolor: "#d3d3d3",
-                opacity: 0.2,
-                line: {
-                    width: 0,
-                },
-            });
 
             return {
                 type: "scatter",
@@ -96,35 +50,7 @@ const Graph = () => {
                 y: adjustedYValues,
             };
         });
-        // plotData.push(shape);
-        // console.log(shape);
-        // const Data = [plotData, shape];
-        const config = {
-            displayModeBar: true,
-            modeBarButtons: [
-                ["pan2d"],
-                ["zoomIn2d"],
-                ["zoomOut2d"],
-                ["resetScale2d"],
-                ["toImage"],
-            ],
 
-            displaylogo: false,
-            responsive: true,
-            editable: false,
-            showTips: false,
-            modeBarButtonsToRemove: ["select2d", "lasso2d"],
-            toImageButtonOptions: {
-                format: "png",
-                filename: "PL",
-                height: 500,
-                width: 700,
-            },
-            modeBar: {
-                // Adjust the size of the mode bar buttons
-                size: 50,
-            },
-        };
         const layout = {
             xaxis: {
                 // Set the step for the x-axis
@@ -145,6 +71,33 @@ const Graph = () => {
             autosize: true,
             responsive: true,
         };
+
+        const config = {
+            displayModeBar: true,
+            modeBarButtons: [
+                ["pan2d"],
+                ["zoomIn2d"],
+                ["zoomOut2d"],
+                ["resetScale2d"],
+                ["toImage"],
+            ],
+            displaylogo: false,
+            responsive: true,
+            editable: false,
+            showTips: false,
+            modeBarButtonsToRemove: ["select2d", "lasso2d"],
+            toImageButtonOptions: {
+                format: "png",
+                filename: "PL",
+                height: 500,
+                width: 700,
+            },
+            modeBar: {
+                // Adjust the size of the mode bar buttons
+                size: 50,
+            },
+        };
+
         const plot = (
             <Plot
                 data={plotData}

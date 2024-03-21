@@ -77,16 +77,24 @@ export default function Constraints() {
     };
 
     const handleInputChange = (index, field, value) => {
-        if (/^-?\d*\.?\d*$/.test(value) || value === "") {
+        if (value === "") {
+            value = 0;
+        }
+        if (/^-?\d*\.?\d*$/.test(value)) {
             const updatedConstraints = [...constraints];
             updatedConstraints[index] = {
                 ...updatedConstraints[index],
                 [field]: value,
             };
+            SetConstraints(updatedConstraints);
             setConstraints(updatedConstraints);
+            // console.log(updatedConstraints);
+            // console.log(constraints);
         }
     };
-
+    // useEffect(() => {
+    //     console.log("Updated Constraints:", constraints);
+    // }, [constraints]);
     return (
         <>
             <div className=" flex items-start justify-center gap-10">
