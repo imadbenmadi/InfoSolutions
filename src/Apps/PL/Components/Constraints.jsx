@@ -167,11 +167,11 @@ export default function Constraints() {
                                                         name={`X${
                                                             i + 1
                                                         }-${index}`}
-                                                        value={
-                                                            constraint[
-                                                                `X${i + 1}`
-                                                            ]
-                                                        }
+                                                        // value={
+                                                        //     constraint[
+                                                        //         `X${i + 1}`
+                                                        //     ]
+                                                        // }
                                                         onChange={(e) =>
                                                             handleInputChange(
                                                                 index,
@@ -207,7 +207,7 @@ export default function Constraints() {
                                             type="text"
                                             id={`Value-${index}`}
                                             name={`Value-${index}`}
-                                            value={constraint.Value}
+                                            // value={constraint.Value}
                                             onChange={(e) =>
                                                 handleInputChange(
                                                     index,
