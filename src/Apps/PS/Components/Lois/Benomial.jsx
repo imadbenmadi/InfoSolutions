@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Loi_Header from "../Loi_Header";
 
-function Benomial() {
-  return (
-    <div>Benomial</div>
-  )
+function Poissont() {
+    return (
+        <div>
+            <Loi_Header Name="Poissont" />
+        </div>
+    );
 }
 
-export default Benomial
+export default Poissont;

@@ -1,9 +1,12 @@
 import React from 'react'
+import Loi_Header from "../Loi_Header";
 
 function Poissont() {
   return (
-    <div>Poissont</div>
-  )
+      <div>
+          <Loi_Header Name={Poissont} />
+      </div>
+  );
 }
 
 export default Poissont
