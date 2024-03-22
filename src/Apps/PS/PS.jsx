@@ -1,6 +1,8 @@
 import React from 'react'
 import Page_Title from '../../Components/Page_Title'
 import { Link } from 'react-router-dom';
+import { FaChevronRight } from "react-icons/fa";
+
 function PS() {
   return (
       <div>
@@ -10,40 +12,46 @@ function PS() {
           </div>
           <div className=" flex flex-col justify-center items-center gap-8  my-6 ">
               <Link
-                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold"
+                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold flex justify-between items-center text-gray-800"
                   to={"/PS/Bernuit"}
               >
-                  Loi de Bernuit
+                  <span className=" ml-4 md:ml-12">Loi de Bernuit</span>
+                  <FaChevronRight className=" ml-4 md:mr-12" />
               </Link>
               <Link
-                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold"
+                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold flex justify-between items-center text-gray-800 "
                   to={"/PS/Benomial"}
               >
-                  Loi Benomial
+                  <span className=" ml-4 md:ml-12">Loi Benomial</span>
+                  <FaChevronRight className=" ml-4 md:mr-12" />
               </Link>
               <Link
-                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold"
+                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold flex justify-between items-center text-gray-800"
                   to={"/PS/Uniforme"}
               >
-                  Loi Uniforme Discret
+                  <span className=" ml-4 md:ml-12">Loi Uniforme Discret</span>
+                  <FaChevronRight className=" ml-4 md:mr-12" />
               </Link>
               <Link
-                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold"
+                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold flex justify-between items-center text-gray-800"
                   to={"/PS/Hyper-Geomitrique"}
               >
-                  Loi Hyper Geomitrique
+                  <span className=" ml-4 md:ml-12">Loi Hyper Geomitrique</span>
+                  <FaChevronRight className=" ml-4 md:mr-12" />
               </Link>
               <Link
-                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold"
+                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold flex justify-between items-center text-gray-800"
                   to={"/PS/Geomitrique"}
               >
-                  Loi Geomitrique
+                  <span className=" ml-4 md:ml-12">Loi Geomitrique</span>
+                  <FaChevronRight className=" ml-4 md:mr-12" />
               </Link>
               <Link
-                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold"
+                  className=" w-[80%] m-auto bg-gray-200 p-2 md:p-5 text-xl md:text-3xl rounded-lg font-semibold flex justify-between items-center text-gray-800"
                   to={"/PS/Poissont"}
               >
-                  Loi de Poissont
+                  <span className=" ml-4 md:ml-12"> Loi de Poissont</span>
+                  <FaChevronRight className=" ml-4 md:mr-12" />
               </Link>
           </div>
       </div>
