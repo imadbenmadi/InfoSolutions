@@ -8,7 +8,7 @@ function CardModel({ color, shortNameModel, modelNama }) {
       className=" cursor-pointer max-md:my-5 md:w-[80%] w-[70%] mx-auto md:h-56 h-48  shadow-lg  flex  items-center flex-col rounded-lg bg-slate-100  px-4 py-4 text-2xl "
     >
       <div
-        className={`bg-[#3067b1] text-2xl  text-white w-10 flex justify-center items-center  px-8 py-7 h-10 rounded-ss-xl rounded-ee-xl `}
+        className={`bg-[#3067b1] text-2xl  text-white w-10 flex justify-center items-center  px-8 py-7 h-10 rounded-xl   font-semibold `}
       >
         {shortNameModel}
       </div>
