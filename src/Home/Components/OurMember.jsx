@@ -3,6 +3,8 @@ import { motion, useInView } from "framer-motion";
 import CardOfMember from "./CardOfMember";
 import imgSalah from "../../assets/salah.jpg";
 import imgImad from "../../assets/imad.jpg";
+import imgakram from "../../assets/akram.jpg";
+import imgchaker from "../../assets/chaker.jpg";
 
 function OurMember() {
   const ref = useRef(null);
@@ -23,7 +25,7 @@ function OurMember() {
         من هم مبرمجون هذا الموقع ?{" "}
       </div>
       <motion.div
-        className="mx-auto grid max-w-4xl gap-5 grid-cols-2 max-lg:grid-cols-1 max-md:grid-cols-1"
+        className="mx-auto grid max-w-4xl gap-5 grid-cols-4 max-lg:grid-cols-2 max-md:grid-cols-1"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -48,6 +50,28 @@ function OurMember() {
             linkInsta={"https://www.instagram.com/_imad_benmadi_/"}
             linkGit={"https://github.com/imadbenmadi"}
             linkFac={"https://www.facebook.com/profile.php?id=100029091319970"}
+          />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <CardOfMember
+            image={imgchaker}
+            fullName="chaker Tamar"
+            skilles="mobile developer"
+            dec="I'm thrilled to be working on this website dedicated to helping people tackle a wide range of tasks and enriching their learning journey"
+            linkInsta={""}
+            linkGit={""}
+            linkFac={""}
+          />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <CardOfMember
+            image={imgakram}
+            fullName="AKRAM"
+            skilles="mobile developer"
+            dec="I'm thrilled to be working on this website dedicated to helping people tackle a wide range of tasks and enriching their learning journey"
+            linkInsta={""}
+            linkGit={""}
+            linkFac={""}
           />
         </motion.div>
       </motion.div>

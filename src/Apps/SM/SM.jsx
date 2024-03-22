@@ -3,7 +3,7 @@ import PageTitle from "../../Components/Page_Title";
 
 function SM() {
   const [inputValue, setInputValue] = useState("");
-  const [outputValue, setOutputValue] = useState("0");
+  const [outputValue, setOutputValue] = useState(0);
   const [inputType, setInputType] = useState("ثنائي");
   const [outputType, setOutputType] = useState("عشري");
   const [isNumValid, setIsNumValid] = useState(true);
@@ -13,6 +13,7 @@ function SM() {
     const regexBinary = /^[01\b]+$/;
     const regexHex = /^[0-9A-F\b]+$/;
     const regexOctal = /^[0-7\b]+$/;
+    const regexDecimal = /^[0-9\b]+$/;
 
     let isValidInput = true;
 
@@ -25,6 +26,9 @@ function SM() {
         break;
       case "ثماني":
         isValidInput = regexOctal.test(value);
+        break;
+      case "عشري":
+        isValidInput = regexDecimal.test(value);
         break;
       default:
     }
@@ -45,7 +49,7 @@ function SM() {
     try {
       let inputValueParsed;
       if (getInputBase() === 16) {
-        inputValueParsed = parseInt(inputValue, 16);
+        inputValueParsed = parseInt("0x" + inputValue, 16);
       } else {
         inputValueParsed = parseInt(inputValue, getInputBase());
       }
@@ -155,7 +159,7 @@ function SM() {
         <div className="my-5 text-2xl text-center font-bold">
           النتيجة
           <div className="min-w-[80%] h-fit min-h-10 px-5 bg-slate-200">
-            {isNaN(outputValue) ? "0" : outputValue}
+            {outputValue}
           </div>
         </div>
         <div className="flex max-md:w-[80%] max-md:flex-col gap-2">
