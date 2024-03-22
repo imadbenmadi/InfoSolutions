@@ -15,25 +15,35 @@ function Bernuit() {
     };
 
     return (
-        <div>
+        <div className="container mx-auto mt-8 px-4">
             <Loi_Header Name="Bernoulli Distribution" />
-            <div>
-                <label htmlFor="inputX">Enter x value (0 or 1): </label>
-                <input
-                    type="number"
-                    id="inputX"
-                    min="0"
-                    max="1"
-                    defaultValue="0"
-                    className=" border"
-                />
-                <button onClick={calculateProbability}>Calculate</button>
-            </div>
-            {result !== null && (
+            <div className="flex flex-col gap-5 justify-center items-center">
+                <label htmlFor="inputX" className="mr-2">
+                    Enter x value (0 or 1):
+                </label>
+
                 <div>
-                    <p>Probability: {result}</p>
+                    <input
+                        type="number"
+                        id="inputX"
+                        min="0"
+                        max="1"
+                        defaultValue="0"
+                        className="border p-2 rounded"
+                    />
+                    <button
+                        onClick={calculateProbability}
+                        className="ml-2 bg-blue-500 text-white px-4 py-2 rounded"
+                    >
+                        Calculate
+                    </button>
+                    {result !== null && (
+                        <div className="mt-4">
+                            <p>Probability: {result}</p>
+                        </div>
+                    )}
                 </div>
-            )}
+            </div>
         </div>
     );
 }
