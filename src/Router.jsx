@@ -28,6 +28,7 @@ const routes = createBrowserRouter([
             { path: "/PS/Uniforme", element: <Uniforme /> },
             { path: "/PS/Hyper-Geomitrique", element: <HyperGeomitrique /> },
             { path: "/PS/Geomitrique", element: <Geomitrique /> },
+            { path: "/PS/Poissont", element: <Poissont /> },
             // { path: "/PS/Poissont", element: <Poissont /> },
 
             {
