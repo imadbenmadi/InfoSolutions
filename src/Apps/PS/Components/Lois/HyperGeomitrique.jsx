@@ -150,10 +150,16 @@ function Hypergeometric() {
                 </button>
             </div>
             {result !== null && (
-                <div className="w-[90%] md:w-[30%] m-auto mt-4 md:mt-12 text-lg md:text-xl font-semibold">
-                    <p>P(X) = {result}</p>
-                    <p>E(X) = {expectedValue}</p>
-                    <p>V(X) = {variance}</p>
+                <div className="w-fit m-auto mt-4 text-lg md:text-xl font-semibold">
+                    <p>
+                        P(X) = <b className=" text-gray-500">{result}</b>
+                    </p>
+                    <p>
+                        E(X) = <b className=" text-gray-500">{expectedValue}</b>
+                    </p>
+                    <p>
+                        V(X) = <b className=" text-gray-500">{variance}</b>
+                    </p>
                 </div>
             )}
         </div>

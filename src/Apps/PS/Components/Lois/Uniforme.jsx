@@ -25,7 +25,7 @@ function UniformDiscrete() {
     };
 
     return (
-        <div className="container mx-auto my-4 px-4 min-h-[130vh] md:min-h-screen ">
+        <div className="container mx-auto my-4 px-4 min-h-[130vh] md:min-h-[90vh] ">
             <Loi_Header Name="Uniform Discrete Distribution" />
             <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto text-lg">
                 <div className=" text-end pb-4">
@@ -112,10 +112,16 @@ function UniformDiscrete() {
                 </button>
             </div>
             {result !== null && (
-                <div className="w-[90%] md:w-[30%] m-auto mt-4 md:mt-12 text-lg md:text-xl font-semibold">
-                    <p> P(X) = {result}</p>
-                    <p>E(X) = {expectedValue}</p>
-                    <p>V(X) = {variance}</p>
+                <div className="w-fit m-auto mt-4 text-lg md:text-xl font-semibold">
+                    <p>
+                        P(X) = <b className=" text-gray-500">{result}</b>
+                    </p>
+                    <p>
+                        E(X) = <b className=" text-gray-500">{expectedValue}</b>
+                    </p>
+                    <p>
+                        V(X) = <b className=" text-gray-500">{variance}</b>
+                    </p>
                 </div>
             )}
         </div>
