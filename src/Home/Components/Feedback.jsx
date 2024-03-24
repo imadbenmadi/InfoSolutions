@@ -32,7 +32,7 @@ function Feedback() {
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className=" w-full  md:px-32 p-5   duration-500"
+            className=" w-full  md:px-16 p-5   duration-500"
         >
             <Formik
                 initialValues={{

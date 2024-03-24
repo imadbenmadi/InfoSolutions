@@ -12,7 +12,7 @@ function CardModel({ color, shortNameModel, modelNama }) {
       >
         {shortNameModel}
       </div>
-      <div className="text-lg text-gray-600 md:text-2xl text-center mt-10 font-bold"> {modelNama} </div>
+      <div className="text-lg text-gray-600 md:text-xl text-center mt-10 font-bold"> {modelNama} </div>
     </motion.div>
   );
 }

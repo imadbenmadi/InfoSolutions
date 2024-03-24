@@ -40,7 +40,10 @@ function Home() {
                   المنصة تحتوي على حلول انية لمواد الاعلام الالي{" "}
               </h2>
           </motion.div>
-          <div className="grid md:px-32 p-5 md:gap-x-10 min-h-fit  h-fit grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-2">
+          <div
+              className="grid md:px-32 p-5 md:gap-x-10 md:gap-y-10 min-h-fit  
+          h-fit grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-2"
+          >
               <motion.div variants={itemVariants}>
                   <CardModel
                       shortNameModel="PL"
