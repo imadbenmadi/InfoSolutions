@@ -74,24 +74,10 @@ function Bernuit() {
                 </div>
             </div>
             {result !== null && (
-                <div className=" w-[90%] md:w-[30%] m-auto mt-4 md:mt-12 text-lg md:text-xl font-semibold">
-                    <div className="mb-2">
-                        {" "}
-                        <span className=" text-gray-600 ">
-                            Probability:
-                        </span>{" "}
-                        {result}
-                    </div>
-                    <div className="mb-2">
-                        <span className=" text-gray-600 ">
-                            Expected Value (E):
-                        </span>{" "}
-                        {expectedValue}
-                    </div>
-                    <div>
-                        <span className=" text-gray-600 ">Variance (V):</span>{" "}
-                        {variance}
-                    </div>
+                <div className="w-[90%] md:w-[30%] m-auto mt-4 md:mt-12 text-lg md:text-xl font-semibold">
+                    <p>P(X) = {result}</p>
+                    <p>E(X) = {expectedValue}</p>
+                    <p>V(X) = {variance}</p>
                 </div>
             )}
         </div>

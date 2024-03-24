@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Loi_Header from "../Loi_Header";
+import img from "../../../../../public/Benomial Formila.png";
 
 function Binomial() {
     const [n, setN] = useState(5); // Default number of trials
@@ -49,17 +50,33 @@ function Binomial() {
     };
 
     return (
-        <div className="container mx-auto my-4 px-4 min-h-[140vh] md:min-h-[120vh]">
+        <div className="container mx-auto my-4 px-4 min-h-[140vh] md:min-h-[80vh]">
             <Loi_Header Name="Binomial Distribution" />
-            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto">
-                <div className="italic text-gray-600">
-                    <p>P(X = k) = (n choose k) * p^k * (1 - p)^(n - k)</p>
+            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto text-lg">
+                <div className="text-end pb-4">
+                    تُستخدم توزيع البينوميال في العديد من المواقف حيث نقوم
+                    بسلسلة من التجارب الثنائية، مثل اختبار فعالية دواء أو توزيع
+                    الأفراد في مجموعتين. يمكن استخدامه أيضًا لتحليل البيانات
+                    الثنائية، مثل نتائج استطلاع أو تصويت. في كل حالة، نقوم
+                    بتقدير الاحتمالية لحدوث حدث محدد، مثل النجاح في العملية أو
+                    الفوز في الانتخابات، بناءً على عدد التجارب واحتمال النجاح في
+                    كل تجربة.
                 </div>
-                <div className="italic text-gray-600">
-                    <p>Expected Value (E): E(X) = np</p>
-                </div>
-                <div className="italic text-gray-600">
-                    <p>Variance (V): V(X) = np(1 - p)</p>
+                <div className="w-fit m-auto">
+                    <div className="italic text-gray-600">
+                        {/* <p>P(X = k) = (n choose k) * p^k * (1 - p)^(n - k)</p> */}
+                        <img src={img} className=" w-[300px]" alt="" />
+                    </div>
+                    <div className="italic text-gray-600">
+                        <p>
+                            E(X) =<b> np</b>{" "}
+                        </p>
+                    </div>
+                    <div className="italic text-gray-600">
+                        <p>
+                            V(X) = <b> np(1 - p)</b>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div className="flex flex-col items-center">
@@ -109,9 +126,9 @@ function Binomial() {
             </div>
             {result !== null && (
                 <div className="w-[90%] md:w-[30%] m-auto mt-4 md:mt-12 text-lg md:text-xl font-semibold">
-                    <p>Probability: {result}</p>
-                    <p>Expected Value (E): {expectedValue}</p>
-                    <p>Variance (V): {variance}</p>
+                    <p>P(X) = {result}</p>
+                    <p>E(X) = {expectedValue}</p>
+                    <p>V(X) = {variance}</p>
                 </div>
             )}
         </div>

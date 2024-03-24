@@ -26,7 +26,7 @@ function Geometric() {
     return (
         <div className="container mx-auto my-4 px-4 min-h-[110vh] ">
             <Loi_Header Name="Geometric Distribution" />
-            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto">
+            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto text-lg">
                 <div className="text-end pb-4">
                     يُناسب التوزيع الهندسي الحالات التي تهمك عدد المحاولات
                     اللازمة لتحقيق النجاح الأول في سلسلة من التجارب المستقلة مع
@@ -36,15 +36,22 @@ function Geometric() {
                     الوجهة الرئيسية للمرة الأولى، أو في انتظار حدوث حدث معين
                     بمعدل احتمال ثابت لكل وحدة زمنية أو تجربة.
                 </div>
-
-                <div className="italic text-gray-600">
-                    <p>P(X = k) = p * (1 - p)^(k - 1)</p>
-                </div>
-                <div className="italic text-gray-600">
-                    <p>E(X) = 1 / p</p>
-                </div>
-                <div className="italic text-gray-600">
-                    <p>V(X) = (1 - p) / p^2</p>
+                <div className="w-fit m-auto">
+                    <div className="italic text-gray-600">
+                        <p>
+                            P(X = k) = <b>p * (1 - p)^(k - 1)</b>
+                        </p>
+                    </div>
+                    <div className="italic text-gray-600">
+                        <p>
+                            E(X) = <b>1 / p</b>{" "}
+                        </p>
+                    </div>
+                    <div className="italic text-gray-600">
+                        <p>
+                            V(X) = <b>(1 - p) / p^2</b>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div className="flex flex-col gap-4 items-center w-[95%] md:w-[50%] m-auto">

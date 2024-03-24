@@ -34,7 +34,7 @@ function Poisson() {
     return (
         <div className="container mx-auto my-4 px-4 min-h-[110vh] md:min-h-[110vh]">
             <Loi_Header Name="Poisson Distribution" />
-            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto">
+            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto text-lg">
                 <div className=" text-end pb-4">
                     يُستخدم التوزيع البواسون لنمذجة عدد الحوادث أو الأحداث
                     النادرة التي تحدث في فترة زمنية محددة أو في منطقة معينة،
@@ -44,14 +44,22 @@ function Poisson() {
                     يمكن استخدامه لتقدير عدد الأحداث النادرة مثل حوادث السيارات،
                     والزوار المتوقعين في موقع ويب، والإخفاقات في النظام، وغيرها.
                 </div>
-                <div className="italic text-gray-600">
-                    <p>P(X = k) = (λ^k * e^(-λ)) / k!</p>
-                </div>
-                <div className="italic text-gray-600">
-                    <p>E(X) = λ</p>
-                </div>
-                <div className="italic text-gray-600">
-                    <p>V(X) = λ</p>
+                <div className="w-fit m-auto">
+                    <div className="italic text-gray-600">
+                        <p>
+                            P(X = k) =<b> (λ^k * e^(-λ)) / k!</b>
+                        </p>
+                    </div>
+                    <div className="italic text-gray-600">
+                        <p>
+                            E(X) =<b> λ</b>{" "}
+                        </p>
+                    </div>
+                    <div className="italic text-gray-600">
+                        <p>
+                            V(X) =<b> λ</b>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div className="flex flex-col gap-4 items-center w-[95%] md:w-[50%] m-auto">

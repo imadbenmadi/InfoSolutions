@@ -27,7 +27,7 @@ function UniformDiscrete() {
     return (
         <div className="container mx-auto my-4 px-4 min-h-[120vh] md:min-h-screen ">
             <Loi_Header Name="Uniform Discrete Distribution" />
-            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto">
+            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto text-lg">
                 <div className=" text-end pb-4">
                     نستخدم التوزيع العشوائي المتساوي المتقطع عندما يكون لكل
                     نتيجة في مجموعة محددة احتمال متساوٍ للحدوث. يُستخدم هذا
@@ -35,20 +35,22 @@ function UniformDiscrete() {
                     الاحتمال، مثل رمي النرد العادل أو اختيار عدد صحيح عشوائي بين
                     نطاق محدد.
                 </div>
-                <div className="italic text-gray-600">
-                    <p>
-                        P(X = x) =<b> 1 / (b - a + 1)</b>
-                    </p>
-                </div>
-                <div className="italic text-gray-600">
-                    <p>
-                        E(X) = <b>(a + b) / 2</b>
-                    </p>
-                </div>
-                <div className="italic text-gray-600">
-                    <p>
-                        V(X) = <b>((b - a + 1)^2 - 1) / 12</b>
-                    </p>
+                <div className="w-fit m-auto">
+                    <div className="italic text-gray-600">
+                        <p>
+                            P(X = x) =<b> 1 / (b - a + 1)</b>
+                        </p>
+                    </div>
+                    <div className="italic text-gray-600">
+                        <p>
+                            E(X) = <b>(a + b) / 2</b>
+                        </p>
+                    </div>
+                    <div className="italic text-gray-600">
+                        <p>
+                            V(X) = <b>((b - a + 1)^2 - 1) / 12</b>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div className="flex flex-col gap-4 items-center w-[95%] md:w-[50%] m-auto">
@@ -113,7 +115,7 @@ function UniformDiscrete() {
                 <div className="w-[90%] md:w-[30%] m-auto mt-4 md:mt-12 text-lg md:text-xl font-semibold">
                     <p> P(X) = {result}</p>
                     <p>E(X) = {expectedValue}</p>
-                    <p>V(X) =  {variance}</p>
+                    <p>V(X) = {variance}</p>
                 </div>
             )}
         </div>

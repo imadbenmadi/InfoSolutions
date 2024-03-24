@@ -35,7 +35,7 @@ function Hypergeometric() {
     return (
         <div className="container mx-auto my-4 px-4 min-h-[160vh] md:min-h-[120vh]">
             <Loi_Header Name="Hypergeometric Distribution" />
-            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto">
+            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto text-lg">
                 <div className=" text-end pb-4">
                     يتم استخدام التوزيع الهندسي الهايبربوليكي عندما يكون لدينا
                     عينة من مجموعة محددة ونريد حساب احتمالية الحصول على عدد معين
@@ -45,26 +45,31 @@ function Hypergeometric() {
                     كرات، ونريد حساب احتمالية الحصول على عدد معين من العناصر ذات
                     الخصائص المحددة في العينة.
                 </div>
-                <div className="italic text-gray-600">
-                    {/* <p>
+
+                <div className="w-fit m-auto">
+                    <div className="italic text-gray-600">
+                        {/* <p>
                         P(X = k) ={" "}
                         <b>
                             (K choose k) * ((N - K) choose (n - k)) / (N choose
                             n)
                         </b>
                     </p> */}
-                    <img src={img} className=" w-[200px]" alt="" />
-                </div>
-                <div className="italic text-gray-600">
-                    <p>
-                        E(X) = <b>(n * K) / N</b>
-                    </p>
-                </div>
-                <div className="italic text-gray-600">
-                    <p>
-                        V(X) ={" "}
-                        <b>(n * K * (N - K) * (N - n)) / (N * N * (N - 1))</b>
-                    </p>
+                        <img src={img} className=" w-[200px]" alt="" />
+                    </div>
+                    <div className="italic text-gray-600">
+                        <p>
+                            E(X) = <b>(n * K) / N</b>
+                        </p>
+                    </div>
+                    <div className="italic text-gray-600">
+                        <p>
+                            V(X) ={" "}
+                            <b>
+                                (n * K * (N - K) * (N - n)) / (N * N * (N - 1))
+                            </b>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div className="flex flex-col gap-6 items-center w-[95%] md:w-[50%] m-auto">
