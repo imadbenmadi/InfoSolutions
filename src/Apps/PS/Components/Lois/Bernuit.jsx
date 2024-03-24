@@ -26,7 +26,7 @@ function Bernuit() {
     return (
         <div className="container mx-auto my-4 px-4 ">
             <Loi_Header Name="Bernoulli Distribution" />
-            <div className="  p-2 border border-gray-300 rounded-lg mb-6 md:w-[50%] m-auto">
+            <div className="  p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto">
                 <div className="italic text-gray-600">
                     <p>P(X = x) = p^x * (1 - p)^(1 - x)</p>
                 </div>

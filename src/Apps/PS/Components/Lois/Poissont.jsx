@@ -54,7 +54,7 @@ function Poisson() {
                     <p>V(X) = λ</p>
                 </div>
             </div>
-            <div className="flex flex-col gap-4 items-center w-[95%] md:w-[50%] m-auto">
+            <div className="flex flex-col gap-4 items-center w-[95%] md:w-[80%] m-auto">
                 <div className=" flex  gap-2 items-center justify-center ">
                     <label
                         htmlFor="inputLambda"

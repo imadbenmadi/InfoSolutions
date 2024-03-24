@@ -26,7 +26,7 @@ function Geometric() {
     return (
         <div className="container mx-auto my-4 px-4 min-h-[110vh] ">
             <Loi_Header Name="Geometric Distribution" />
-            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[50%] m-auto">
+            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto">
                 <div className="text-end pb-4">
                     يُناسب التوزيع الهندسي الحالات التي تهمك عدد المحاولات
                     اللازمة لتحقيق النجاح الأول في سلسلة من التجارب المستقلة مع

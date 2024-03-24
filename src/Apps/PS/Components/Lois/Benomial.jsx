@@ -51,7 +51,7 @@ function Binomial() {
     return (
         <div className="container mx-auto my-4 px-4 min-h-[140vh] md:min-h-[120vh]">
             <Loi_Header Name="Binomial Distribution" />
-            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[50%] m-auto">
+            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto">
                 <div className="italic text-gray-600">
                     <p>P(X = k) = (n choose k) * p^k * (1 - p)^(n - k)</p>
                 </div>
