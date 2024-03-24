@@ -32,7 +32,7 @@ function Poisson() {
     };
 
     return (
-        <div className="container mx-auto my-4 px-4 min-h-[110vh] md:min-h-[110vh]">
+        <div className="container mx-auto my-4 px-4 min-h-[140vh] md:min-h-[90vh]">
             <Loi_Header Name="Poisson Distribution" />
             <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto text-lg">
                 <div className=" text-end pb-4">

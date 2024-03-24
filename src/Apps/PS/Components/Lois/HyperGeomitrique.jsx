@@ -33,7 +33,7 @@ function Hypergeometric() {
     };
 
     return (
-        <div className="container mx-auto my-4 px-4 min-h-[160vh] md:min-h-[120vh]">
+        <div className="container mx-auto my-4 px-4 min-h-[180vh] md:min-h-[120vh]">
             <Loi_Header Name="Hypergeometric Distribution" />
             <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto text-lg">
                 <div className=" text-end pb-4">
