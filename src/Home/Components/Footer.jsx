@@ -10,7 +10,7 @@ function Footer() {
                         <a
                             href="#!"
                             type="button"
-                            className="rounded-full bg-[#3b5998] p-3 uppercase leading-normal text-white shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:text-white"
+                            className="rounded-full bg-[#3b5998] p-3 ml-2 uppercase leading-normal text-white shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:text-white"
                             data-twe-ripple-init
                             data-twe-ripple-color="light"
                         >
@@ -82,7 +82,7 @@ function Footer() {
                         <a
                             href="#!"
                             type="button"
-                            className="rounded-full bg-[#0082ca] p-3 uppercase leading-normal text-white shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:text-white"
+                            className="rounded-full bg-[#0082ca] p-3 uppercase  leading-normal text-white shadow-dark-3 shadow-black/30 transition duration-150 ease-in-out hover:shadow-dark-1 focus:shadow-dark-1 focus:outline-none focus:ring-0 active:shadow-1 dark:text-white"
                             data-twe-ripple-init
                             data-twe-ripple-color="light"
                         >
@@ -122,7 +122,7 @@ function Footer() {
                     <a href="https://tw-elements.com/">CNTIC</a>
                 </div>
             </div>
-            <img src={logo_white} alt="" className=" w-[120px] md:w-[200px]" />
+            <img src={logo_white} alt="" className=" w-[90px] md:w-[200px]" />
         </div>
     );
 }
