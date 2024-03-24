@@ -24,7 +24,7 @@ function Bernuit() {
     };
 
     return (
-        <div className="container mx-auto my-4 px-4">
+        <div className="container mx-auto my-4 px-4 ">
             <Loi_Header Name="Bernoulli Distribution" />
             <div className="  p-2 border border-gray-300 rounded-lg mb-6 md:w-[50%] m-auto">
                 <div className="italic text-gray-600">
