@@ -5,7 +5,7 @@ import { useRef } from "react";
 import Feedback from "./Components/Feedback";
 import Footer from "./Components/Footer";
 import { useNavigate } from "react-router";
-
+import Beta_Alert from "../Components/Beta_Alert";
 function Home() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -65,11 +65,12 @@ function Home() {
           {" "}
           اترك اقتراح لنا
         </h1>
+        <Beta_Alert />
         <Feedback />
       </div>
 
       {/* how make this platform */}
-      <OurMember />
+      {/* <OurMember /> */}
       <Footer />
     </motion.div>
   );
