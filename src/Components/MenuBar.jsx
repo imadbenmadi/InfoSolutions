@@ -160,7 +160,7 @@ export default function MenuBar() {
                         <div className=" pt-6 w-[250px]  flex flex-col gap-7 text-white font-semibold custom-overflow overflow-auto">
                             <Link
                                 className="ml-3 flex items-center gap-2 text-xl"
-                                onClick={toggleDesktopMenu}
+                                // onClick={toggleDesktopMenu}
                                 to={"/"}
                             >
                                 <div className=" bg-white text-Blue text-xl p-2 rounded-md">
@@ -172,7 +172,7 @@ export default function MenuBar() {
                             <Link
                                 className=" ml-3 flex items-center gap-2 text-xl"
                                 to={"/PL"}
-                                onClick={toggleDesktopMenu}
+                                // onClick={toggleDesktopMenu}
                             >
                                 <div className="font-bold bg-white text-Blue text-xl p-2 rounded-md">
                                     PL
@@ -182,7 +182,7 @@ export default function MenuBar() {
                             <Link
                                 className="ml-3 flex items-center gap-2 text-xl"
                                 to={"/PS"}
-                                onClick={toggleDesktopMenu}
+                                // onClick={toggleDesktopMenu}
                             >
                                 <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
                                     PS
@@ -194,7 +194,7 @@ export default function MenuBar() {
                             <Link
                                 className="ml-3 flex items-center gap-2 text-xl"
                                 to={"/SM"}
-                                onClick={toggleDesktopMenu}
+                                // onClick={toggleDesktopMenu}
                             >
                                 <div className=" font-bold bg-white text-Blue text-xl p-2 rounded-md">
                                     SM
