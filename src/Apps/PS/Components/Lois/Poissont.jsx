@@ -34,7 +34,7 @@ function Poisson() {
     return (
         <div className="container mx-auto my-4 px-4 min-h-[110vh] md:min-h-[110vh]">
             <Loi_Header Name="Poisson Distribution" />
-            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[50%] m-auto">
+            <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto">
                 <div className=" text-end pb-4">
                     يُستخدم التوزيع البواسون لنمذجة عدد الحوادث أو الأحداث
                     النادرة التي تحدث في فترة زمنية محددة أو في منطقة معينة،
@@ -54,7 +54,7 @@ function Poisson() {
                     <p>V(X) = λ</p>
                 </div>
             </div>
-            <div className="flex flex-col gap-4 items-center w-[95%] md:w-[80%] m-auto">
+            <div className="flex flex-col gap-4 items-center w-[95%] md:w-[50%] m-auto">
                 <div className=" flex  gap-2 items-center justify-center ">
                     <label
                         htmlFor="inputLambda"
