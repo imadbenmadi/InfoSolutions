@@ -2,15 +2,14 @@ import { Field, Form, Formik } from "formik";
 import { motion, useInView } from "framer-motion";
 import React, { useRef } from "react";
 import * as Yup from "yup";
-
+import axios from "axios";
+import Swal from "sweetalert2";
 function Feedback() {
     const validationSchema = Yup.object({
-        firstName: Yup.string().min(3).required("First Name is required"),
-        lastName: Yup.string().min(3).required("Last Name is required"),
         email: Yup.string()
             .email("Invalid email address")
             .required("Email is required"),
-        Feedback: Yup.string().required("Feedback is required"),
+        section: Yup.string().required("Feedback is required"),
     });
 
     const ref = useRef(null);
@@ -37,17 +36,52 @@ function Feedback() {
         >
             <Formik
                 initialValues={{
-                    FeedBackChoice: "Other",
+                    section: "Other",
                     email: "",
-                    Feedback: "",
+                    suggestion: "",
                 }}
-                validationSchema={validationSchema}
-                onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 500));
-                    alert(JSON.stringify(values, null, 2));
+                validationSchema={validationSchema} // Make sure you define this
+                onSubmit={async (values, { setSubmitting, resetForm }) => {
+                    console.log("hello");
+                    try {
+                        setSubmitting(true);
+                        let response = await axios.post(
+                            "https://backend.cntic-club.com/api/posts/SendMessage/",
+                            values, // Make sure field names match your backend
+                            {
+                                withCredentials: true,
+                                validateStatus: () => true,
+                            }
+                        );
+                        console.log(response);
+                        if (response.status == 201) {
+                            resetForm();
+                            Swal.fire(
+                                "Done!",
+                                "Blog has been created Successfully",
+                                "success"
+                            );
+                        } else if (response.status == 400) {
+                            Swal.fire(
+                                "Error!",
+                                `Internal server error : ${response.data}`,
+                                "error"
+                            );
+                        } else {
+                            Swal.fire(
+                                "Error!",
+                                `Something Went Wrong. Please try again , ${response.data}`,
+                                "error"
+                            );
+                        }
+                    } catch (error) {
+                        Swal.fire("Error!", "Failed to add Blog.", "error");
+                    } finally {
+                        setSubmitting(false);
+                    }
                 }}
             >
-                {({ errors, touched }) => (
+                {({ isSubmitting, errors, touched }) => (
                     <Form>
                         <motion.div
                             className="flex justify-center items-center mb-3"
@@ -55,15 +89,15 @@ function Feedback() {
                         >
                             <label
                                 className=" w-[20%] font-semibold ml-6 md:text-xl "
-                                htmlFor="FeedBackChoice"
+                                htmlFor="section"
                             >
                                 عنوان الاقتراح
                             </label>
 
                             <Field
                                 as="select"
-                                name="FeedBackChoice"
-                                id="FeedBackChoice"
+                                name="section"
+                                id="section"
                                 className={`block w-[80%] float-left  p-4 focus:outline-none duration-300  px-5 text-gray-900 border
                                  border-gray-300 rounded-xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 `}
                             >
@@ -100,7 +134,7 @@ function Feedback() {
                                         ? "border-red-500"
                                         : ""
                                 }`}
-                                placeholder="jane@acme.com"
+                                placeholder="jane@gmail.com"
                             />
                             {errors.email && touched.email && (
                                 <div className="text-red-500 mb-3 pl-4">
@@ -111,25 +145,27 @@ function Feedback() {
                         <motion.div variants={itemVariants}>
                             <label
                                 className=" font-semibold ml-6 md:text-xl "
-                                htmlFor="Feedback"
+                                htmlFor="suggestion"
                             >
                                 الاقتراح
                             </label>
                             <Field
                                 as="textarea"
                                 rows={5}
-                                id="Feedback"
-                                name="Feedback"
-                                className={`block w-full focus:outline-none  p-4 text-gray-900 border border-gray-300 rounded-xl mt-3 bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
-                                    errors.Feedback && touched.Feedback
-                                        ? "border-red-500"
-                                        : ""
-                                }`}
+                                id="suggestion"
+                                name="suggestion"
+                                className={`block w-full focus:outline-none  p-4 text-gray-900 border
+                                 border-gray-300 rounded-xl mt-3 bg-gray-50 text-base focus:ring-blue-500
+                                  focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 ${
+                                      errors.section && touched.suggestion
+                                          ? "border-red-500"
+                                          : ""
+                                  }`}
                                 placeholder="اترك اقتراحك هنا"
                             />
-                            {errors.Feedback && touched.Feedback && (
+                            {errors.section && touched.suggestion && (
                                 <div className="text-red-500 mb-3 pl-4">
-                                    {errors.Feedback}
+                                    {errors.section}
                                 </div>
                             )}
                         </motion.div>
@@ -139,10 +175,18 @@ function Feedback() {
                         >
                             <button
                                 type="submit"
-                                className="bg-blue-500  mx-auto w-fit  hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline duration-300"
+                                className={` ${
+                                    isSubmitting
+                                        ? "bg-blue-200 text-white text-lg cursor-not-allowed"
+                                        : " bg-blue-500 text-white text-lg"
+                                } w-fit m-auto px-4 py-2 rounded font-semibold `}
+                                disabled={isSubmitting}
                             >
-                                {" "}
-                                ارسل الاقتراح
+                                {isSubmitting ? (
+                                    <div>loading</div>
+                                ) : (
+                                    " ارسل الاقتراح"
+                                )}
                             </button>
                         </motion.div>
                     </Form>
