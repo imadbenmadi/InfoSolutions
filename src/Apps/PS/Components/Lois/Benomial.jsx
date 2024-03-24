@@ -50,7 +50,7 @@ function Binomial() {
     };
 
     return (
-        <div className="container mx-auto my-4 px-4 min-h-[140vh] md:min-h-[80vh]">
+        <div className="container mx-auto my-4 px-4 min-h-[200vh] md:min-h-[1$0vh]">
             <Loi_Header Name="Binomial Distribution" />
             <div className="p-2 border border-gray-300 rounded-lg mb-6 md:w-[80%] m-auto text-lg">
                 <div className="text-end pb-4">
@@ -80,8 +80,11 @@ function Binomial() {
                 </div>
             </div>
             <div className="flex flex-col items-center">
-                <label htmlFor="inputN" className="font-semibold md:text-lg">
-                    Enter n (number of trials):
+                <label
+                    htmlFor="inputN"
+                    className="font-semibold md:text-lg text-center"
+                >
+                    Enter n <br /> (عدد المحاولات ):
                 </label>
                 <input
                     type="number"
@@ -89,17 +92,12 @@ function Binomial() {
                     min="1"
                     value={n}
                     onChange={handleNChange}
-                    className="border p-2 rounded"
+                    className="border p-2 rounded w-[70px] text-center"
                 />
-                <div className="mt-4 grid grid-cols-2 gap-4">
+                <div className=" w-full h-[2px] my-6 bg-gray-200 "></div>
+                <div className=" grid grid-cols-1 gap-4">
                     {[...Array(n)].map((_, index) => (
                         <div key={index}>
-                            <label
-                                htmlFor={`outcome${index}`}
-                                className="font-semibold md:text-lg"
-                            >
-                                Outcome {index + 1}:
-                            </label>
                             <select
                                 id={`outcome${index}`}
                                 value={trials[index]}
@@ -111,9 +109,15 @@ function Binomial() {
                                 }
                                 className="border p-2 rounded"
                             >
-                                <option value={0}>Failure (0)</option>
-                                <option value={1}>Success (1)</option>
+                                <option value={0}>خسارة (0)</option>
+                                <option value={1}>نجاح (1)</option>
                             </select>
+                            <label
+                                htmlFor={`outcome${index}`}
+                                className="font-semibold md:text-lg ml-2"
+                            >
+                                المحاولة {index + 1} 
+                            </label>
                         </div>
                     ))}
                 </div>
